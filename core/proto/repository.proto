@@ -1,0 +1,13 @@
+syntax = "proto3";
+option go_package="repository/proto";
+
+service Repository {
+  rpc CreateUser(CreateUserReq) returns (CreateUserRes) {}
+  rpc GetUsers(FetchUsersReq) returns (stream FetchUsersRes) {}
+}
+
+message CreateUserReq {}
+message CreateUserRes {}
+
+message FetchUsersReq {}
+message FetchUsersRes {}
