@@ -12,7 +12,7 @@ import { resolve } from 'path';
         transport: Transport.GRPC,
         options: {
           url: "localhost:4010",
-          package: "repository",
+          package: REPOSITORY_PACKAGE_NAME,
           protoPath: resolve(__dirname, '../../../proto/repository.proto'),
         }
       }

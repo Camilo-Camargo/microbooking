@@ -1,0 +1,10 @@
+syntax = "proto3";
+package mailer;
+option go_package="mailer/proto";
+
+service Mailer {
+  rpc Version(VersionReq) returns (VersionRes) {}
+}
+
+message VersionReq {}
+message VersionRes {}

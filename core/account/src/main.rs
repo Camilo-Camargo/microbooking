@@ -18,7 +18,7 @@ impl Account for AccountService {
         println!("Got a request from {:?}", request.remote_addr());
 
         let reply = account::VersionRes {
-            message: format!("0.0.1"),
+            message: format!("0.0.2"),
         };
         Ok(Response::new(reply))
     }
