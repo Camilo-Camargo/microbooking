@@ -19,8 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Repository_CreateUser_FullMethodName = "/Repository/CreateUser"
-	Repository_GetUsers_FullMethodName   = "/Repository/GetUsers"
+	Repository_CreateUser_FullMethodName = "/repository.Repository/CreateUser"
+	Repository_GetUsers_FullMethodName   = "/repository.Repository/GetUsers"
 )
 
 // RepositoryClient is the client API for Repository service.
@@ -155,7 +155,7 @@ func (x *repositoryGetUsersServer) Send(m *FetchUsersRes) error {
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Repository_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "Repository",
+	ServiceName: "repository.Repository",
 	HandlerType: (*RepositoryServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
