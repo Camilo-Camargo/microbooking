@@ -14,3 +14,7 @@ echo "Generating Python Repository Service"
 rm -rf ../mailer/proto
 mkdir ../mailer/proto
 protoc --ts_proto_opt=nestJs=true --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=../api/src/mailer/ ./mailer.proto
+
+echo "Generating Java Payment Service"
+protoc -I=./ --java_out=../payment/app/src/main/java/org/example ./payment.proto
+
