@@ -6,9 +6,10 @@ protoc --go_out=../repository/proto --go_opt=paths=source_relative \
   ./repository.proto
 
 echo "Generating TypeScript Repository Service"
-protoc --ts_proto_opt=nestJs=true --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=../api/src/repository/ ./repository.proto
-protoc --ts_proto_opt=nestJs=true --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=../api/src/account/ ./account.proto
-protoc --ts_proto_opt=nestJs=true --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=../api/src/mailer/ ./mailer.proto
+protoc --ts_proto_opt=nestJs=true --plugin=../api/node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=../api/src/repository/ ./repository.proto
+protoc --ts_proto_opt=nestJs=true --plugin=../api/node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=../api/src/account/ ./account.proto
+protoc --ts_proto_opt=nestJs=true --plugin=../api/node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=../api/src/mailer/ ./mailer.proto
+protoc --ts_proto_opt=nestJs=true --plugin=../api/node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=../api/src/payment/ ./payment.proto
 
 echo "Generating Python Repository Service"
 rm -rf ../mailer/proto
