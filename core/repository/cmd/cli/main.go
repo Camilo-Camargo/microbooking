@@ -52,8 +52,7 @@ func migrateCommand(argument string) {
 	}
 
 	p := fmt.Sprintf("file://%s", filepath.ToSlash(filepath.Join(wd, "database", "schema")))
-	log.Print(p)
-	m, err = migrate.New(p, dbUrl)
+	m, err = migrate.New(p, fmt.Sprintf("mysql://%s", dbUrl))
 	if err != nil {
 		log.Fatalf("%v", err)
 	}
@@ -72,10 +71,12 @@ func migrateUp() {
 	if err := m.Up(); err != nil && err != migrate.ErrNoChange {
 		log.Fatalf("%v", err)
 	}
+	log.Print("Migration up succefully")
 }
 
 func migrateDown() {
 	if err := m.Down(); err != nil && err != migrate.ErrNoChange {
 		log.Fatalf("%v", err)
 	}
+	log.Print("Migration down succefully")
 }
