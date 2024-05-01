@@ -1,22 +1,21 @@
 use tonic::{transport::Server, Request, Response, Status};
 
-use account::account_server::{Account, AccountServer};
-use account::{VersionReq, VersionRes};
+use search::search_server::{Search, SearchServer};
+use search::{VersionReq, VersionRes};
 
-pub mod account {
-    tonic::include_proto!("account");
+pub mod search {
+    tonic::include_proto!("search");
 }
 
 #[derive(Default)]
-pub struct AccountService {}
+pub struct SearchService {}
 
 #[tonic::async_trait]
-impl Account for AccountService {
+impl Search for SearchService {
     async fn version(&self, request: Request<VersionReq>) -> Result<Response<VersionRes>, Status> {
         println!("Got a request from {:?}", request.remote_addr());
 
-        let reply = account::VersionRes {
-            message: format!("0.0.2"),
+        let reply = search::VersionRes {
         };
         Ok(Response::new(reply))
     }
@@ -27,12 +26,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let port = 4015;
     let addr = format!("[::1]:{}", port).parse().unwrap();
 
-    let account_service = AccountService::default();
+    let search_service = SearchService::default();
 
     println!("Server running on {}", addr);
 
     Server::builder()
-        .add_service(AccountServer::new(account_service))
+        .add_service(SearchServer::new(search_service))
         .serve(addr)
         .await?;
 

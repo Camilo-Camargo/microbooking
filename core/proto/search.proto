@@ -1,0 +1,10 @@
+syntax = "proto3";
+package search;
+option go_package="search/proto";
+
+service Search {
+  rpc Version(VersionReq) returns (VersionRes) {}
+}
+
+message VersionReq {}
+message VersionRes {}
