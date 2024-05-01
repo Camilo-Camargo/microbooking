@@ -395,6 +395,14 @@
     protobufjs "^7.2.4"
     yargs "^17.7.2"
 
+"@grpc/reflection@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@grpc/reflection/-/reflection-1.0.3.tgz#187a05aa8ec6ffd547580c3f3a31f0136cdcde00"
+  integrity sha512-Fe1F1HpBSbOb2v4DOnZa2TiQkUJrj0/7camKUNoH6OfOXw/GO82e0gA4Eihbsuga8dZxJYNBHsig/c58SG2c/g==
+  dependencies:
+    "@grpc/proto-loader" "^0.7.10"
+    protobufjs "^7.2.5"
+
 "@humanwhocodes/config-array@^0.11.14":
   version "0.11.14"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.14.tgz#d78e481a039f7566ecc9660b4ea7fe6b1fec442b"
@@ -4788,7 +4796,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-protobufjs@^7.2.4:
+protobufjs@^7.2.4, protobufjs@^7.2.5:
   version "7.2.6"
   resolved "https://registry.yarnpkg.com/protobufjs/-/protobufjs-7.2.6.tgz#4a0ccd79eb292717aacf07530a07e0ed20278215"
   integrity sha512-dgJaEDDL6x8ASUZ1YqWciTRrdOuYNzoOf27oHNfdyvKqHr5i0FV7FSLU+aIeFjyFgVxrpTOtQUi0BLLBymZaBw==

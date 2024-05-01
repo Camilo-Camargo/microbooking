@@ -10,6 +10,7 @@ protoc --ts_proto_opt=nestJs=true --plugin=../api/node_modules/.bin/protoc-gen-t
 protoc --ts_proto_opt=nestJs=true --plugin=../api/node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=../api/src/account/ ./account.proto
 protoc --ts_proto_opt=nestJs=true --plugin=../api/node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=../api/src/mailer/ ./mailer.proto
 protoc --ts_proto_opt=nestJs=true --plugin=../api/node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=../api/src/payment/ ./payment.proto
+protoc --ts_proto_opt=nestJs=true --plugin=../api/node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=../api/src/book/ ./book.proto
 
 echo "Generating Python Repository Service"
 rm -rf ../mailer/proto
@@ -18,4 +19,10 @@ protoc --ts_proto_opt=nestJs=true --plugin=./node_modules/.bin/protoc-gen-ts_pro
 
 echo "Generating Java Payment Service"
 protoc -I=./ --java_out=../payment/app/src/main/java/org/example ./payment.proto
+
+# dart 
+#dart pub global activate protoc_plugin
+#export PATH="$PATH:$HOME/.pub-cache/bin"
+mkdir -p ../book/lib/src/generated
+protoc --dart_out=grpc:../book/lib/src/generated  -Iprotos ./book.proto
 

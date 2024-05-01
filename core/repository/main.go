@@ -8,7 +8,6 @@ import (
 	pb "repository/proto"
 
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/reflection"
 )
 
 var port = 4010
@@ -35,7 +34,6 @@ func main() {
 
 	s := grpc.NewServer()
 	pb.RegisterRepositoryServer(s, &RepositoryServer{})
-	reflection.Register(s)
 
 	log.Printf("Server running at %v", lis.Addr())
 

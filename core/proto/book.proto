@@ -1,0 +1,13 @@
+syntax = "proto3";
+package book;
+option go_package="book/proto";
+option java_multiple_files = true;
+option java_package = "org.example.book";
+option java_outer_classname = "BookProto";
+
+service Book {
+  rpc Version(VersionReq) returns (VersionRes) {}
+}
+
+message VersionReq {}
+message VersionRes {}

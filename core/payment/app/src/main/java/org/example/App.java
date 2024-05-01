@@ -9,8 +9,6 @@ import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
 import io.grpc.stub.StreamObserver;
 
-import io.grpc.protobuf.services.ProtoReflectionService;
-
 import org.example.payment.*;
 import org.example.payment.PaymentGrpc.PaymentImplBase;
 
@@ -23,7 +21,6 @@ public class App {
     int port = 4013;
     server = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
         .addService(new PaymentImpl())
-        .addService(ProtoReflectionService.newInstance())
         .build()
         .start();
     logger.info("Server started, listening on " + port);

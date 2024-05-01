@@ -5,8 +5,6 @@ use account::{VersionReq, VersionRes};
 
 pub mod account {
     tonic::include_proto!("account");
-    pub(crate) const FILE_DESCRIPTOR_SET: &[u8] =
-        tonic::include_file_descriptor_set!("account_description");
 }
 
 #[derive(Default)]
@@ -26,20 +24,15 @@ impl Account for AccountService {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let port = 4012;
+    let port = 4015;
     let addr = format!("[::1]:{}", port).parse().unwrap();
 
     let account_service = AccountService::default();
-
-    let reflection_service = tonic_reflection::server::Builder::configure()
-        .register_encoded_file_descriptor_set(account::FILE_DESCRIPTOR_SET)
-        .build()?;
 
     println!("Server running on {}", addr);
 
     Server::builder()
         .add_service(AccountServer::new(account_service))
-        .add_service(reflection_service)
         .serve(addr)
         .await?;
 
