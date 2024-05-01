@@ -75,6 +75,20 @@ services:
       app:
         ipv4_address: 10.18.0.6
 
+  search:
+    build: ./search
+    env_file: ./.env
+    volumes:
+      - ./search:/app
+      - ./proto:/proto
+    ports:
+      - "${SEARCH_PORT}:${SEARCH_PORT}"
+    depends_on:
+      - mysql
+    networks:
+      app:
+        ipv4_address: 10.18.0.7
+
 
 volumes:
   database:

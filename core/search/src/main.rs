@@ -23,8 +23,8 @@ impl Search for SearchService {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let port = 4015;
-    let addr = format!("[::1]:{}", port).parse().unwrap();
+    let port = 4014;
+    let addr = format!("0.0.0.0:{}", port).parse().unwrap();
 
     let search_service = SearchService::default();
 
