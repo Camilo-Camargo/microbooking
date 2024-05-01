@@ -2,8 +2,8 @@ root = "."
 tmp_dir = ".air"
 
 [build]
-bin = "./.air/main --mode dev"
-cmd = "go build -o ./.air/main ./main.go"
+bin = "./.air/server --mode dev"
+cmd = "go build -o ./.air/server ./cmd/server/main.go"
 delay = 1000
 exclude_dir = [".air"]
 include_ext = ["go", "mod", "sum", ".air.toml"]

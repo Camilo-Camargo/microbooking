@@ -3,7 +3,7 @@
 //   sqlc v1.26.0
 // source: room_service.sql
 
-package repository
+package generated
 
 import (
 	"context"

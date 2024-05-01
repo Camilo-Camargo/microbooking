@@ -1,9 +1,9 @@
 version: "2"
 sql:
   - engine: "mysql"
-    queries: "query"
-    schema: "schema"
+    queries: "database/query"
+    schema: "database/schema"
     gen:
       go:
-        package: "repository"
-        out: "repository"
+        package: "generated"
+        out: "internal/generated"
