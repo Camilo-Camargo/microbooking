@@ -1,5 +1,7 @@
 package repository
 
-import "repository/internal/generated"
+import (
+	sq "repository/internal/sqlc"
+)
 
-var Queries generated.Queries
+var Queries sq.Queries

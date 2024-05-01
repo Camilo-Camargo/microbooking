@@ -21,9 +21,11 @@ export interface ListRolesRes {
 
 export interface CreateRoleReq {
   name: string;
+  createdAt: Timestamp | undefined;
 }
 
 export interface CreateRoleRes {
+  id: number;
 }
 
 export interface UpdateRoleByIdReq {

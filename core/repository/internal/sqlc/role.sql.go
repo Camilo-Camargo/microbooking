@@ -3,7 +3,7 @@
 //   sqlc v1.26.0
 // source: role.sql
 
-package generated
+package sqlc
 
 import (
 	"context"
@@ -17,8 +17,8 @@ VALUES (?, ?)
 `
 
 type CreateRoleParams struct {
-	Name      RoleName
-	CreatedAt time.Time
+	Name      RoleName  `json:"name"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
 func (q *Queries) CreateRole(ctx context.Context, arg CreateRoleParams) (sql.Result, error) {
@@ -94,9 +94,9 @@ WHERE role_id = ?
 `
 
 type UpdateRoleByIdParams struct {
-	Name      RoleName
-	UpdatedAt sql.NullTime
-	RoleID    int64
+	Name      RoleName     `json:"name"`
+	UpdatedAt sql.NullTime `json:"updated_at"`
+	RoleID    int64        `json:"role_id"`
 }
 
 func (q *Queries) UpdateRoleById(ctx context.Context, arg UpdateRoleByIdParams) error {

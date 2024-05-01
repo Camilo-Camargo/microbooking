@@ -4,14 +4,37 @@ import { REPOSITORY_PACKAGE_NAME, REPOSITORY_SERVICE_NAME, RepositoryClient } fr
 
 @Injectable()
 export class RepositoryService implements OnModuleInit {
-  private repositoryService: RepositoryClient;
+  private repositoryClient: RepositoryClient;
   constructor(@Inject(REPOSITORY_PACKAGE_NAME) private readonly client: ClientGrpc) { }
 
   onModuleInit() {
-    this.repositoryService = this.client.getService<RepositoryClient>(REPOSITORY_SERVICE_NAME);
+    this.repositoryClient = this.client.getService<RepositoryClient>(REPOSITORY_SERVICE_NAME);
   }
 
-  listUsers() {
-    return this.repositoryService.listUsers({});
+  createUser() {
+    const millis = Date.now(); // or any other timestamp in milliseconds
+    const seconds = Math.floor(millis / 1000);
+    const nanos = (millis % 1000) * 1000000;
+
+    console.log(this.repositoryClient.createRole({
+      name: "admin",
+      createdAt: {
+        seconds,
+        nanos
+      }
+    }).subscribe((data) => {
+        console.log(data.id)
+    }));
+
+
+    return "learning.."
+
+    return this.repositoryClient.createUser({
+      roleId: 1,
+      email: "example@example.com",
+      password: "example",
+      givenName: "Camilo Andres",
+      surname: "Camargo Castaneda",
+    });
   }
 }

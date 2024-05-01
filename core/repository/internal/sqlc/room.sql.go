@@ -3,7 +3,7 @@
 //   sqlc v1.26.0
 // source: room.sql
 
-package generated
+package sqlc
 
 import (
 	"context"
@@ -17,11 +17,11 @@ VALUES (?, ?, ?, ?, ?)
 `
 
 type CreateRoomParams struct {
-	Signage       string
-	Guests        int32
-	PricePerNight string
-	IsAvailable   bool
-	CreatedAt     time.Time
+	Signage       string    `json:"signage"`
+	Guests        int32     `json:"guests"`
+	PricePerNight string    `json:"price_per_night"`
+	IsAvailable   bool      `json:"is_available"`
+	CreatedAt     time.Time `json:"created_at"`
 }
 
 func (q *Queries) CreateRoom(ctx context.Context, arg CreateRoomParams) (sql.Result, error) {
@@ -108,12 +108,12 @@ WHERE room_id = ?
 `
 
 type UpdateRoomByIdParams struct {
-	Signage       string
-	Guests        int32
-	PricePerNight string
-	IsAvailable   bool
-	CreatedAt     time.Time
-	RoomID        int64
+	Signage       string    `json:"signage"`
+	Guests        int32     `json:"guests"`
+	PricePerNight string    `json:"price_per_night"`
+	IsAvailable   bool      `json:"is_available"`
+	CreatedAt     time.Time `json:"created_at"`
+	RoomID        int64     `json:"room_id"`
 }
 
 func (q *Queries) UpdateRoomById(ctx context.Context, arg UpdateRoomByIdParams) error {

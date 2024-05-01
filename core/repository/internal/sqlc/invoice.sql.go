@@ -3,7 +3,7 @@
 //   sqlc v1.26.0
 // source: invoice.sql
 
-package generated
+package sqlc
 
 import (
 	"context"
@@ -17,11 +17,11 @@ VALUES (?, ?, ?, ?, ?)
 `
 
 type CreateInvoiceParams struct {
-	FromWalletID int64
-	ToWalletID   int64
-	Status       InvoiceStatus
-	Amount       string
-	CreatedAt    time.Time
+	FromWalletID int64         `json:"from_wallet_id"`
+	ToWalletID   int64         `json:"to_wallet_id"`
+	Status       InvoiceStatus `json:"status"`
+	Amount       string        `json:"amount"`
+	CreatedAt    time.Time     `json:"created_at"`
 }
 
 func (q *Queries) CreateInvoice(ctx context.Context, arg CreateInvoiceParams) (sql.Result, error) {
@@ -108,13 +108,13 @@ WHERE invoice_id = ?
 `
 
 type UpdateInvoiceByIdParams struct {
-	FromWalletID int64
-	ToWalletID   int64
-	Status       InvoiceStatus
-	Amount       string
-	CreatedAt    time.Time
-	UpdatedAt    sql.NullTime
-	InvoiceID    int64
+	FromWalletID int64         `json:"from_wallet_id"`
+	ToWalletID   int64         `json:"to_wallet_id"`
+	Status       InvoiceStatus `json:"status"`
+	Amount       string        `json:"amount"`
+	CreatedAt    time.Time     `json:"created_at"`
+	UpdatedAt    sql.NullTime  `json:"updated_at"`
+	InvoiceID    int64         `json:"invoice_id"`
 }
 
 func (q *Queries) UpdateInvoiceById(ctx context.Context, arg UpdateInvoiceByIdParams) error {

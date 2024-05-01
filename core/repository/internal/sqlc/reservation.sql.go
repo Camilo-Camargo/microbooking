@@ -3,7 +3,7 @@
 //   sqlc v1.26.0
 // source: reservation.sql
 
-package generated
+package sqlc
 
 import (
 	"context"
@@ -18,8 +18,8 @@ WHERE reservation_id = ?
 `
 
 type CancelReservationParams struct {
-	DeletedAt     sql.NullTime
-	ReservationID int64
+	DeletedAt     sql.NullTime `json:"deleted_at"`
+	ReservationID int64        `json:"reservation_id"`
 }
 
 func (q *Queries) CancelReservation(ctx context.Context, arg CancelReservationParams) error {
@@ -33,13 +33,13 @@ VALUES (?, ?, ?, ?, ?, ?, ?)
 `
 
 type CreateReservationParams struct {
-	RoomID    int64
-	UserID    int64
-	CheckIn   time.Time
-	CheckOut  time.Time
-	Status    NullReservationStatus
-	Guests    int32
-	CreatedAt time.Time
+	RoomID    int64                 `json:"room_id"`
+	UserID    int64                 `json:"user_id"`
+	CheckIn   time.Time             `json:"check_in"`
+	CheckOut  time.Time             `json:"check_out"`
+	Status    NullReservationStatus `json:"status"`
+	Guests    int32                 `json:"guests"`
+	CreatedAt time.Time             `json:"created_at"`
 }
 
 func (q *Queries) CreateReservation(ctx context.Context, arg CreateReservationParams) (sql.Result, error) {
@@ -123,14 +123,14 @@ WHERE reservation_id = ?
 `
 
 type UpdateReservationByIdParams struct {
-	RoomID        int64
-	UserID        int64
-	CheckIn       time.Time
-	CheckOut      time.Time
-	Status        NullReservationStatus
-	Guests        int32
-	UpdatedAt     sql.NullTime
-	ReservationID int64
+	RoomID        int64                 `json:"room_id"`
+	UserID        int64                 `json:"user_id"`
+	CheckIn       time.Time             `json:"check_in"`
+	CheckOut      time.Time             `json:"check_out"`
+	Status        NullReservationStatus `json:"status"`
+	Guests        int32                 `json:"guests"`
+	UpdatedAt     sql.NullTime          `json:"updated_at"`
+	ReservationID int64                 `json:"reservation_id"`
 }
 
 func (q *Queries) UpdateReservationById(ctx context.Context, arg UpdateReservationByIdParams) error {

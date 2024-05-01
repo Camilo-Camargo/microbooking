@@ -5,8 +5,8 @@ import { RepositoryService } from './repository.service';
 export class RepositoryController {
   constructor(private readonly repositoryService: RepositoryService){}
 
-  @Get()
-  async listUsers(){
-    return this.repositoryService.listUsers();
+  @Get('')
+  async createUser(){
+    return this.repositoryService.createUser();
   }
 }

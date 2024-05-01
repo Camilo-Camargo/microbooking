@@ -3,7 +3,7 @@
 //   sqlc v1.26.0
 // source: room_service.sql
 
-package generated
+package sqlc
 
 import (
 	"context"
@@ -17,9 +17,9 @@ VALUES (?, ?, ?)
 `
 
 type CreateRoomServiceParams struct {
-	RoomID    int64
-	ServiceID int64
-	CreatedAt time.Time
+	RoomID    int64     `json:"room_id"`
+	ServiceID int64     `json:"service_id"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
 func (q *Queries) CreateRoomService(ctx context.Context, arg CreateRoomServiceParams) (sql.Result, error) {
@@ -96,10 +96,10 @@ WHERE room_service_id = ?
 `
 
 type UpdateRoomServiceByIdParams struct {
-	RoomID        int64
-	ServiceID     int64
-	UpdatedAt     sql.NullTime
-	RoomServiceID int64
+	RoomID        int64        `json:"room_id"`
+	ServiceID     int64        `json:"service_id"`
+	UpdatedAt     sql.NullTime `json:"updated_at"`
+	RoomServiceID int64        `json:"room_service_id"`
 }
 
 func (q *Queries) UpdateRoomServiceById(ctx context.Context, arg UpdateRoomServiceByIdParams) error {

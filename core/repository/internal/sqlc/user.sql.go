@@ -3,7 +3,7 @@
 //   sqlc v1.26.0
 // source: user.sql
 
-package generated
+package sqlc
 
 import (
 	"context"
@@ -17,12 +17,12 @@ VALUES (?, ?, ?, ?, ?, ?)
 `
 
 type CreateUserParams struct {
-	RoleID    int64
-	Email     string
-	Password  string
-	GivenName string
-	Surname   string
-	CreatedAt time.Time
+	RoleID    int64     `json:"role_id"`
+	Email     string    `json:"email"`
+	Password  string    `json:"password"`
+	GivenName string    `json:"given_name"`
+	Surname   string    `json:"surname"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
 func (q *Queries) CreateUser(ctx context.Context, arg CreateUserParams) (sql.Result, error) {
@@ -113,13 +113,13 @@ WHERE user_id = ?
 `
 
 type UpdateUserByIdParams struct {
-	RoleID    int64
-	Email     string
-	Password  string
-	GivenName string
-	Surname   string
-	UpdatedAt sql.NullTime
-	UserID    int64
+	RoleID    int64        `json:"role_id"`
+	Email     string       `json:"email"`
+	Password  string       `json:"password"`
+	GivenName string       `json:"given_name"`
+	Surname   string       `json:"surname"`
+	UpdatedAt sql.NullTime `json:"updated_at"`
+	UserID    int64        `json:"user_id"`
 }
 
 func (q *Queries) UpdateUserById(ctx context.Context, arg UpdateUserByIdParams) error {

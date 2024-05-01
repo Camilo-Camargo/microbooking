@@ -3,7 +3,7 @@
 //   sqlc v1.26.0
 // source: wallet.sql
 
-package generated
+package sqlc
 
 import (
 	"context"
@@ -17,8 +17,8 @@ VALUES (?, ?)
 `
 
 type CreateWalletParams struct {
-	Amount    string
-	CreatedAt time.Time
+	Amount    string    `json:"amount"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
 func (q *Queries) CreateWallet(ctx context.Context, arg CreateWalletParams) (sql.Result, error) {
@@ -93,8 +93,8 @@ WHERE wallet_id = ?
 `
 
 type UpdateWalletByIdParams struct {
-	Amount   string
-	WalletID int64
+	Amount   string `json:"amount"`
+	WalletID int64  `json:"wallet_id"`
 }
 
 func (q *Queries) UpdateWalletById(ctx context.Context, arg UpdateWalletByIdParams) error {

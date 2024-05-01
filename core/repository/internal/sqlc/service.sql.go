@@ -3,7 +3,7 @@
 //   sqlc v1.26.0
 // source: service.sql
 
-package generated
+package sqlc
 
 import (
 	"context"
@@ -17,9 +17,9 @@ VALUES (?, ?, ?)
 `
 
 type CreateServiceParams struct {
-	Name        string
-	Description string
-	CreatedAt   time.Time
+	Name        string    `json:"name"`
+	Description string    `json:"description"`
+	CreatedAt   time.Time `json:"created_at"`
 }
 
 func (q *Queries) CreateService(ctx context.Context, arg CreateServiceParams) (sql.Result, error) {
@@ -96,10 +96,10 @@ WHERE service_id = ?
 `
 
 type UpdateServiceByIdParams struct {
-	Name        string
-	Description string
-	UpdatedAt   sql.NullTime
-	ServiceID   int64
+	Name        string       `json:"name"`
+	Description string       `json:"description"`
+	UpdatedAt   sql.NullTime `json:"updated_at"`
+	ServiceID   int64        `json:"service_id"`
 }
 
 func (q *Queries) UpdateServiceById(ctx context.Context, arg UpdateServiceByIdParams) error {
