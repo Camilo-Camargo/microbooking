@@ -4,13 +4,13 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	_ "github.com/go-sql-driver/mysql"
+	"google.golang.org/grpc"
 	"log"
 	"net"
 	"os"
 	pb "repository/proto"
 	"repository/repository"
-	_ "github.com/go-sql-driver/mysql"
-	"google.golang.org/grpc"
 )
 
 var queries *repository.Queries
@@ -19,35 +19,42 @@ type RepositoryServer struct {
 	pb.UnimplementedRepositoryServer
 }
 
-func (s *RepositoryServer) CreateUser(context.Context, *pb.CreateUserReq) (*pb.CreateUserRes, error) {
+func (rs *RepositoryServer) ListUsers(req *pb.ListUsersReq, stream pb.Repository_ListUsersServer) error {
 	ctx := context.Background()
-	log.Print(queries.GetRoles(ctx))
-	log.Printf("create users")
-	return &pb.CreateUserRes{}, nil
-}
+	log.Printf("list users grpc")
 
-func (s *RepositoryServer) GetUsers(*pb.FetchUsersReq, pb.Repository_GetUsersServer) error {
-		log.Printf("Get users")
+	users,err := queries.ListUsers(ctx)
+	if err != nil {
+		return err
+	}
+
+	for _, user := range users {
+		log.Print(user)
+		stream.Send(&pb.ListUsersRes{})
+	}
+
 	return nil
 }
 
 func main() {
 	port := os.Getenv("REPOSITORY_PORT")
 
-	dbUser := os.Getenv("DATABASE_USER")
+	dbUser := os.Getenv("DATABASE_USERNAME")
 	dbPass := os.Getenv("DATABASE_PASSWORD")
-	dbHost := os.Getenv("DATABASE_USERNAME")
+	dbHost := os.Getenv("DATABASE_HOST")
 	dbName := os.Getenv("DATABASE_NAME")
-	dbPort := os.Getenv("DATABASE_HOST")
+	dbPort := os.Getenv("DATABASE_PORT")
 
 
-	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPass, dbHost, dbPort, dbName))
+	dbUrl := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPass, dbHost, dbPort, dbName)
+	log.Print(dbUrl)
+
+	db, err := sql.Open("mysql", dbUrl)
 	if err != nil {
-		log.Fatal(err) 
+		log.Fatal(err)
 	}
 
 	queries = repository.New(db)
-
 
 	lis, err := net.Listen("tcp", fmt.Sprintf("0.0.0.0:%s", port))
 	if err != nil {

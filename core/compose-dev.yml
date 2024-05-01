@@ -1,0 +1,53 @@
+version: '3'
+services:
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DATABASE_PASSWORD}'
+      MYSQL_HOST: '${DATABASE_HOST}'
+      MYSQL_TCP_PORT: '${DATABASE_PORT}'
+      MYSQL_DATABASE: '${DATABASE_NAME}'
+      MYSQL_USER: '${DATABASE_USERNAME}'
+      MYSQL_PASSWORD: '${DATABASE_PASSWORD}'
+      MYSQL_ALLOW_EMPY_PASSWORD: "1"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "-u${DATABASE_USERNAME}", "-p${DATABASE_PASSWORD}", "-h${DATABASE_HOST}", "-P${DATABASE_PORT}", "ping"]
+      retries: 3
+      timeout: 5s
+    restart: always
+    volumes:
+      - database:/var/lib/mysql
+    networks:
+      app:
+        ipv4_address: 10.18.0.2
+
+  repository:
+    image: cosmtrek/air
+    working_dir: /app
+    command: ['-c', './scripts/.air.toml']
+    env_file: ./.env
+    volumes:
+      - ./repository:/app
+    ports:
+      - '${REPOSITORY_PORT}:${REPOSITORY_PORT}'
+    networks:
+      app:
+        ipv4_address: 10.18.0.3
+    depends_on:
+      - mysql
+
+volumes:
+  database:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./.docker-volume/database
+      o: bind
+
+networks:
+  app:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.18.0.0/16
+          gateway: 10.18.0.1

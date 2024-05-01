@@ -178,7 +178,7 @@ type Room struct {
 	PricePerNight string
 	IsAvailable   bool
 	CreatedAt     time.Time
-	DeletedAt     sql.NullTime
+	UpatedAt      sql.NullTime
 	DeletedAt     sql.NullTime
 }
 

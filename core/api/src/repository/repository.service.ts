@@ -11,7 +11,7 @@ export class RepositoryService implements OnModuleInit {
     this.repositoryService = this.client.getService<RepositoryClient>(REPOSITORY_SERVICE_NAME);
   }
 
-  createUser() {
-    return this.repositoryService.createUser({});
+  listUsers() {
+    return this.repositoryService.listUsers({});
   }
 }

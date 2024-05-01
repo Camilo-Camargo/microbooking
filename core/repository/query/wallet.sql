@@ -6,8 +6,8 @@ WHERE wallet_id = ? LIMIT 1;
 SELECT * FROM wallet;
 
 -- name: CreateWallet :execresult
-INSERT INTO wallet (amount)
-VALUES (?);
+INSERT INTO wallet (amount, created_at)
+VALUES (?, ?);
 
 -- name: UpdateWalletById :exec
 UPDATE wallet

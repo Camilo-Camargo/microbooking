@@ -6,7 +6,7 @@ export class RepositoryController {
   constructor(private readonly repositoryService: RepositoryService){}
 
   @Get()
-  async createUser(){
-    return this.repositoryService.createUser();
+  async listUsers(){
+    return this.repositoryService.listUsers();
   }
 }

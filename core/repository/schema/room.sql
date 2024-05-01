@@ -5,7 +5,7 @@ CREATE TABLE room (
   price_per_night DECIMAL(10, 2) NOT NULL,
   is_available TINYINT(1) NOT NULL,
   created_at DATETIME NOT NULL,
-  deleted_at DATETIME,
+  upated_at DATETIME,
   deleted_at DATETIME,
   PRIMARY KEY(room_id)
 );

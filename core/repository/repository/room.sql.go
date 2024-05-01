@@ -45,7 +45,7 @@ func (q *Queries) DeleteRoom(ctx context.Context, roomID int64) error {
 }
 
 const getRoom = `-- name: GetRoom :one
-SELECT room_id, signage, guests, price_per_night, is_available, created_at, room.deleted_at, room.deleted_at FROM room
+SELECT room_id, signage, guests, price_per_night, is_available, created_at, upated_at, deleted_at FROM room
 WHERE room_id = ? LIMIT 1
 `
 
@@ -59,14 +59,14 @@ func (q *Queries) GetRoom(ctx context.Context, roomID int64) (Room, error) {
 		&i.PricePerNight,
 		&i.IsAvailable,
 		&i.CreatedAt,
-		&i.DeletedAt,
+		&i.UpatedAt,
 		&i.DeletedAt,
 	)
 	return i, err
 }
 
 const listRooms = `-- name: ListRooms :many
-SELECT room_id, signage, guests, price_per_night, is_available, created_at, room.deleted_at, room.deleted_at FROM room
+SELECT room_id, signage, guests, price_per_night, is_available, created_at, upated_at, deleted_at FROM room
 `
 
 func (q *Queries) ListRooms(ctx context.Context) ([]Room, error) {
@@ -85,7 +85,7 @@ func (q *Queries) ListRooms(ctx context.Context) ([]Room, error) {
 			&i.PricePerNight,
 			&i.IsAvailable,
 			&i.CreatedAt,
-			&i.DeletedAt,
+			&i.UpatedAt,
 			&i.DeletedAt,
 		); err != nil {
 			return nil, err

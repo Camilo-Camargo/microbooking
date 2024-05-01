@@ -1,14 +1,323 @@
 syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
 package repository;
-option go_package="repository/proto";
+option go_package = "repository/proto";
 
 service Repository {
+  // role
+  rpc GetRole(GetRoleReq) returns (GetRoleRes) {}
+  rpc ListRoles(ListRolesReq) returns (stream ListRolesRes) {}
+  rpc CreateRole(CreateRoleReq) returns (CreateRoleRes) {}
+  rpc UpdateRoleById(UpdateRoleByIdReq) returns (UpdateRoleByIdRes) {}
+  rpc DeleteRole(DeleteRoleReq) returns (DeleteRoleRes) {}
+
+  // user
+  rpc GetUser(GetUserReq) returns (GetUserRes) {}
+  rpc ListUsers(ListUsersReq) returns (stream ListUsersRes) {}
   rpc CreateUser(CreateUserReq) returns (CreateUserRes) {}
-  rpc GetUsers(FetchUsersReq) returns (stream FetchUsersRes) {}
+  rpc UpdateUserById(UpdateUserByIdReq) returns (UpdateUserByIdRes) {}
+  rpc DeleteUser(DeleteUserReq) returns (DeleteUserRes) {}
+
+  // wallet
+  rpc GetWallet(GetWalletReq) returns (GetWalletRes) {}
+  rpc ListWallets(ListWalletsReq) returns (stream ListWalletsRes) {}
+  rpc CreateWallet(CreateWalletReq) returns (CreateWalletRes) {}
+  rpc UpdateWalletById(UpdateWalletByIdReq) returns (UpdateWalletByIdRes) {}
+  rpc DeleteWallet(DeleteWalletReq) returns (DeleteWalletRes) {}
+
+  // invoice
+  rpc GetInvoice(GetInvoiceReq) returns (GetInvoiceRes) {}
+  rpc ListInvoices(ListInvoicesReq) returns (stream ListInvoicesRes) {}
+  rpc CreateInvoice(CreateInvoiceReq) returns (CreateInvoiceRes) {}
+  rpc UpdateInvoiceById(UpdateInvoiceByIdReq) returns (UpdateInvoiceByIdRes) {}
+  rpc DeleteInvoice(DeleteInvoiceReq) returns (DeleteInvoiceRes) {}
+
+  // reservation
+  rpc GetReservation(GetReservationReq) returns (GetReservationRes) {}
+  rpc ListReservations(ListReservationsReq)
+      returns (stream ListReservationsRes) {}
+  rpc CreateReservation(CreateReservationReq) returns (CreateReservationRes) {}
+  rpc UpdateReservationById(UpdateReservationByIdReq)
+      returns (UpdateReservationByIdRes) {}
+  rpc CancelReservation(CancelReservationReq) returns (CancelReservationRes) {}
+
+  // room
+  rpc GetRoom(GetRoomReq) returns (GetRoomRes) {}
+  rpc ListRooms(ListRoomsReq) returns (stream ListRoomsRes) {}
+  rpc CreateRoom(CreateRoomReq) returns (CreateRoomRes) {}
+  rpc UpdateRoomById(UpdateRoomByIdReq) returns (UpdateRoomByIdRes) {}
+  rpc DeleteRoom(DeleteRoomReq) returns (DeleteRoomRes) {}
+
+  // service
+  rpc GetService(GetServiceReq) returns (GetServiceRes) {}
+  rpc ListServices(ListServicesReq) returns (stream ListServicesRes) {}
+  rpc CreateService(CreateServiceReq) returns (CreateServiceRes) {}
+  rpc UpdateServiceById(UpdateServiceByIdReq) returns (UpdateServiceByIdRes) {}
+  rpc DeleteService(DeleteServiceReq) returns (DeleteServiceRes) {}
+
+  // room service
+  rpc GetRoomService(GetRoomServiceReq) returns (GetRoomServiceRes) {}
+  rpc ListRoomServices(ListRoomServicesReq)
+      returns (stream ListRoomServicesRes) {}
+  rpc CreateRoomService(CreateRoomServiceReq) returns (CreateRoomServiceRes) {}
+  rpc UpdateRoomServiceById(UpdateRoomServiceByIdReq)
+      returns (UpdateRoomServiceByIdRes) {}
+  rpc DeleteRoomService(DeleteRoomServiceReq) returns (DeleteRoomServiceRes) {}
 }
 
-message CreateUserReq {}
+// role
+message GetRoleReq { int64 role_id = 1; }
+
+message GetRoleRes {}
+message ListRolesReq {}
+
+message ListRolesRes {}
+
+message CreateRoleReq { string name = 1; }
+
+message CreateRoleRes {}
+
+message UpdateRoleByIdReq {
+  int64 role_id = 1;
+  string name = 2;
+}
+
+message UpdateRoleByIdRes {}
+
+message DeleteRoleReq { int64 role_id = 1; }
+
+message DeleteRoleRes {}
+
+// user
+message GetUserReq { int64 user_id = 1; }
+
+message GetUserRes {}
+
+message ListUsersReq {}
+
+message ListUsersRes {}
+
+message CreateUserReq {
+  int64 role_id = 1;
+  string email = 2;
+  string password = 3;
+  string given_name = 4;
+  string surname = 5;
+}
+
 message CreateUserRes {}
 
-message FetchUsersReq {}
-message FetchUsersRes {}
+message UpdateUserByIdReq {
+  int64 user_id = 1;
+  int64 role_id = 2;
+  string email = 3;
+  string password = 4;
+  string given_name = 5;
+  string surname = 6;
+}
+
+message UpdateUserByIdRes {}
+
+message DeleteUserReq { int64 user_id = 1; }
+
+message DeleteUserRes {}
+
+// wallet
+message GetWalletReq { int64 wallet_id = 1; }
+
+message GetWalletRes {}
+
+message ListWalletsReq {}
+
+message ListWalletsRes {}
+
+message CreateWalletReq { double amount = 1; }
+
+message CreateWalletRes {}
+
+message UpdateWalletByIdReq {
+  int64 wallet_id = 1;
+  double amount = 2;
+}
+
+message UpdateWalletByIdRes {}
+
+message DeleteWalletReq { int64 wallet_id = 1; }
+
+message DeleteWalletRes {}
+
+// invoice
+message GetInvoiceReq { int64 invoice_id = 1; }
+
+message GetInvoiceRes {}
+
+message ListInvoicesReq {}
+
+message ListInvoicesRes {}
+
+message CreateInvoiceReq {
+  int64 from_wallet_id = 1;
+  int64 to_wallet_id = 2;
+  string status = 3;
+  double amount = 4;
+  google.protobuf.Timestamp created_at = 5;
+}
+
+message CreateInvoiceRes {}
+
+message UpdateInvoiceByIdReq {
+  int64 invoice_id = 1;
+  int64 from_wallet_id = 2;
+  int64 to_wallet_id = 3;
+  string status = 4;
+  double amount = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+}
+
+message UpdateInvoiceByIdRes {}
+
+message DeleteInvoiceReq { int64 invoice_id = 1; }
+
+message DeleteInvoiceRes {}
+// reservation
+message GetReservationReq { int64 reservation_id = 1; }
+
+message GetReservationRes {}
+
+message ListReservationsReq {}
+
+message ListReservationsRes {}
+
+message CreateReservationReq {
+  int64 room_id = 1;
+  int64 user_id = 2;
+  google.protobuf.Timestamp check_in = 3;
+  google.protobuf.Timestamp check_out = 4;
+  string status = 5;
+  int32 guests = 6;
+  google.protobuf.Timestamp created_at = 7;
+}
+
+message CreateReservationRes {}
+
+message UpdateReservationByIdReq {
+  int64 reservation_id = 1;
+  int64 room_id = 2;
+  int64 user_id = 3;
+  google.protobuf.Timestamp check_in = 4;
+  google.protobuf.Timestamp check_out = 5;
+  string status = 6;
+  int32 guests = 7;
+  google.protobuf.Timestamp updated_at = 8;
+}
+
+message UpdateReservationByIdRes {}
+
+message CancelReservationReq {
+  int64 reservation_id = 1;
+  google.protobuf.Timestamp deleted_at = 2;
+}
+
+message CancelReservationRes {}
+// room
+message GetRoomReq { int64 room_id = 1; }
+
+message GetRoomRes {}
+
+message ListRoomsReq {}
+
+message ListRoomsRes {}
+
+message CreateRoomReq {
+  string signage = 1;
+  int32 guests = 2;
+  double price_per_night = 3;
+  bool is_available = 4;
+  google.protobuf.Timestamp created_at = 5;
+}
+
+message CreateRoomRes {}
+
+message UpdateRoomByIdReq {
+  int64 room_id = 1;
+  string signage = 2;
+  int32 guests = 3;
+  double price_per_night = 4;
+  bool is_available = 5;
+  google.protobuf.Timestamp created_at = 6;
+}
+
+message UpdateRoomByIdRes {}
+
+message DeleteRoomReq { int64 room_id = 1; }
+
+message DeleteRoomRes {}
+
+// service
+message GetServiceReq { int64 service_id = 1; }
+
+message GetServiceRes {}
+
+message ListServicesReq {}
+
+message ListServicesRes {}
+
+message CreateServiceReq {
+  string name = 1;
+  string description = 2;
+  google.protobuf.Timestamp created_at = 3;
+}
+
+message CreateServiceRes {}
+
+message UpdateServiceByIdReq {
+  int64 service_id = 1;
+  string name = 2;
+  string description = 3;
+  google.protobuf.Timestamp updated_at = 4;
+}
+
+message UpdateServiceByIdRes {}
+
+message DeleteServiceReq { int64 service_id = 1; }
+
+message DeleteServiceRes {}
+
+// room service
+message GetRoomServiceReq { int64 room_service_id = 1; }
+
+message GetRoomServiceRes {
+  int64 room_service_id = 1;
+  int64 room_id = 2;
+  int64 service_id = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+}
+
+message ListRoomServicesReq {}
+
+message ListRoomServicesRes { repeated GetRoomServiceRes room_services = 1; }
+
+message CreateRoomServiceReq {
+  int64 room_id = 1;
+  int64 service_id = 2;
+  google.protobuf.Timestamp created_at = 3;
+}
+
+message CreateRoomServiceRes { int64 room_service_id = 1; }
+
+message UpdateRoomServiceByIdReq {
+  int64 room_service_id = 1;
+  int64 room_id = 2;
+  int64 service_id = 3;
+  google.protobuf.Timestamp updated_at = 4;
+}
+
+message UpdateRoomServiceByIdRes {}
+
+message DeleteRoomServiceReq { int64 room_service_id = 1; }
+
+message DeleteRoomServiceRes {}

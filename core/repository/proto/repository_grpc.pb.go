@@ -19,16 +19,100 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Repository_CreateUser_FullMethodName = "/repository.Repository/CreateUser"
-	Repository_GetUsers_FullMethodName   = "/repository.Repository/GetUsers"
+	Repository_GetRole_FullMethodName               = "/repository.Repository/GetRole"
+	Repository_ListRoles_FullMethodName             = "/repository.Repository/ListRoles"
+	Repository_CreateRole_FullMethodName            = "/repository.Repository/CreateRole"
+	Repository_UpdateRoleById_FullMethodName        = "/repository.Repository/UpdateRoleById"
+	Repository_DeleteRole_FullMethodName            = "/repository.Repository/DeleteRole"
+	Repository_GetUser_FullMethodName               = "/repository.Repository/GetUser"
+	Repository_ListUsers_FullMethodName             = "/repository.Repository/ListUsers"
+	Repository_CreateUser_FullMethodName            = "/repository.Repository/CreateUser"
+	Repository_UpdateUserById_FullMethodName        = "/repository.Repository/UpdateUserById"
+	Repository_DeleteUser_FullMethodName            = "/repository.Repository/DeleteUser"
+	Repository_GetWallet_FullMethodName             = "/repository.Repository/GetWallet"
+	Repository_ListWallets_FullMethodName           = "/repository.Repository/ListWallets"
+	Repository_CreateWallet_FullMethodName          = "/repository.Repository/CreateWallet"
+	Repository_UpdateWalletById_FullMethodName      = "/repository.Repository/UpdateWalletById"
+	Repository_DeleteWallet_FullMethodName          = "/repository.Repository/DeleteWallet"
+	Repository_GetInvoice_FullMethodName            = "/repository.Repository/GetInvoice"
+	Repository_ListInvoices_FullMethodName          = "/repository.Repository/ListInvoices"
+	Repository_CreateInvoice_FullMethodName         = "/repository.Repository/CreateInvoice"
+	Repository_UpdateInvoiceById_FullMethodName     = "/repository.Repository/UpdateInvoiceById"
+	Repository_DeleteInvoice_FullMethodName         = "/repository.Repository/DeleteInvoice"
+	Repository_GetReservation_FullMethodName        = "/repository.Repository/GetReservation"
+	Repository_ListReservations_FullMethodName      = "/repository.Repository/ListReservations"
+	Repository_CreateReservation_FullMethodName     = "/repository.Repository/CreateReservation"
+	Repository_UpdateReservationById_FullMethodName = "/repository.Repository/UpdateReservationById"
+	Repository_CancelReservation_FullMethodName     = "/repository.Repository/CancelReservation"
+	Repository_GetRoom_FullMethodName               = "/repository.Repository/GetRoom"
+	Repository_ListRooms_FullMethodName             = "/repository.Repository/ListRooms"
+	Repository_CreateRoom_FullMethodName            = "/repository.Repository/CreateRoom"
+	Repository_UpdateRoomById_FullMethodName        = "/repository.Repository/UpdateRoomById"
+	Repository_DeleteRoom_FullMethodName            = "/repository.Repository/DeleteRoom"
+	Repository_GetService_FullMethodName            = "/repository.Repository/GetService"
+	Repository_ListServices_FullMethodName          = "/repository.Repository/ListServices"
+	Repository_CreateService_FullMethodName         = "/repository.Repository/CreateService"
+	Repository_UpdateServiceById_FullMethodName     = "/repository.Repository/UpdateServiceById"
+	Repository_DeleteService_FullMethodName         = "/repository.Repository/DeleteService"
+	Repository_GetRoomService_FullMethodName        = "/repository.Repository/GetRoomService"
+	Repository_ListRoomServices_FullMethodName      = "/repository.Repository/ListRoomServices"
+	Repository_CreateRoomService_FullMethodName     = "/repository.Repository/CreateRoomService"
+	Repository_UpdateRoomServiceById_FullMethodName = "/repository.Repository/UpdateRoomServiceById"
+	Repository_DeleteRoomService_FullMethodName     = "/repository.Repository/DeleteRoomService"
 )
 
 // RepositoryClient is the client API for Repository service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RepositoryClient interface {
+	// role
+	GetRole(ctx context.Context, in *GetRoleReq, opts ...grpc.CallOption) (*GetRoleRes, error)
+	ListRoles(ctx context.Context, in *ListRolesReq, opts ...grpc.CallOption) (Repository_ListRolesClient, error)
+	CreateRole(ctx context.Context, in *CreateRoleReq, opts ...grpc.CallOption) (*CreateRoleRes, error)
+	UpdateRoleById(ctx context.Context, in *UpdateRoleByIdReq, opts ...grpc.CallOption) (*UpdateRoleByIdRes, error)
+	DeleteRole(ctx context.Context, in *DeleteRoleReq, opts ...grpc.CallOption) (*DeleteRoleRes, error)
+	// user
+	GetUser(ctx context.Context, in *GetUserReq, opts ...grpc.CallOption) (*GetUserRes, error)
+	ListUsers(ctx context.Context, in *ListUsersReq, opts ...grpc.CallOption) (Repository_ListUsersClient, error)
 	CreateUser(ctx context.Context, in *CreateUserReq, opts ...grpc.CallOption) (*CreateUserRes, error)
-	GetUsers(ctx context.Context, in *FetchUsersReq, opts ...grpc.CallOption) (Repository_GetUsersClient, error)
+	UpdateUserById(ctx context.Context, in *UpdateUserByIdReq, opts ...grpc.CallOption) (*UpdateUserByIdRes, error)
+	DeleteUser(ctx context.Context, in *DeleteUserReq, opts ...grpc.CallOption) (*DeleteUserRes, error)
+	// wallet
+	GetWallet(ctx context.Context, in *GetWalletReq, opts ...grpc.CallOption) (*GetWalletRes, error)
+	ListWallets(ctx context.Context, in *ListWalletsReq, opts ...grpc.CallOption) (Repository_ListWalletsClient, error)
+	CreateWallet(ctx context.Context, in *CreateWalletReq, opts ...grpc.CallOption) (*CreateWalletRes, error)
+	UpdateWalletById(ctx context.Context, in *UpdateWalletByIdReq, opts ...grpc.CallOption) (*UpdateWalletByIdRes, error)
+	DeleteWallet(ctx context.Context, in *DeleteWalletReq, opts ...grpc.CallOption) (*DeleteWalletRes, error)
+	// invoice
+	GetInvoice(ctx context.Context, in *GetInvoiceReq, opts ...grpc.CallOption) (*GetInvoiceRes, error)
+	ListInvoices(ctx context.Context, in *ListInvoicesReq, opts ...grpc.CallOption) (Repository_ListInvoicesClient, error)
+	CreateInvoice(ctx context.Context, in *CreateInvoiceReq, opts ...grpc.CallOption) (*CreateInvoiceRes, error)
+	UpdateInvoiceById(ctx context.Context, in *UpdateInvoiceByIdReq, opts ...grpc.CallOption) (*UpdateInvoiceByIdRes, error)
+	DeleteInvoice(ctx context.Context, in *DeleteInvoiceReq, opts ...grpc.CallOption) (*DeleteInvoiceRes, error)
+	// reservation
+	GetReservation(ctx context.Context, in *GetReservationReq, opts ...grpc.CallOption) (*GetReservationRes, error)
+	ListReservations(ctx context.Context, in *ListReservationsReq, opts ...grpc.CallOption) (Repository_ListReservationsClient, error)
+	CreateReservation(ctx context.Context, in *CreateReservationReq, opts ...grpc.CallOption) (*CreateReservationRes, error)
+	UpdateReservationById(ctx context.Context, in *UpdateReservationByIdReq, opts ...grpc.CallOption) (*UpdateReservationByIdRes, error)
+	CancelReservation(ctx context.Context, in *CancelReservationReq, opts ...grpc.CallOption) (*CancelReservationRes, error)
+	// room
+	GetRoom(ctx context.Context, in *GetRoomReq, opts ...grpc.CallOption) (*GetRoomRes, error)
+	ListRooms(ctx context.Context, in *ListRoomsReq, opts ...grpc.CallOption) (Repository_ListRoomsClient, error)
+	CreateRoom(ctx context.Context, in *CreateRoomReq, opts ...grpc.CallOption) (*CreateRoomRes, error)
+	UpdateRoomById(ctx context.Context, in *UpdateRoomByIdReq, opts ...grpc.CallOption) (*UpdateRoomByIdRes, error)
+	DeleteRoom(ctx context.Context, in *DeleteRoomReq, opts ...grpc.CallOption) (*DeleteRoomRes, error)
+	// service
+	GetService(ctx context.Context, in *GetServiceReq, opts ...grpc.CallOption) (*GetServiceRes, error)
+	ListServices(ctx context.Context, in *ListServicesReq, opts ...grpc.CallOption) (Repository_ListServicesClient, error)
+	CreateService(ctx context.Context, in *CreateServiceReq, opts ...grpc.CallOption) (*CreateServiceRes, error)
+	UpdateServiceById(ctx context.Context, in *UpdateServiceByIdReq, opts ...grpc.CallOption) (*UpdateServiceByIdRes, error)
+	DeleteService(ctx context.Context, in *DeleteServiceReq, opts ...grpc.CallOption) (*DeleteServiceRes, error)
+	// room service
+	GetRoomService(ctx context.Context, in *GetRoomServiceReq, opts ...grpc.CallOption) (*GetRoomServiceRes, error)
+	ListRoomServices(ctx context.Context, in *ListRoomServicesReq, opts ...grpc.CallOption) (Repository_ListRoomServicesClient, error)
+	CreateRoomService(ctx context.Context, in *CreateRoomServiceReq, opts ...grpc.CallOption) (*CreateRoomServiceRes, error)
+	UpdateRoomServiceById(ctx context.Context, in *UpdateRoomServiceByIdReq, opts ...grpc.CallOption) (*UpdateRoomServiceByIdRes, error)
+	DeleteRoomService(ctx context.Context, in *DeleteRoomServiceReq, opts ...grpc.CallOption) (*DeleteRoomServiceRes, error)
 }
 
 type repositoryClient struct {
@@ -37,6 +121,115 @@ type repositoryClient struct {
 
 func NewRepositoryClient(cc grpc.ClientConnInterface) RepositoryClient {
 	return &repositoryClient{cc}
+}
+
+func (c *repositoryClient) GetRole(ctx context.Context, in *GetRoleReq, opts ...grpc.CallOption) (*GetRoleRes, error) {
+	out := new(GetRoleRes)
+	err := c.cc.Invoke(ctx, Repository_GetRole_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) ListRoles(ctx context.Context, in *ListRolesReq, opts ...grpc.CallOption) (Repository_ListRolesClient, error) {
+	stream, err := c.cc.NewStream(ctx, &Repository_ServiceDesc.Streams[0], Repository_ListRoles_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &repositoryListRolesClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Repository_ListRolesClient interface {
+	Recv() (*ListRolesRes, error)
+	grpc.ClientStream
+}
+
+type repositoryListRolesClient struct {
+	grpc.ClientStream
+}
+
+func (x *repositoryListRolesClient) Recv() (*ListRolesRes, error) {
+	m := new(ListRolesRes)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *repositoryClient) CreateRole(ctx context.Context, in *CreateRoleReq, opts ...grpc.CallOption) (*CreateRoleRes, error) {
+	out := new(CreateRoleRes)
+	err := c.cc.Invoke(ctx, Repository_CreateRole_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) UpdateRoleById(ctx context.Context, in *UpdateRoleByIdReq, opts ...grpc.CallOption) (*UpdateRoleByIdRes, error) {
+	out := new(UpdateRoleByIdRes)
+	err := c.cc.Invoke(ctx, Repository_UpdateRoleById_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) DeleteRole(ctx context.Context, in *DeleteRoleReq, opts ...grpc.CallOption) (*DeleteRoleRes, error) {
+	out := new(DeleteRoleRes)
+	err := c.cc.Invoke(ctx, Repository_DeleteRole_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) GetUser(ctx context.Context, in *GetUserReq, opts ...grpc.CallOption) (*GetUserRes, error) {
+	out := new(GetUserRes)
+	err := c.cc.Invoke(ctx, Repository_GetUser_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) ListUsers(ctx context.Context, in *ListUsersReq, opts ...grpc.CallOption) (Repository_ListUsersClient, error) {
+	stream, err := c.cc.NewStream(ctx, &Repository_ServiceDesc.Streams[1], Repository_ListUsers_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &repositoryListUsersClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Repository_ListUsersClient interface {
+	Recv() (*ListUsersRes, error)
+	grpc.ClientStream
+}
+
+type repositoryListUsersClient struct {
+	grpc.ClientStream
+}
+
+func (x *repositoryListUsersClient) Recv() (*ListUsersRes, error) {
+	m := new(ListUsersRes)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
 }
 
 func (c *repositoryClient) CreateUser(ctx context.Context, in *CreateUserReq, opts ...grpc.CallOption) (*CreateUserRes, error) {
@@ -48,12 +241,39 @@ func (c *repositoryClient) CreateUser(ctx context.Context, in *CreateUserReq, op
 	return out, nil
 }
 
-func (c *repositoryClient) GetUsers(ctx context.Context, in *FetchUsersReq, opts ...grpc.CallOption) (Repository_GetUsersClient, error) {
-	stream, err := c.cc.NewStream(ctx, &Repository_ServiceDesc.Streams[0], Repository_GetUsers_FullMethodName, opts...)
+func (c *repositoryClient) UpdateUserById(ctx context.Context, in *UpdateUserByIdReq, opts ...grpc.CallOption) (*UpdateUserByIdRes, error) {
+	out := new(UpdateUserByIdRes)
+	err := c.cc.Invoke(ctx, Repository_UpdateUserById_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &repositoryGetUsersClient{stream}
+	return out, nil
+}
+
+func (c *repositoryClient) DeleteUser(ctx context.Context, in *DeleteUserReq, opts ...grpc.CallOption) (*DeleteUserRes, error) {
+	out := new(DeleteUserRes)
+	err := c.cc.Invoke(ctx, Repository_DeleteUser_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) GetWallet(ctx context.Context, in *GetWalletReq, opts ...grpc.CallOption) (*GetWalletRes, error) {
+	out := new(GetWalletRes)
+	err := c.cc.Invoke(ctx, Repository_GetWallet_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) ListWallets(ctx context.Context, in *ListWalletsReq, opts ...grpc.CallOption) (Repository_ListWalletsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &Repository_ServiceDesc.Streams[2], Repository_ListWallets_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &repositoryListWalletsClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -63,29 +283,442 @@ func (c *repositoryClient) GetUsers(ctx context.Context, in *FetchUsersReq, opts
 	return x, nil
 }
 
-type Repository_GetUsersClient interface {
-	Recv() (*FetchUsersRes, error)
+type Repository_ListWalletsClient interface {
+	Recv() (*ListWalletsRes, error)
 	grpc.ClientStream
 }
 
-type repositoryGetUsersClient struct {
+type repositoryListWalletsClient struct {
 	grpc.ClientStream
 }
 
-func (x *repositoryGetUsersClient) Recv() (*FetchUsersRes, error) {
-	m := new(FetchUsersRes)
+func (x *repositoryListWalletsClient) Recv() (*ListWalletsRes, error) {
+	m := new(ListWalletsRes)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
 	return m, nil
 }
 
+func (c *repositoryClient) CreateWallet(ctx context.Context, in *CreateWalletReq, opts ...grpc.CallOption) (*CreateWalletRes, error) {
+	out := new(CreateWalletRes)
+	err := c.cc.Invoke(ctx, Repository_CreateWallet_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) UpdateWalletById(ctx context.Context, in *UpdateWalletByIdReq, opts ...grpc.CallOption) (*UpdateWalletByIdRes, error) {
+	out := new(UpdateWalletByIdRes)
+	err := c.cc.Invoke(ctx, Repository_UpdateWalletById_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) DeleteWallet(ctx context.Context, in *DeleteWalletReq, opts ...grpc.CallOption) (*DeleteWalletRes, error) {
+	out := new(DeleteWalletRes)
+	err := c.cc.Invoke(ctx, Repository_DeleteWallet_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) GetInvoice(ctx context.Context, in *GetInvoiceReq, opts ...grpc.CallOption) (*GetInvoiceRes, error) {
+	out := new(GetInvoiceRes)
+	err := c.cc.Invoke(ctx, Repository_GetInvoice_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) ListInvoices(ctx context.Context, in *ListInvoicesReq, opts ...grpc.CallOption) (Repository_ListInvoicesClient, error) {
+	stream, err := c.cc.NewStream(ctx, &Repository_ServiceDesc.Streams[3], Repository_ListInvoices_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &repositoryListInvoicesClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Repository_ListInvoicesClient interface {
+	Recv() (*ListInvoicesRes, error)
+	grpc.ClientStream
+}
+
+type repositoryListInvoicesClient struct {
+	grpc.ClientStream
+}
+
+func (x *repositoryListInvoicesClient) Recv() (*ListInvoicesRes, error) {
+	m := new(ListInvoicesRes)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *repositoryClient) CreateInvoice(ctx context.Context, in *CreateInvoiceReq, opts ...grpc.CallOption) (*CreateInvoiceRes, error) {
+	out := new(CreateInvoiceRes)
+	err := c.cc.Invoke(ctx, Repository_CreateInvoice_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) UpdateInvoiceById(ctx context.Context, in *UpdateInvoiceByIdReq, opts ...grpc.CallOption) (*UpdateInvoiceByIdRes, error) {
+	out := new(UpdateInvoiceByIdRes)
+	err := c.cc.Invoke(ctx, Repository_UpdateInvoiceById_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) DeleteInvoice(ctx context.Context, in *DeleteInvoiceReq, opts ...grpc.CallOption) (*DeleteInvoiceRes, error) {
+	out := new(DeleteInvoiceRes)
+	err := c.cc.Invoke(ctx, Repository_DeleteInvoice_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) GetReservation(ctx context.Context, in *GetReservationReq, opts ...grpc.CallOption) (*GetReservationRes, error) {
+	out := new(GetReservationRes)
+	err := c.cc.Invoke(ctx, Repository_GetReservation_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) ListReservations(ctx context.Context, in *ListReservationsReq, opts ...grpc.CallOption) (Repository_ListReservationsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &Repository_ServiceDesc.Streams[4], Repository_ListReservations_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &repositoryListReservationsClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Repository_ListReservationsClient interface {
+	Recv() (*ListReservationsRes, error)
+	grpc.ClientStream
+}
+
+type repositoryListReservationsClient struct {
+	grpc.ClientStream
+}
+
+func (x *repositoryListReservationsClient) Recv() (*ListReservationsRes, error) {
+	m := new(ListReservationsRes)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *repositoryClient) CreateReservation(ctx context.Context, in *CreateReservationReq, opts ...grpc.CallOption) (*CreateReservationRes, error) {
+	out := new(CreateReservationRes)
+	err := c.cc.Invoke(ctx, Repository_CreateReservation_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) UpdateReservationById(ctx context.Context, in *UpdateReservationByIdReq, opts ...grpc.CallOption) (*UpdateReservationByIdRes, error) {
+	out := new(UpdateReservationByIdRes)
+	err := c.cc.Invoke(ctx, Repository_UpdateReservationById_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) CancelReservation(ctx context.Context, in *CancelReservationReq, opts ...grpc.CallOption) (*CancelReservationRes, error) {
+	out := new(CancelReservationRes)
+	err := c.cc.Invoke(ctx, Repository_CancelReservation_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) GetRoom(ctx context.Context, in *GetRoomReq, opts ...grpc.CallOption) (*GetRoomRes, error) {
+	out := new(GetRoomRes)
+	err := c.cc.Invoke(ctx, Repository_GetRoom_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) ListRooms(ctx context.Context, in *ListRoomsReq, opts ...grpc.CallOption) (Repository_ListRoomsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &Repository_ServiceDesc.Streams[5], Repository_ListRooms_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &repositoryListRoomsClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Repository_ListRoomsClient interface {
+	Recv() (*ListRoomsRes, error)
+	grpc.ClientStream
+}
+
+type repositoryListRoomsClient struct {
+	grpc.ClientStream
+}
+
+func (x *repositoryListRoomsClient) Recv() (*ListRoomsRes, error) {
+	m := new(ListRoomsRes)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *repositoryClient) CreateRoom(ctx context.Context, in *CreateRoomReq, opts ...grpc.CallOption) (*CreateRoomRes, error) {
+	out := new(CreateRoomRes)
+	err := c.cc.Invoke(ctx, Repository_CreateRoom_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) UpdateRoomById(ctx context.Context, in *UpdateRoomByIdReq, opts ...grpc.CallOption) (*UpdateRoomByIdRes, error) {
+	out := new(UpdateRoomByIdRes)
+	err := c.cc.Invoke(ctx, Repository_UpdateRoomById_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) DeleteRoom(ctx context.Context, in *DeleteRoomReq, opts ...grpc.CallOption) (*DeleteRoomRes, error) {
+	out := new(DeleteRoomRes)
+	err := c.cc.Invoke(ctx, Repository_DeleteRoom_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) GetService(ctx context.Context, in *GetServiceReq, opts ...grpc.CallOption) (*GetServiceRes, error) {
+	out := new(GetServiceRes)
+	err := c.cc.Invoke(ctx, Repository_GetService_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) ListServices(ctx context.Context, in *ListServicesReq, opts ...grpc.CallOption) (Repository_ListServicesClient, error) {
+	stream, err := c.cc.NewStream(ctx, &Repository_ServiceDesc.Streams[6], Repository_ListServices_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &repositoryListServicesClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Repository_ListServicesClient interface {
+	Recv() (*ListServicesRes, error)
+	grpc.ClientStream
+}
+
+type repositoryListServicesClient struct {
+	grpc.ClientStream
+}
+
+func (x *repositoryListServicesClient) Recv() (*ListServicesRes, error) {
+	m := new(ListServicesRes)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *repositoryClient) CreateService(ctx context.Context, in *CreateServiceReq, opts ...grpc.CallOption) (*CreateServiceRes, error) {
+	out := new(CreateServiceRes)
+	err := c.cc.Invoke(ctx, Repository_CreateService_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) UpdateServiceById(ctx context.Context, in *UpdateServiceByIdReq, opts ...grpc.CallOption) (*UpdateServiceByIdRes, error) {
+	out := new(UpdateServiceByIdRes)
+	err := c.cc.Invoke(ctx, Repository_UpdateServiceById_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) DeleteService(ctx context.Context, in *DeleteServiceReq, opts ...grpc.CallOption) (*DeleteServiceRes, error) {
+	out := new(DeleteServiceRes)
+	err := c.cc.Invoke(ctx, Repository_DeleteService_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) GetRoomService(ctx context.Context, in *GetRoomServiceReq, opts ...grpc.CallOption) (*GetRoomServiceRes, error) {
+	out := new(GetRoomServiceRes)
+	err := c.cc.Invoke(ctx, Repository_GetRoomService_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) ListRoomServices(ctx context.Context, in *ListRoomServicesReq, opts ...grpc.CallOption) (Repository_ListRoomServicesClient, error) {
+	stream, err := c.cc.NewStream(ctx, &Repository_ServiceDesc.Streams[7], Repository_ListRoomServices_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &repositoryListRoomServicesClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Repository_ListRoomServicesClient interface {
+	Recv() (*ListRoomServicesRes, error)
+	grpc.ClientStream
+}
+
+type repositoryListRoomServicesClient struct {
+	grpc.ClientStream
+}
+
+func (x *repositoryListRoomServicesClient) Recv() (*ListRoomServicesRes, error) {
+	m := new(ListRoomServicesRes)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *repositoryClient) CreateRoomService(ctx context.Context, in *CreateRoomServiceReq, opts ...grpc.CallOption) (*CreateRoomServiceRes, error) {
+	out := new(CreateRoomServiceRes)
+	err := c.cc.Invoke(ctx, Repository_CreateRoomService_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) UpdateRoomServiceById(ctx context.Context, in *UpdateRoomServiceByIdReq, opts ...grpc.CallOption) (*UpdateRoomServiceByIdRes, error) {
+	out := new(UpdateRoomServiceByIdRes)
+	err := c.cc.Invoke(ctx, Repository_UpdateRoomServiceById_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) DeleteRoomService(ctx context.Context, in *DeleteRoomServiceReq, opts ...grpc.CallOption) (*DeleteRoomServiceRes, error) {
+	out := new(DeleteRoomServiceRes)
+	err := c.cc.Invoke(ctx, Repository_DeleteRoomService_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RepositoryServer is the server API for Repository service.
 // All implementations must embed UnimplementedRepositoryServer
 // for forward compatibility
 type RepositoryServer interface {
+	// role
+	GetRole(context.Context, *GetRoleReq) (*GetRoleRes, error)
+	ListRoles(*ListRolesReq, Repository_ListRolesServer) error
+	CreateRole(context.Context, *CreateRoleReq) (*CreateRoleRes, error)
+	UpdateRoleById(context.Context, *UpdateRoleByIdReq) (*UpdateRoleByIdRes, error)
+	DeleteRole(context.Context, *DeleteRoleReq) (*DeleteRoleRes, error)
+	// user
+	GetUser(context.Context, *GetUserReq) (*GetUserRes, error)
+	ListUsers(*ListUsersReq, Repository_ListUsersServer) error
 	CreateUser(context.Context, *CreateUserReq) (*CreateUserRes, error)
-	GetUsers(*FetchUsersReq, Repository_GetUsersServer) error
+	UpdateUserById(context.Context, *UpdateUserByIdReq) (*UpdateUserByIdRes, error)
+	DeleteUser(context.Context, *DeleteUserReq) (*DeleteUserRes, error)
+	// wallet
+	GetWallet(context.Context, *GetWalletReq) (*GetWalletRes, error)
+	ListWallets(*ListWalletsReq, Repository_ListWalletsServer) error
+	CreateWallet(context.Context, *CreateWalletReq) (*CreateWalletRes, error)
+	UpdateWalletById(context.Context, *UpdateWalletByIdReq) (*UpdateWalletByIdRes, error)
+	DeleteWallet(context.Context, *DeleteWalletReq) (*DeleteWalletRes, error)
+	// invoice
+	GetInvoice(context.Context, *GetInvoiceReq) (*GetInvoiceRes, error)
+	ListInvoices(*ListInvoicesReq, Repository_ListInvoicesServer) error
+	CreateInvoice(context.Context, *CreateInvoiceReq) (*CreateInvoiceRes, error)
+	UpdateInvoiceById(context.Context, *UpdateInvoiceByIdReq) (*UpdateInvoiceByIdRes, error)
+	DeleteInvoice(context.Context, *DeleteInvoiceReq) (*DeleteInvoiceRes, error)
+	// reservation
+	GetReservation(context.Context, *GetReservationReq) (*GetReservationRes, error)
+	ListReservations(*ListReservationsReq, Repository_ListReservationsServer) error
+	CreateReservation(context.Context, *CreateReservationReq) (*CreateReservationRes, error)
+	UpdateReservationById(context.Context, *UpdateReservationByIdReq) (*UpdateReservationByIdRes, error)
+	CancelReservation(context.Context, *CancelReservationReq) (*CancelReservationRes, error)
+	// room
+	GetRoom(context.Context, *GetRoomReq) (*GetRoomRes, error)
+	ListRooms(*ListRoomsReq, Repository_ListRoomsServer) error
+	CreateRoom(context.Context, *CreateRoomReq) (*CreateRoomRes, error)
+	UpdateRoomById(context.Context, *UpdateRoomByIdReq) (*UpdateRoomByIdRes, error)
+	DeleteRoom(context.Context, *DeleteRoomReq) (*DeleteRoomRes, error)
+	// service
+	GetService(context.Context, *GetServiceReq) (*GetServiceRes, error)
+	ListServices(*ListServicesReq, Repository_ListServicesServer) error
+	CreateService(context.Context, *CreateServiceReq) (*CreateServiceRes, error)
+	UpdateServiceById(context.Context, *UpdateServiceByIdReq) (*UpdateServiceByIdRes, error)
+	DeleteService(context.Context, *DeleteServiceReq) (*DeleteServiceRes, error)
+	// room service
+	GetRoomService(context.Context, *GetRoomServiceReq) (*GetRoomServiceRes, error)
+	ListRoomServices(*ListRoomServicesReq, Repository_ListRoomServicesServer) error
+	CreateRoomService(context.Context, *CreateRoomServiceReq) (*CreateRoomServiceRes, error)
+	UpdateRoomServiceById(context.Context, *UpdateRoomServiceByIdReq) (*UpdateRoomServiceByIdRes, error)
+	DeleteRoomService(context.Context, *DeleteRoomServiceReq) (*DeleteRoomServiceRes, error)
 	mustEmbedUnimplementedRepositoryServer()
 }
 
@@ -93,11 +726,125 @@ type RepositoryServer interface {
 type UnimplementedRepositoryServer struct {
 }
 
+func (UnimplementedRepositoryServer) GetRole(context.Context, *GetRoleReq) (*GetRoleRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRole not implemented")
+}
+func (UnimplementedRepositoryServer) ListRoles(*ListRolesReq, Repository_ListRolesServer) error {
+	return status.Errorf(codes.Unimplemented, "method ListRoles not implemented")
+}
+func (UnimplementedRepositoryServer) CreateRole(context.Context, *CreateRoleReq) (*CreateRoleRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateRole not implemented")
+}
+func (UnimplementedRepositoryServer) UpdateRoleById(context.Context, *UpdateRoleByIdReq) (*UpdateRoleByIdRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRoleById not implemented")
+}
+func (UnimplementedRepositoryServer) DeleteRole(context.Context, *DeleteRoleReq) (*DeleteRoleRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteRole not implemented")
+}
+func (UnimplementedRepositoryServer) GetUser(context.Context, *GetUserReq) (*GetUserRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+}
+func (UnimplementedRepositoryServer) ListUsers(*ListUsersReq, Repository_ListUsersServer) error {
+	return status.Errorf(codes.Unimplemented, "method ListUsers not implemented")
+}
 func (UnimplementedRepositoryServer) CreateUser(context.Context, *CreateUserReq) (*CreateUserRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
 }
-func (UnimplementedRepositoryServer) GetUsers(*FetchUsersReq, Repository_GetUsersServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetUsers not implemented")
+func (UnimplementedRepositoryServer) UpdateUserById(context.Context, *UpdateUserByIdReq) (*UpdateUserByIdRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserById not implemented")
+}
+func (UnimplementedRepositoryServer) DeleteUser(context.Context, *DeleteUserReq) (*DeleteUserRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
+}
+func (UnimplementedRepositoryServer) GetWallet(context.Context, *GetWalletReq) (*GetWalletRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetWallet not implemented")
+}
+func (UnimplementedRepositoryServer) ListWallets(*ListWalletsReq, Repository_ListWalletsServer) error {
+	return status.Errorf(codes.Unimplemented, "method ListWallets not implemented")
+}
+func (UnimplementedRepositoryServer) CreateWallet(context.Context, *CreateWalletReq) (*CreateWalletRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateWallet not implemented")
+}
+func (UnimplementedRepositoryServer) UpdateWalletById(context.Context, *UpdateWalletByIdReq) (*UpdateWalletByIdRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateWalletById not implemented")
+}
+func (UnimplementedRepositoryServer) DeleteWallet(context.Context, *DeleteWalletReq) (*DeleteWalletRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteWallet not implemented")
+}
+func (UnimplementedRepositoryServer) GetInvoice(context.Context, *GetInvoiceReq) (*GetInvoiceRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetInvoice not implemented")
+}
+func (UnimplementedRepositoryServer) ListInvoices(*ListInvoicesReq, Repository_ListInvoicesServer) error {
+	return status.Errorf(codes.Unimplemented, "method ListInvoices not implemented")
+}
+func (UnimplementedRepositoryServer) CreateInvoice(context.Context, *CreateInvoiceReq) (*CreateInvoiceRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateInvoice not implemented")
+}
+func (UnimplementedRepositoryServer) UpdateInvoiceById(context.Context, *UpdateInvoiceByIdReq) (*UpdateInvoiceByIdRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateInvoiceById not implemented")
+}
+func (UnimplementedRepositoryServer) DeleteInvoice(context.Context, *DeleteInvoiceReq) (*DeleteInvoiceRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteInvoice not implemented")
+}
+func (UnimplementedRepositoryServer) GetReservation(context.Context, *GetReservationReq) (*GetReservationRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetReservation not implemented")
+}
+func (UnimplementedRepositoryServer) ListReservations(*ListReservationsReq, Repository_ListReservationsServer) error {
+	return status.Errorf(codes.Unimplemented, "method ListReservations not implemented")
+}
+func (UnimplementedRepositoryServer) CreateReservation(context.Context, *CreateReservationReq) (*CreateReservationRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateReservation not implemented")
+}
+func (UnimplementedRepositoryServer) UpdateReservationById(context.Context, *UpdateReservationByIdReq) (*UpdateReservationByIdRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateReservationById not implemented")
+}
+func (UnimplementedRepositoryServer) CancelReservation(context.Context, *CancelReservationReq) (*CancelReservationRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CancelReservation not implemented")
+}
+func (UnimplementedRepositoryServer) GetRoom(context.Context, *GetRoomReq) (*GetRoomRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRoom not implemented")
+}
+func (UnimplementedRepositoryServer) ListRooms(*ListRoomsReq, Repository_ListRoomsServer) error {
+	return status.Errorf(codes.Unimplemented, "method ListRooms not implemented")
+}
+func (UnimplementedRepositoryServer) CreateRoom(context.Context, *CreateRoomReq) (*CreateRoomRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateRoom not implemented")
+}
+func (UnimplementedRepositoryServer) UpdateRoomById(context.Context, *UpdateRoomByIdReq) (*UpdateRoomByIdRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRoomById not implemented")
+}
+func (UnimplementedRepositoryServer) DeleteRoom(context.Context, *DeleteRoomReq) (*DeleteRoomRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteRoom not implemented")
+}
+func (UnimplementedRepositoryServer) GetService(context.Context, *GetServiceReq) (*GetServiceRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetService not implemented")
+}
+func (UnimplementedRepositoryServer) ListServices(*ListServicesReq, Repository_ListServicesServer) error {
+	return status.Errorf(codes.Unimplemented, "method ListServices not implemented")
+}
+func (UnimplementedRepositoryServer) CreateService(context.Context, *CreateServiceReq) (*CreateServiceRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateService not implemented")
+}
+func (UnimplementedRepositoryServer) UpdateServiceById(context.Context, *UpdateServiceByIdReq) (*UpdateServiceByIdRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateServiceById not implemented")
+}
+func (UnimplementedRepositoryServer) DeleteService(context.Context, *DeleteServiceReq) (*DeleteServiceRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteService not implemented")
+}
+func (UnimplementedRepositoryServer) GetRoomService(context.Context, *GetRoomServiceReq) (*GetRoomServiceRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRoomService not implemented")
+}
+func (UnimplementedRepositoryServer) ListRoomServices(*ListRoomServicesReq, Repository_ListRoomServicesServer) error {
+	return status.Errorf(codes.Unimplemented, "method ListRoomServices not implemented")
+}
+func (UnimplementedRepositoryServer) CreateRoomService(context.Context, *CreateRoomServiceReq) (*CreateRoomServiceRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateRoomService not implemented")
+}
+func (UnimplementedRepositoryServer) UpdateRoomServiceById(context.Context, *UpdateRoomServiceByIdReq) (*UpdateRoomServiceByIdRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRoomServiceById not implemented")
+}
+func (UnimplementedRepositoryServer) DeleteRoomService(context.Context, *DeleteRoomServiceReq) (*DeleteRoomServiceRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteRoomService not implemented")
 }
 func (UnimplementedRepositoryServer) mustEmbedUnimplementedRepositoryServer() {}
 
@@ -110,6 +857,138 @@ type UnsafeRepositoryServer interface {
 
 func RegisterRepositoryServer(s grpc.ServiceRegistrar, srv RepositoryServer) {
 	s.RegisterService(&Repository_ServiceDesc, srv)
+}
+
+func _Repository_GetRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRoleReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).GetRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_GetRole_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).GetRole(ctx, req.(*GetRoleReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_ListRoles_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ListRolesReq)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(RepositoryServer).ListRoles(m, &repositoryListRolesServer{stream})
+}
+
+type Repository_ListRolesServer interface {
+	Send(*ListRolesRes) error
+	grpc.ServerStream
+}
+
+type repositoryListRolesServer struct {
+	grpc.ServerStream
+}
+
+func (x *repositoryListRolesServer) Send(m *ListRolesRes) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _Repository_CreateRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRoleReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).CreateRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_CreateRole_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).CreateRole(ctx, req.(*CreateRoleReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_UpdateRoleById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRoleByIdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).UpdateRoleById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_UpdateRoleById_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).UpdateRoleById(ctx, req.(*UpdateRoleByIdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_DeleteRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRoleReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).DeleteRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_DeleteRole_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).DeleteRole(ctx, req.(*DeleteRoleReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_GetUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).GetUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_GetUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).GetUser(ctx, req.(*GetUserReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_ListUsers_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ListUsersReq)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(RepositoryServer).ListUsers(m, &repositoryListUsersServer{stream})
+}
+
+type Repository_ListUsersServer interface {
+	Send(*ListUsersRes) error
+	grpc.ServerStream
+}
+
+type repositoryListUsersServer struct {
+	grpc.ServerStream
+}
+
+func (x *repositoryListUsersServer) Send(m *ListUsersRes) error {
+	return x.ServerStream.SendMsg(m)
 }
 
 func _Repository_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -130,25 +1009,598 @@ func _Repository_CreateUser_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Repository_GetUsers_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(FetchUsersReq)
+func _Repository_UpdateUserById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUserByIdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).UpdateUserById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_UpdateUserById_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).UpdateUserById(ctx, req.(*UpdateUserByIdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteUserReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).DeleteUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_DeleteUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).DeleteUser(ctx, req.(*DeleteUserReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_GetWallet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetWalletReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).GetWallet(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_GetWallet_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).GetWallet(ctx, req.(*GetWalletReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_ListWallets_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ListWalletsReq)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(RepositoryServer).GetUsers(m, &repositoryGetUsersServer{stream})
+	return srv.(RepositoryServer).ListWallets(m, &repositoryListWalletsServer{stream})
 }
 
-type Repository_GetUsersServer interface {
-	Send(*FetchUsersRes) error
+type Repository_ListWalletsServer interface {
+	Send(*ListWalletsRes) error
 	grpc.ServerStream
 }
 
-type repositoryGetUsersServer struct {
+type repositoryListWalletsServer struct {
 	grpc.ServerStream
 }
 
-func (x *repositoryGetUsersServer) Send(m *FetchUsersRes) error {
+func (x *repositoryListWalletsServer) Send(m *ListWalletsRes) error {
 	return x.ServerStream.SendMsg(m)
+}
+
+func _Repository_CreateWallet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateWalletReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).CreateWallet(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_CreateWallet_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).CreateWallet(ctx, req.(*CreateWalletReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_UpdateWalletById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateWalletByIdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).UpdateWalletById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_UpdateWalletById_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).UpdateWalletById(ctx, req.(*UpdateWalletByIdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_DeleteWallet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteWalletReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).DeleteWallet(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_DeleteWallet_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).DeleteWallet(ctx, req.(*DeleteWalletReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_GetInvoice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetInvoiceReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).GetInvoice(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_GetInvoice_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).GetInvoice(ctx, req.(*GetInvoiceReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_ListInvoices_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ListInvoicesReq)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(RepositoryServer).ListInvoices(m, &repositoryListInvoicesServer{stream})
+}
+
+type Repository_ListInvoicesServer interface {
+	Send(*ListInvoicesRes) error
+	grpc.ServerStream
+}
+
+type repositoryListInvoicesServer struct {
+	grpc.ServerStream
+}
+
+func (x *repositoryListInvoicesServer) Send(m *ListInvoicesRes) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _Repository_CreateInvoice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateInvoiceReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).CreateInvoice(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_CreateInvoice_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).CreateInvoice(ctx, req.(*CreateInvoiceReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_UpdateInvoiceById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateInvoiceByIdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).UpdateInvoiceById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_UpdateInvoiceById_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).UpdateInvoiceById(ctx, req.(*UpdateInvoiceByIdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_DeleteInvoice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteInvoiceReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).DeleteInvoice(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_DeleteInvoice_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).DeleteInvoice(ctx, req.(*DeleteInvoiceReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_GetReservation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetReservationReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).GetReservation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_GetReservation_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).GetReservation(ctx, req.(*GetReservationReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_ListReservations_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ListReservationsReq)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(RepositoryServer).ListReservations(m, &repositoryListReservationsServer{stream})
+}
+
+type Repository_ListReservationsServer interface {
+	Send(*ListReservationsRes) error
+	grpc.ServerStream
+}
+
+type repositoryListReservationsServer struct {
+	grpc.ServerStream
+}
+
+func (x *repositoryListReservationsServer) Send(m *ListReservationsRes) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _Repository_CreateReservation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateReservationReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).CreateReservation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_CreateReservation_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).CreateReservation(ctx, req.(*CreateReservationReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_UpdateReservationById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateReservationByIdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).UpdateReservationById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_UpdateReservationById_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).UpdateReservationById(ctx, req.(*UpdateReservationByIdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_CancelReservation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CancelReservationReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).CancelReservation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_CancelReservation_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).CancelReservation(ctx, req.(*CancelReservationReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_GetRoom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRoomReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).GetRoom(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_GetRoom_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).GetRoom(ctx, req.(*GetRoomReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_ListRooms_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ListRoomsReq)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(RepositoryServer).ListRooms(m, &repositoryListRoomsServer{stream})
+}
+
+type Repository_ListRoomsServer interface {
+	Send(*ListRoomsRes) error
+	grpc.ServerStream
+}
+
+type repositoryListRoomsServer struct {
+	grpc.ServerStream
+}
+
+func (x *repositoryListRoomsServer) Send(m *ListRoomsRes) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _Repository_CreateRoom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRoomReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).CreateRoom(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_CreateRoom_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).CreateRoom(ctx, req.(*CreateRoomReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_UpdateRoomById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRoomByIdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).UpdateRoomById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_UpdateRoomById_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).UpdateRoomById(ctx, req.(*UpdateRoomByIdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_DeleteRoom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRoomReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).DeleteRoom(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_DeleteRoom_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).DeleteRoom(ctx, req.(*DeleteRoomReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_GetService_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetServiceReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).GetService(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_GetService_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).GetService(ctx, req.(*GetServiceReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_ListServices_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ListServicesReq)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(RepositoryServer).ListServices(m, &repositoryListServicesServer{stream})
+}
+
+type Repository_ListServicesServer interface {
+	Send(*ListServicesRes) error
+	grpc.ServerStream
+}
+
+type repositoryListServicesServer struct {
+	grpc.ServerStream
+}
+
+func (x *repositoryListServicesServer) Send(m *ListServicesRes) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _Repository_CreateService_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateServiceReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).CreateService(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_CreateService_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).CreateService(ctx, req.(*CreateServiceReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_UpdateServiceById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateServiceByIdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).UpdateServiceById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_UpdateServiceById_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).UpdateServiceById(ctx, req.(*UpdateServiceByIdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_DeleteService_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteServiceReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).DeleteService(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_DeleteService_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).DeleteService(ctx, req.(*DeleteServiceReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_GetRoomService_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRoomServiceReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).GetRoomService(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_GetRoomService_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).GetRoomService(ctx, req.(*GetRoomServiceReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_ListRoomServices_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ListRoomServicesReq)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(RepositoryServer).ListRoomServices(m, &repositoryListRoomServicesServer{stream})
+}
+
+type Repository_ListRoomServicesServer interface {
+	Send(*ListRoomServicesRes) error
+	grpc.ServerStream
+}
+
+type repositoryListRoomServicesServer struct {
+	grpc.ServerStream
+}
+
+func (x *repositoryListRoomServicesServer) Send(m *ListRoomServicesRes) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _Repository_CreateRoomService_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRoomServiceReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).CreateRoomService(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_CreateRoomService_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).CreateRoomService(ctx, req.(*CreateRoomServiceReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_UpdateRoomServiceById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRoomServiceByIdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).UpdateRoomServiceById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_UpdateRoomServiceById_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).UpdateRoomServiceById(ctx, req.(*UpdateRoomServiceByIdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_DeleteRoomService_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRoomServiceReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).DeleteRoomService(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_DeleteRoomService_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).DeleteRoomService(ctx, req.(*DeleteRoomServiceReq))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 // Repository_ServiceDesc is the grpc.ServiceDesc for Repository service.
@@ -159,14 +1611,173 @@ var Repository_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*RepositoryServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "GetRole",
+			Handler:    _Repository_GetRole_Handler,
+		},
+		{
+			MethodName: "CreateRole",
+			Handler:    _Repository_CreateRole_Handler,
+		},
+		{
+			MethodName: "UpdateRoleById",
+			Handler:    _Repository_UpdateRoleById_Handler,
+		},
+		{
+			MethodName: "DeleteRole",
+			Handler:    _Repository_DeleteRole_Handler,
+		},
+		{
+			MethodName: "GetUser",
+			Handler:    _Repository_GetUser_Handler,
+		},
+		{
 			MethodName: "CreateUser",
 			Handler:    _Repository_CreateUser_Handler,
+		},
+		{
+			MethodName: "UpdateUserById",
+			Handler:    _Repository_UpdateUserById_Handler,
+		},
+		{
+			MethodName: "DeleteUser",
+			Handler:    _Repository_DeleteUser_Handler,
+		},
+		{
+			MethodName: "GetWallet",
+			Handler:    _Repository_GetWallet_Handler,
+		},
+		{
+			MethodName: "CreateWallet",
+			Handler:    _Repository_CreateWallet_Handler,
+		},
+		{
+			MethodName: "UpdateWalletById",
+			Handler:    _Repository_UpdateWalletById_Handler,
+		},
+		{
+			MethodName: "DeleteWallet",
+			Handler:    _Repository_DeleteWallet_Handler,
+		},
+		{
+			MethodName: "GetInvoice",
+			Handler:    _Repository_GetInvoice_Handler,
+		},
+		{
+			MethodName: "CreateInvoice",
+			Handler:    _Repository_CreateInvoice_Handler,
+		},
+		{
+			MethodName: "UpdateInvoiceById",
+			Handler:    _Repository_UpdateInvoiceById_Handler,
+		},
+		{
+			MethodName: "DeleteInvoice",
+			Handler:    _Repository_DeleteInvoice_Handler,
+		},
+		{
+			MethodName: "GetReservation",
+			Handler:    _Repository_GetReservation_Handler,
+		},
+		{
+			MethodName: "CreateReservation",
+			Handler:    _Repository_CreateReservation_Handler,
+		},
+		{
+			MethodName: "UpdateReservationById",
+			Handler:    _Repository_UpdateReservationById_Handler,
+		},
+		{
+			MethodName: "CancelReservation",
+			Handler:    _Repository_CancelReservation_Handler,
+		},
+		{
+			MethodName: "GetRoom",
+			Handler:    _Repository_GetRoom_Handler,
+		},
+		{
+			MethodName: "CreateRoom",
+			Handler:    _Repository_CreateRoom_Handler,
+		},
+		{
+			MethodName: "UpdateRoomById",
+			Handler:    _Repository_UpdateRoomById_Handler,
+		},
+		{
+			MethodName: "DeleteRoom",
+			Handler:    _Repository_DeleteRoom_Handler,
+		},
+		{
+			MethodName: "GetService",
+			Handler:    _Repository_GetService_Handler,
+		},
+		{
+			MethodName: "CreateService",
+			Handler:    _Repository_CreateService_Handler,
+		},
+		{
+			MethodName: "UpdateServiceById",
+			Handler:    _Repository_UpdateServiceById_Handler,
+		},
+		{
+			MethodName: "DeleteService",
+			Handler:    _Repository_DeleteService_Handler,
+		},
+		{
+			MethodName: "GetRoomService",
+			Handler:    _Repository_GetRoomService_Handler,
+		},
+		{
+			MethodName: "CreateRoomService",
+			Handler:    _Repository_CreateRoomService_Handler,
+		},
+		{
+			MethodName: "UpdateRoomServiceById",
+			Handler:    _Repository_UpdateRoomServiceById_Handler,
+		},
+		{
+			MethodName: "DeleteRoomService",
+			Handler:    _Repository_DeleteRoomService_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "GetUsers",
-			Handler:       _Repository_GetUsers_Handler,
+			StreamName:    "ListRoles",
+			Handler:       _Repository_ListRoles_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "ListUsers",
+			Handler:       _Repository_ListUsers_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "ListWallets",
+			Handler:       _Repository_ListWallets_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "ListInvoices",
+			Handler:       _Repository_ListInvoices_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "ListReservations",
+			Handler:       _Repository_ListReservations_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "ListRooms",
+			Handler:       _Repository_ListRooms_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "ListServices",
+			Handler:       _Repository_ListServices_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "ListRoomServices",
+			Handler:       _Repository_ListRoomServices_Handler,
 			ServerStreams: true,
 		},
 	},

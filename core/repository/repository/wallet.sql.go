@@ -8,15 +8,21 @@ package repository
 import (
 	"context"
 	"database/sql"
+	"time"
 )
 
 const createWallet = `-- name: CreateWallet :execresult
-INSERT INTO wallet (amount)
-VALUES (?)
+INSERT INTO wallet (amount, created_at)
+VALUES (?, ?)
 `
 
-func (q *Queries) CreateWallet(ctx context.Context, amount string) (sql.Result, error) {
-	return q.db.ExecContext(ctx, createWallet, amount)
+type CreateWalletParams struct {
+	Amount    string
+	CreatedAt time.Time
+}
+
+func (q *Queries) CreateWallet(ctx context.Context, arg CreateWalletParams) (sql.Result, error) {
+	return q.db.ExecContext(ctx, createWallet, arg.Amount, arg.CreatedAt)
 }
 
 const deleteWallet = `-- name: DeleteWallet :exec
