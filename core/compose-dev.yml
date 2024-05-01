@@ -36,6 +36,21 @@ services:
     depends_on:
       - mysql
 
+  mailer:
+    build: ./mailer
+    env_file: ./.env
+    volumes:
+      - ./mailer:/app
+    ports:
+      - "${MAILER_PORT}:${MAILER_PORT}"
+    depends_on:
+      - mysql
+    networks:
+      app:
+        ipv4_address: 10.18.0.4
+
+
+
 volumes:
   database:
     driver: local
