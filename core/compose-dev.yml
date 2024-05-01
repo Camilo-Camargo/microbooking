@@ -88,7 +88,19 @@ services:
     networks:
       app:
         ipv4_address: 10.18.0.7
-
+  account:
+    build: ./account
+    env_file: ./.env
+    volumes:
+      - ./account:/app
+      - ./proto:/proto
+    ports:
+      - "${ACCOUNT_PORT}:${ACCOUNT_PORT}"
+    depends_on:
+      - mysql
+    networks:
+      app:
+        ipv4_address: 10.18.0.8
 
 volumes:
   database:
