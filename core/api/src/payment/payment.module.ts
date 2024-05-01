@@ -12,7 +12,7 @@ import { resolve } from 'path';
         name: PAYMENT_PACKAGE_NAME,
         transport: Transport.GRPC,
         options: {
-          url: "localhost:4013",
+          url: "localhost:4012",
           package: PAYMENT_PACKAGE_NAME,
           protoPath: resolve(__dirname, '../../../proto/payment.proto'),
         }

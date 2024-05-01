@@ -18,7 +18,7 @@ public class App {
   private Server server;
 
   private void start() throws IOException {
-    int port = 4013;
+    int port = 4012;
     server = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
         .addService(new PaymentImpl())
         .build()

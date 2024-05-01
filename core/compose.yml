@@ -47,6 +47,19 @@ services:
       app:
         ipv4_address: 10.18.0.4
 
+  payment:
+    build: ./payment
+    env_file: ./.env
+    volumes:
+      - ./payment:/app
+    ports:
+      - "${PAYMENT_PORT}:${PAYMENT_PORT}"
+    depends_on:
+      - mysql
+    networks:
+      app:
+        ipv4_address: 10.18.0.5
+
 volumes:
   database:
     driver: local
