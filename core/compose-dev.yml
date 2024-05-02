@@ -101,6 +101,19 @@ services:
     networks:
       app:
         ipv4_address: 10.18.0.8
+  api:
+    build: ./api
+    env_file: ./.env
+    volumes:
+      - ./api:/app
+      - ./proto:/proto
+    ports:
+      - "${API_PORT}:${API_PORT}"
+    depends_on:
+      - mysql
+    networks:
+      app:
+        ipv4_address: 10.18.0.9
 
 volumes:
   database:

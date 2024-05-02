@@ -7,7 +7,7 @@ async function bootstrap() {
     snapshot: true,
     abortOnError: false
   });
-  await app.listen(3000);
+  await app.listen(process.env.API_PORT);
 }
 bootstrap().catch(_ => {
   writeFileSync('graph.json', PartialGraphHost.toString() ?? '');
