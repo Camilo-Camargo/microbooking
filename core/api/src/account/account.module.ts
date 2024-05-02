@@ -12,7 +12,7 @@ import { AccountService } from './account.service';
         name: ACCOUNT_PACKAGE_NAME,
         transport: Transport.GRPC,
         options: {
-          url: "localhost:4015",
+          url: `${process.env.ACCOUNT_HOST}:${process.env.ACCOUNT_PORT}`,
           package: ACCOUNT_PACKAGE_NAME,
           protoPath: resolve(__dirname, '../../../proto/account.proto'),
         }

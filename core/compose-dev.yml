@@ -54,6 +54,7 @@ services:
     env_file: ./.env
     volumes:
       - ./payment:/app
+      - ./proto:/proto
     ports:
       - "${PAYMENT_PORT}:${PAYMENT_PORT}"
     depends_on:

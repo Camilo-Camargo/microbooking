@@ -11,7 +11,7 @@ import { resolve } from 'path';
         name: REPOSITORY_PACKAGE_NAME,
         transport: Transport.GRPC,
         options: {
-          url: "localhost:4010",
+          url: `${process.env.REPOSITORY_HOST}:${process.env.REPOSITORY_PORT}`,
           package: REPOSITORY_PACKAGE_NAME,
           protoPath: resolve(__dirname, '../../../proto/repository.proto'),
         }

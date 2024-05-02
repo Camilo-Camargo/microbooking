@@ -2,4 +2,4 @@
 apk add --no-cache git
 go get -d -v ./...
 apk --no-cache add ca-certificates
-go run main.go
+go run cmd/server/main.go

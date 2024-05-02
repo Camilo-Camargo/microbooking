@@ -12,7 +12,7 @@ import { resolve } from 'path';
         name: MAILER_PACKAGE_NAME,
         transport: Transport.GRPC,
         options: {
-          url: "localhost:4011",
+          url: `${process.env.MAILER_HOST}:${process.env.MAILER_PORT}`,
           package: MAILER_PACKAGE_NAME,
           protoPath: resolve(__dirname, '../../../proto/mailer.proto'),
         }

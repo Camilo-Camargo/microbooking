@@ -11,6 +11,7 @@ protoc --ts_proto_opt=nestJs=true --plugin=../api/node_modules/.bin/protoc-gen-t
 protoc --ts_proto_opt=nestJs=true --plugin=../api/node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=../api/src/mailer/ ./mailer.proto
 protoc --ts_proto_opt=nestJs=true --plugin=../api/node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=../api/src/payment/ ./payment.proto
 protoc --ts_proto_opt=nestJs=true --plugin=../api/node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=../api/src/book/ ./book.proto
+protoc --ts_proto_opt=nestJs=true --plugin=../api/node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=../api/src/search/ ./search.proto
 
 echo "Generating Python Repository Service"
 rm -rf ../mailer/proto

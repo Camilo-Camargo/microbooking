@@ -12,7 +12,7 @@ import { resolve } from 'path';
         name: BOOK_PACKAGE_NAME,
         transport: Transport.GRPC,
         options: {
-          url: "localhost:4013",
+          url: `${process.env.BOOK_HOST}:${process.env.BOOK_PORT}`,
           package: BOOK_PACKAGE_NAME,
           protoPath: resolve(__dirname, '../../../proto/book.proto'),
         }
