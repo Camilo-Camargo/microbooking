@@ -7,7 +7,10 @@ export class GrpcGlobalExceptionFilter implements ExceptionFilter {
 
   catch(exception: any, host: ArgumentsHost): void {
     const response = host.getArgByIndex(1);
-    console.log(Object.keys(exception));
+    if(this.applicationRef.isHeadersSent(response)){
+      this.applicationRef.end(response);
+      return;
+    } 
 
     if(exception.code && exception.message && exception.metadata){
       this.applicationRef.reply(response, {
@@ -15,13 +18,14 @@ export class GrpcGlobalExceptionFilter implements ExceptionFilter {
         error: exception.code,
         statusCode: 500,
       }, 500);
+      return;
     }
 
     if (exception instanceof BadRequestException) {
       this.applicationRef.reply(response, exception.getResponse(), exception.getStatus());
-      return
+      return;
     }
 
-    this.applicationRef.reply(response, "new message", 500);
+    this.applicationRef.reply(response, "Error type not implemented yet", 500);
   }
 }
