@@ -1,14 +1,14 @@
 // Original file: ../proto/account.proto
 
 
-export interface SignUpReq {
+export interface RegisterReq {
   'givenName'?: (string);
   'surname'?: (string);
   'email'?: (string);
   'password'?: (string);
 }
 
-export interface SignUpReq__Output {
+export interface RegisterReq__Output {
   'givenName'?: (string);
   'surname'?: (string);
   'email'?: (string);

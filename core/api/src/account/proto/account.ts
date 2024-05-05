@@ -4,14 +4,23 @@ import { Observable } from "rxjs";
 
 export const protobufPackage = "account";
 
-export interface SignUpReq {
+export interface RegisterReq {
   givenName: string;
   surname: string;
   email: string;
   password: string;
 }
 
-export interface SignUpRes {
+export interface RegisterRes {
+  token: string;
+}
+
+export interface SignInReq {
+  email: string;
+  password: string;
+}
+
+export interface SignInRes {
   token: string;
 }
 
@@ -27,18 +36,22 @@ export const ACCOUNT_PACKAGE_NAME = "account";
 export interface AccountClient {
   version(request: VersionReq): Observable<VersionRes>;
 
-  signUp(request: SignUpReq): Observable<SignUpRes>;
+  register(request: RegisterReq): Observable<RegisterRes>;
+
+  signIn(request: SignInReq): Observable<SignInRes>;
 }
 
 export interface AccountController {
   version(request: VersionReq): Promise<VersionRes> | Observable<VersionRes> | VersionRes;
 
-  signUp(request: SignUpReq): Promise<SignUpRes> | Observable<SignUpRes> | SignUpRes;
+  register(request: RegisterReq): Promise<RegisterRes> | Observable<RegisterRes> | RegisterRes;
+
+  signIn(request: SignInReq): Promise<SignInRes> | Observable<SignInRes> | SignInRes;
 }
 
 export function AccountControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ["version", "signUp"];
+    const grpcMethods: string[] = ["version", "register", "signIn"];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
       GrpcMethod("Account", method)(constructor.prototype[method], method, descriptor);

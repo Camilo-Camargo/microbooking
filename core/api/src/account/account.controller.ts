@@ -1,10 +1,9 @@
 import { Body, Controller, Get, HttpException, Inject, InternalServerErrorException, OnModuleInit, Post } from '@nestjs/common';
-import { IsEmail, IsNotEmpty, IsString, IsStrongPassword } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString, IsStrongPassword, MinLength } from 'class-validator';
 import { ACCOUNT_PACKAGE_NAME, ACCOUNT_SERVICE_NAME, AccountClient } from './proto/account';
-import { ClientGrpc, RpcException } from '@nestjs/microservices';
-import { catchError } from 'rxjs';
+import { ClientGrpc } from '@nestjs/microservices';
 
-class SignUpReqDTO {
+class RegisterReqDTO {
   @IsString()
   @IsNotEmpty()
   givenName: string;
@@ -26,6 +25,15 @@ class SignUpReqDTO {
   password: string;
 }
 
+class SignInReqDTO {
+  @IsEmail()
+  email: string;
+
+  @IsString()
+  @MinLength(8)
+  password: string;
+}
+
 @Controller('api/account')
 export class AccountController implements OnModuleInit {
   private accountService: AccountClient;
@@ -41,9 +49,14 @@ export class AccountController implements OnModuleInit {
     return this.accountService.version({});
   }
 
-  @Post('/signup')
-  async signUp(@Body() signUpReqDTO: SignUpReqDTO) {
-    return this.accountService.signUp(signUpReqDTO)
+  @Post('/register')
+  async register(@Body() signUpReqDTO: RegisterReqDTO) {
+    return this.accountService.register(signUpReqDTO)
+  }
+
+  @Post('/sign-in')
+  async sign(@Body() signInReqDTO: SignInReqDTO) {
+    return this.accountService.signIn(signInReqDTO);
   }
 
 }

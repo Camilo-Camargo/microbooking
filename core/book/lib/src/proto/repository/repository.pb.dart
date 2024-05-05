@@ -540,6 +540,176 @@ class GetUserRes extends $pb.GeneratedMessage {
   static GetUserRes? _defaultInstance;
 }
 
+class GetUserByEmailReq extends $pb.GeneratedMessage {
+  factory GetUserByEmailReq({
+    $core.String? email,
+  }) {
+    final $result = create();
+    if (email != null) {
+      $result.email = email;
+    }
+    return $result;
+  }
+  GetUserByEmailReq._() : super();
+  factory GetUserByEmailReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetUserByEmailReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetUserByEmailReq', package: const $pb.PackageName(_omitMessageNames ? '' : 'repository'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'email')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetUserByEmailReq clone() => GetUserByEmailReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetUserByEmailReq copyWith(void Function(GetUserByEmailReq) updates) => super.copyWith((message) => updates(message as GetUserByEmailReq)) as GetUserByEmailReq;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetUserByEmailReq create() => GetUserByEmailReq._();
+  GetUserByEmailReq createEmptyInstance() => create();
+  static $pb.PbList<GetUserByEmailReq> createRepeated() => $pb.PbList<GetUserByEmailReq>();
+  @$core.pragma('dart2js:noInline')
+  static GetUserByEmailReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetUserByEmailReq>(create);
+  static GetUserByEmailReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get email => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set email($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasEmail() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEmail() => clearField(1);
+}
+
+class GetUserByEmailRes extends $pb.GeneratedMessage {
+  factory GetUserByEmailRes({
+    $fixnum.Int64? id,
+    $fixnum.Int64? roleId,
+    $core.String? email,
+    $core.String? password,
+    $core.String? givenName,
+    $core.String? surname,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (roleId != null) {
+      $result.roleId = roleId;
+    }
+    if (email != null) {
+      $result.email = email;
+    }
+    if (password != null) {
+      $result.password = password;
+    }
+    if (givenName != null) {
+      $result.givenName = givenName;
+    }
+    if (surname != null) {
+      $result.surname = surname;
+    }
+    return $result;
+  }
+  GetUserByEmailRes._() : super();
+  factory GetUserByEmailRes.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetUserByEmailRes.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetUserByEmailRes', package: const $pb.PackageName(_omitMessageNames ? '' : 'repository'), createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'id')
+    ..aInt64(2, _omitFieldNames ? '' : 'roleId', protoName: 'roleId')
+    ..aOS(3, _omitFieldNames ? '' : 'email')
+    ..aOS(4, _omitFieldNames ? '' : 'password')
+    ..aOS(5, _omitFieldNames ? '' : 'givenName', protoName: 'givenName')
+    ..aOS(6, _omitFieldNames ? '' : 'surname')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetUserByEmailRes clone() => GetUserByEmailRes()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetUserByEmailRes copyWith(void Function(GetUserByEmailRes) updates) => super.copyWith((message) => updates(message as GetUserByEmailRes)) as GetUserByEmailRes;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetUserByEmailRes create() => GetUserByEmailRes._();
+  GetUserByEmailRes createEmptyInstance() => create();
+  static $pb.PbList<GetUserByEmailRes> createRepeated() => $pb.PbList<GetUserByEmailRes>();
+  @$core.pragma('dart2js:noInline')
+  static GetUserByEmailRes getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetUserByEmailRes>(create);
+  static GetUserByEmailRes? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get id => $_getI64(0);
+  @$pb.TagNumber(1)
+  set id($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get roleId => $_getI64(1);
+  @$pb.TagNumber(2)
+  set roleId($fixnum.Int64 v) { $_setInt64(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasRoleId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearRoleId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get email => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set email($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasEmail() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearEmail() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get password => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set password($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasPassword() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearPassword() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get givenName => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set givenName($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasGivenName() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearGivenName() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.String get surname => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set surname($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasSurname() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearSurname() => clearField(6);
+}
+
 class ListUsersReq extends $pb.GeneratedMessage {
   factory ListUsersReq() => create();
   ListUsersReq._() : super();
@@ -746,10 +916,10 @@ class CreateUserRes extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateUserRes', package: const $pb.PackageName(_omitMessageNames ? '' : 'repository'), createEmptyInstance: create)
     ..aInt64(1, _omitFieldNames ? '' : 'id')
-    ..aInt64(2, _omitFieldNames ? '' : 'roleId')
+    ..aInt64(2, _omitFieldNames ? '' : 'roleId', protoName: 'roleId')
     ..aOS(3, _omitFieldNames ? '' : 'email')
     ..aOS(4, _omitFieldNames ? '' : 'password')
-    ..aOS(5, _omitFieldNames ? '' : 'givenName')
+    ..aOS(5, _omitFieldNames ? '' : 'givenName', protoName: 'givenName')
     ..aOS(6, _omitFieldNames ? '' : 'surname')
     ..hasRequiredFields = false
   ;

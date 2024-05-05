@@ -58,6 +58,8 @@ export interface ProtoGrpcType {
     GetRoomServiceRes: MessageTypeDefinition
     GetServiceReq: MessageTypeDefinition
     GetServiceRes: MessageTypeDefinition
+    GetUserByEmailReq: MessageTypeDefinition
+    GetUserByEmailRes: MessageTypeDefinition
     GetUserReq: MessageTypeDefinition
     GetUserRes: MessageTypeDefinition
     GetWalletReq: MessageTypeDefinition

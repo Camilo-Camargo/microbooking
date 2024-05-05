@@ -25,6 +25,7 @@ const (
 	Repository_UpdateRoleById_FullMethodName        = "/repository.Repository/UpdateRoleById"
 	Repository_DeleteRole_FullMethodName            = "/repository.Repository/DeleteRole"
 	Repository_GetUser_FullMethodName               = "/repository.Repository/GetUser"
+	Repository_GetUserByEmail_FullMethodName        = "/repository.Repository/GetUserByEmail"
 	Repository_ListUsers_FullMethodName             = "/repository.Repository/ListUsers"
 	Repository_CreateUser_FullMethodName            = "/repository.Repository/CreateUser"
 	Repository_UpdateUserById_FullMethodName        = "/repository.Repository/UpdateUserById"
@@ -73,6 +74,7 @@ type RepositoryClient interface {
 	DeleteRole(ctx context.Context, in *DeleteRoleReq, opts ...grpc.CallOption) (*DeleteRoleRes, error)
 	// user
 	GetUser(ctx context.Context, in *GetUserReq, opts ...grpc.CallOption) (*GetUserRes, error)
+	GetUserByEmail(ctx context.Context, in *GetUserByEmailReq, opts ...grpc.CallOption) (*GetUserByEmailRes, error)
 	ListUsers(ctx context.Context, in *ListUsersReq, opts ...grpc.CallOption) (Repository_ListUsersClient, error)
 	CreateUser(ctx context.Context, in *CreateUserReq, opts ...grpc.CallOption) (*CreateUserRes, error)
 	UpdateUserById(ctx context.Context, in *UpdateUserByIdReq, opts ...grpc.CallOption) (*UpdateUserByIdRes, error)
@@ -194,6 +196,15 @@ func (c *repositoryClient) DeleteRole(ctx context.Context, in *DeleteRoleReq, op
 func (c *repositoryClient) GetUser(ctx context.Context, in *GetUserReq, opts ...grpc.CallOption) (*GetUserRes, error) {
 	out := new(GetUserRes)
 	err := c.cc.Invoke(ctx, Repository_GetUser_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryClient) GetUserByEmail(ctx context.Context, in *GetUserByEmailReq, opts ...grpc.CallOption) (*GetUserByEmailRes, error) {
+	out := new(GetUserByEmailRes)
+	err := c.cc.Invoke(ctx, Repository_GetUserByEmail_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -679,6 +690,7 @@ type RepositoryServer interface {
 	DeleteRole(context.Context, *DeleteRoleReq) (*DeleteRoleRes, error)
 	// user
 	GetUser(context.Context, *GetUserReq) (*GetUserRes, error)
+	GetUserByEmail(context.Context, *GetUserByEmailReq) (*GetUserByEmailRes, error)
 	ListUsers(*ListUsersReq, Repository_ListUsersServer) error
 	CreateUser(context.Context, *CreateUserReq) (*CreateUserRes, error)
 	UpdateUserById(context.Context, *UpdateUserByIdReq) (*UpdateUserByIdRes, error)
@@ -743,6 +755,9 @@ func (UnimplementedRepositoryServer) DeleteRole(context.Context, *DeleteRoleReq)
 }
 func (UnimplementedRepositoryServer) GetUser(context.Context, *GetUserReq) (*GetUserRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+}
+func (UnimplementedRepositoryServer) GetUserByEmail(context.Context, *GetUserByEmailReq) (*GetUserByEmailRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserByEmail not implemented")
 }
 func (UnimplementedRepositoryServer) ListUsers(*ListUsersReq, Repository_ListUsersServer) error {
 	return status.Errorf(codes.Unimplemented, "method ListUsers not implemented")
@@ -966,6 +981,24 @@ func _Repository_GetUser_Handler(srv interface{}, ctx context.Context, dec func(
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RepositoryServer).GetUser(ctx, req.(*GetUserReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Repository_GetUserByEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserByEmailReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServer).GetUserByEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Repository_GetUserByEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServer).GetUserByEmail(ctx, req.(*GetUserByEmailReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1629,6 +1662,10 @@ var Repository_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUser",
 			Handler:    _Repository_GetUser_Handler,
+		},
+		{
+			MethodName: "GetUserByEmail",
+			Handler:    _Repository_GetUserByEmail_Handler,
 		},
 		{
 			MethodName: "CreateUser",

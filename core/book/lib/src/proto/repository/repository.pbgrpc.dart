@@ -45,6 +45,10 @@ class RepositoryClient extends $grpc.Client {
       '/repository.Repository/GetUser',
       ($0.GetUserReq value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.GetUserRes.fromBuffer(value));
+  static final _$getUserByEmail = $grpc.ClientMethod<$0.GetUserByEmailReq, $0.GetUserByEmailRes>(
+      '/repository.Repository/GetUserByEmail',
+      ($0.GetUserByEmailReq value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.GetUserByEmailRes.fromBuffer(value));
   static final _$listUsers = $grpc.ClientMethod<$0.ListUsersReq, $0.ListUsersRes>(
       '/repository.Repository/ListUsers',
       ($0.ListUsersReq value) => value.writeToBuffer(),
@@ -210,6 +214,10 @@ class RepositoryClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$0.GetUserRes> getUser($0.GetUserReq request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getUser, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.GetUserByEmailRes> getUserByEmail($0.GetUserByEmailReq request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getUserByEmail, request, options: options);
   }
 
   $grpc.ResponseStream<$0.ListUsersRes> listUsers($0.ListUsersReq request, {$grpc.CallOptions? options}) {
@@ -396,6 +404,13 @@ abstract class RepositoryServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.GetUserReq.fromBuffer(value),
         ($0.GetUserRes value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.GetUserByEmailReq, $0.GetUserByEmailRes>(
+        'GetUserByEmail',
+        getUserByEmail_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.GetUserByEmailReq.fromBuffer(value),
+        ($0.GetUserByEmailRes value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.ListUsersReq, $0.ListUsersRes>(
         'ListUsers',
         listUsers_Pre,
@@ -660,6 +675,10 @@ abstract class RepositoryServiceBase extends $grpc.Service {
     return getUser(call, await request);
   }
 
+  $async.Future<$0.GetUserByEmailRes> getUserByEmail_Pre($grpc.ServiceCall call, $async.Future<$0.GetUserByEmailReq> request) async {
+    return getUserByEmail(call, await request);
+  }
+
   $async.Stream<$0.ListUsersRes> listUsers_Pre($grpc.ServiceCall call, $async.Future<$0.ListUsersReq> request) async* {
     yield* listUsers(call, await request);
   }
@@ -802,6 +821,7 @@ abstract class RepositoryServiceBase extends $grpc.Service {
   $async.Future<$0.UpdateRoleByIdRes> updateRoleById($grpc.ServiceCall call, $0.UpdateRoleByIdReq request);
   $async.Future<$0.DeleteRoleRes> deleteRole($grpc.ServiceCall call, $0.DeleteRoleReq request);
   $async.Future<$0.GetUserRes> getUser($grpc.ServiceCall call, $0.GetUserReq request);
+  $async.Future<$0.GetUserByEmailRes> getUserByEmail($grpc.ServiceCall call, $0.GetUserByEmailReq request);
   $async.Stream<$0.ListUsersRes> listUsers($grpc.ServiceCall call, $0.ListUsersReq request);
   $async.Future<$0.CreateUserRes> createUser($grpc.ServiceCall call, $0.CreateUserReq request);
   $async.Future<$0.UpdateUserByIdRes> updateUserById($grpc.ServiceCall call, $0.UpdateUserByIdReq request);

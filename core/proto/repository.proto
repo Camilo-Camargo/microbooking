@@ -15,6 +15,8 @@ service Repository {
 
   // user
   rpc GetUser(GetUserReq) returns (GetUserRes) {}
+  rpc GetUserByEmail(GetUserByEmailReq)
+      returns (GetUserByEmailRes) {}
   rpc ListUsers(ListUsersReq) returns (stream ListUsersRes) {}
   rpc CreateUser(CreateUserReq) returns (CreateUserRes) {}
   rpc UpdateUserById(UpdateUserByIdReq) returns (UpdateUserByIdRes) {}
@@ -80,9 +82,7 @@ message CreateRoleReq {
   google.protobuf.Timestamp created_at = 2;
 }
 
-message CreateRoleRes {
-  int64 id = 1;
-}
+message CreateRoleRes { int64 id = 1; }
 
 message UpdateRoleByIdReq {
   int64 role_id = 1;
@@ -100,6 +100,18 @@ message GetUserReq { int64 user_id = 1; }
 
 message GetUserRes {}
 
+message GetUserByEmailReq {
+  string email = 1;
+}
+message GetUserByEmailRes {
+  int64 id = 1;
+  int64 roleId = 2;
+  string email = 3;
+  string password = 4;
+  string givenName = 5;
+  string surname = 6;
+}
+
 message ListUsersReq {}
 
 message ListUsersRes {}
@@ -114,10 +126,10 @@ message CreateUserReq {
 
 message CreateUserRes {
   int64 id = 1;
-  int64 role_id = 2;
+  int64 roleId = 2;
   string email = 3;
   string password = 4;
-  string given_name = 5;
+  string givenName = 5;
   string surname = 6;
 }
 

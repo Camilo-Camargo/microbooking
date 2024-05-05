@@ -4,14 +4,26 @@ import (
 	"context"
 	"log"
 	pb "repository/internal/proto"
-	"time"
 	sq "repository/internal/sqlc"
+	"time"
 )
 
-func (rs *RepositoryServer) GetUser(context.Context, *pb.GetUserReq) (*pb.GetUserRes, error) {
-	log.Printf("get user")
-	return &pb.GetUserRes{}, nil
+func (rs *RepositoryServer) GetUserByEmail(ctx context.Context, req *pb.GetUserByEmailReq) (*pb.GetUserByEmailRes, error) {
+	queryRes, err := Queries.GetUserByEmail(ctx, req.Email)
+	if err != nil {
+		return nil, err
+	}
+
+	return &pb.GetUserByEmailRes{
+		RoleId:    queryRes.RoleID,
+		Id:        queryRes.RoleID,
+		Email:     queryRes.Email,
+		Password:  queryRes.Password,
+		GivenName: queryRes.GivenName,
+		Surname:   queryRes.Surname,
+	}, nil
 }
+
 func (rs *RepositoryServer) CreateUser(ctx context.Context, req *pb.CreateUserReq) (*pb.CreateUserRes, error) {
 	currentTime := time.Now()
 	params := &sq.CreateUserParams{
@@ -29,13 +41,6 @@ func (rs *RepositoryServer) CreateUser(ctx context.Context, req *pb.CreateUserRe
 	return &pb.CreateUserRes{
 		Id: 1,
 	}, nil
-}
-func (rs *RepositoryServer) UpdateUserById(context.Context, *pb.UpdateUserByIdReq) (*pb.UpdateUserByIdRes, error) {
-	return &pb.UpdateUserByIdRes{}, nil
-}
-func (rs *RepositoryServer) DeleteUser(context.Context, *pb.DeleteUserReq) (*pb.DeleteUserRes, error) {
-	log.Printf("delete user")
-	return &pb.DeleteUserRes{}, nil
 }
 
 func (rs *RepositoryServer) ListUsers(req *pb.ListUsersReq, stream pb.Repository_ListUsersServer) error {

@@ -51,6 +51,19 @@ export interface GetUserReq {
 export interface GetUserRes {
 }
 
+export interface GetUserByEmailReq {
+  email: string;
+}
+
+export interface GetUserByEmailRes {
+  id: number;
+  roleId: number;
+  email: string;
+  password: string;
+  givenName: string;
+  surname: string;
+}
+
 export interface ListUsersReq {
 }
 
@@ -373,6 +386,8 @@ export interface RepositoryClient {
 
   getUser(request: GetUserReq): Observable<GetUserRes>;
 
+  getUserByEmail(request: GetUserByEmailReq): Observable<GetUserByEmailRes>;
+
   listUsers(request: ListUsersReq): Observable<ListUsersRes>;
 
   createUser(request: CreateUserReq): Observable<CreateUserRes>;
@@ -472,6 +487,10 @@ export interface RepositoryController {
   /** user */
 
   getUser(request: GetUserReq): Promise<GetUserRes> | Observable<GetUserRes> | GetUserRes;
+
+  getUserByEmail(
+    request: GetUserByEmailReq,
+  ): Promise<GetUserByEmailRes> | Observable<GetUserByEmailRes> | GetUserByEmailRes;
 
   listUsers(request: ListUsersReq): Observable<ListUsersRes>;
 
@@ -589,6 +608,7 @@ export function RepositoryControllerMethods() {
       "updateRoleById",
       "deleteRole",
       "getUser",
+      "getUserByEmail",
       "listUsers",
       "createUser",
       "updateUserById",

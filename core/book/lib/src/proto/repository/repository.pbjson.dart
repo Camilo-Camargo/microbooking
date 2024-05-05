@@ -143,6 +143,37 @@ const GetUserRes$json = {
 final $typed_data.Uint8List getUserResDescriptor = $convert.base64Decode(
     'CgpHZXRVc2VyUmVz');
 
+@$core.Deprecated('Use getUserByEmailReqDescriptor instead')
+const GetUserByEmailReq$json = {
+  '1': 'GetUserByEmailReq',
+  '2': [
+    {'1': 'email', '3': 1, '4': 1, '5': 9, '10': 'email'},
+  ],
+};
+
+/// Descriptor for `GetUserByEmailReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getUserByEmailReqDescriptor = $convert.base64Decode(
+    'ChFHZXRVc2VyQnlFbWFpbFJlcRIUCgVlbWFpbBgBIAEoCVIFZW1haWw=');
+
+@$core.Deprecated('Use getUserByEmailResDescriptor instead')
+const GetUserByEmailRes$json = {
+  '1': 'GetUserByEmailRes',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 3, '10': 'id'},
+    {'1': 'roleId', '3': 2, '4': 1, '5': 3, '10': 'roleId'},
+    {'1': 'email', '3': 3, '4': 1, '5': 9, '10': 'email'},
+    {'1': 'password', '3': 4, '4': 1, '5': 9, '10': 'password'},
+    {'1': 'givenName', '3': 5, '4': 1, '5': 9, '10': 'givenName'},
+    {'1': 'surname', '3': 6, '4': 1, '5': 9, '10': 'surname'},
+  ],
+};
+
+/// Descriptor for `GetUserByEmailRes`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getUserByEmailResDescriptor = $convert.base64Decode(
+    'ChFHZXRVc2VyQnlFbWFpbFJlcxIOCgJpZBgBIAEoA1ICaWQSFgoGcm9sZUlkGAIgASgDUgZyb2'
+    'xlSWQSFAoFZW1haWwYAyABKAlSBWVtYWlsEhoKCHBhc3N3b3JkGAQgASgJUghwYXNzd29yZBIc'
+    'CglnaXZlbk5hbWUYBSABKAlSCWdpdmVuTmFtZRIYCgdzdXJuYW1lGAYgASgJUgdzdXJuYW1l');
+
 @$core.Deprecated('Use listUsersReqDescriptor instead')
 const ListUsersReq$json = {
   '1': 'ListUsersReq',
@@ -184,19 +215,19 @@ const CreateUserRes$json = {
   '1': 'CreateUserRes',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 3, '10': 'id'},
-    {'1': 'role_id', '3': 2, '4': 1, '5': 3, '10': 'roleId'},
+    {'1': 'roleId', '3': 2, '4': 1, '5': 3, '10': 'roleId'},
     {'1': 'email', '3': 3, '4': 1, '5': 9, '10': 'email'},
     {'1': 'password', '3': 4, '4': 1, '5': 9, '10': 'password'},
-    {'1': 'given_name', '3': 5, '4': 1, '5': 9, '10': 'givenName'},
+    {'1': 'givenName', '3': 5, '4': 1, '5': 9, '10': 'givenName'},
     {'1': 'surname', '3': 6, '4': 1, '5': 9, '10': 'surname'},
   ],
 };
 
 /// Descriptor for `CreateUserRes`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createUserResDescriptor = $convert.base64Decode(
-    'Cg1DcmVhdGVVc2VyUmVzEg4KAmlkGAEgASgDUgJpZBIXCgdyb2xlX2lkGAIgASgDUgZyb2xlSW'
-    'QSFAoFZW1haWwYAyABKAlSBWVtYWlsEhoKCHBhc3N3b3JkGAQgASgJUghwYXNzd29yZBIdCgpn'
-    'aXZlbl9uYW1lGAUgASgJUglnaXZlbk5hbWUSGAoHc3VybmFtZRgGIAEoCVIHc3VybmFtZQ==');
+    'Cg1DcmVhdGVVc2VyUmVzEg4KAmlkGAEgASgDUgJpZBIWCgZyb2xlSWQYAiABKANSBnJvbGVJZB'
+    'IUCgVlbWFpbBgDIAEoCVIFZW1haWwSGgoIcGFzc3dvcmQYBCABKAlSCHBhc3N3b3JkEhwKCWdp'
+    'dmVuTmFtZRgFIAEoCVIJZ2l2ZW5OYW1lEhgKB3N1cm5hbWUYBiABKAlSB3N1cm5hbWU=');
 
 @$core.Deprecated('Use updateUserByIdReqDescriptor instead')
 const UpdateUserByIdReq$json = {

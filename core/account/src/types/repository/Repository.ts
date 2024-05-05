@@ -46,6 +46,8 @@ import type { GetRoomServiceReq as _repository_GetRoomServiceReq, GetRoomService
 import type { GetRoomServiceRes as _repository_GetRoomServiceRes, GetRoomServiceRes__Output as _repository_GetRoomServiceRes__Output } from '../repository/GetRoomServiceRes';
 import type { GetServiceReq as _repository_GetServiceReq, GetServiceReq__Output as _repository_GetServiceReq__Output } from '../repository/GetServiceReq';
 import type { GetServiceRes as _repository_GetServiceRes, GetServiceRes__Output as _repository_GetServiceRes__Output } from '../repository/GetServiceRes';
+import type { GetUserByEmailReq as _repository_GetUserByEmailReq, GetUserByEmailReq__Output as _repository_GetUserByEmailReq__Output } from '../repository/GetUserByEmailReq';
+import type { GetUserByEmailRes as _repository_GetUserByEmailRes, GetUserByEmailRes__Output as _repository_GetUserByEmailRes__Output } from '../repository/GetUserByEmailRes';
 import type { GetUserReq as _repository_GetUserReq, GetUserReq__Output as _repository_GetUserReq__Output } from '../repository/GetUserReq';
 import type { GetUserRes as _repository_GetUserRes, GetUserRes__Output as _repository_GetUserRes__Output } from '../repository/GetUserRes';
 import type { GetWalletReq as _repository_GetWalletReq, GetWalletReq__Output as _repository_GetWalletReq__Output } from '../repository/GetWalletReq';
@@ -291,6 +293,15 @@ export interface RepositoryClient extends grpc.Client {
   getUser(argument: _repository_GetUserReq, options: grpc.CallOptions, callback: grpc.requestCallback<_repository_GetUserRes__Output>): grpc.ClientUnaryCall;
   getUser(argument: _repository_GetUserReq, callback: grpc.requestCallback<_repository_GetUserRes__Output>): grpc.ClientUnaryCall;
   
+  GetUserByEmail(argument: _repository_GetUserByEmailReq, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_repository_GetUserByEmailRes__Output>): grpc.ClientUnaryCall;
+  GetUserByEmail(argument: _repository_GetUserByEmailReq, metadata: grpc.Metadata, callback: grpc.requestCallback<_repository_GetUserByEmailRes__Output>): grpc.ClientUnaryCall;
+  GetUserByEmail(argument: _repository_GetUserByEmailReq, options: grpc.CallOptions, callback: grpc.requestCallback<_repository_GetUserByEmailRes__Output>): grpc.ClientUnaryCall;
+  GetUserByEmail(argument: _repository_GetUserByEmailReq, callback: grpc.requestCallback<_repository_GetUserByEmailRes__Output>): grpc.ClientUnaryCall;
+  getUserByEmail(argument: _repository_GetUserByEmailReq, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_repository_GetUserByEmailRes__Output>): grpc.ClientUnaryCall;
+  getUserByEmail(argument: _repository_GetUserByEmailReq, metadata: grpc.Metadata, callback: grpc.requestCallback<_repository_GetUserByEmailRes__Output>): grpc.ClientUnaryCall;
+  getUserByEmail(argument: _repository_GetUserByEmailReq, options: grpc.CallOptions, callback: grpc.requestCallback<_repository_GetUserByEmailRes__Output>): grpc.ClientUnaryCall;
+  getUserByEmail(argument: _repository_GetUserByEmailReq, callback: grpc.requestCallback<_repository_GetUserByEmailRes__Output>): grpc.ClientUnaryCall;
+  
   GetWallet(argument: _repository_GetWalletReq, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_repository_GetWalletRes__Output>): grpc.ClientUnaryCall;
   GetWallet(argument: _repository_GetWalletReq, metadata: grpc.Metadata, callback: grpc.requestCallback<_repository_GetWalletRes__Output>): grpc.ClientUnaryCall;
   GetWallet(argument: _repository_GetWalletReq, options: grpc.CallOptions, callback: grpc.requestCallback<_repository_GetWalletRes__Output>): grpc.ClientUnaryCall;
@@ -461,6 +472,8 @@ export interface RepositoryHandlers extends grpc.UntypedServiceImplementation {
   
   GetUser: grpc.handleUnaryCall<_repository_GetUserReq__Output, _repository_GetUserRes>;
   
+  GetUserByEmail: grpc.handleUnaryCall<_repository_GetUserByEmailReq__Output, _repository_GetUserByEmailRes>;
+  
   GetWallet: grpc.handleUnaryCall<_repository_GetWalletReq__Output, _repository_GetWalletRes>;
   
   ListInvoices: grpc.handleServerStreamingCall<_repository_ListInvoicesReq__Output, _repository_ListInvoicesRes>;
@@ -521,6 +534,7 @@ export interface RepositoryDefinition extends grpc.ServiceDefinition {
   GetRoomService: MethodDefinition<_repository_GetRoomServiceReq, _repository_GetRoomServiceRes, _repository_GetRoomServiceReq__Output, _repository_GetRoomServiceRes__Output>
   GetService: MethodDefinition<_repository_GetServiceReq, _repository_GetServiceRes, _repository_GetServiceReq__Output, _repository_GetServiceRes__Output>
   GetUser: MethodDefinition<_repository_GetUserReq, _repository_GetUserRes, _repository_GetUserReq__Output, _repository_GetUserRes__Output>
+  GetUserByEmail: MethodDefinition<_repository_GetUserByEmailReq, _repository_GetUserByEmailRes, _repository_GetUserByEmailReq__Output, _repository_GetUserByEmailRes__Output>
   GetWallet: MethodDefinition<_repository_GetWalletReq, _repository_GetWalletRes, _repository_GetWalletReq__Output, _repository_GetWalletRes__Output>
   ListInvoices: MethodDefinition<_repository_ListInvoicesReq, _repository_ListInvoicesRes, _repository_ListInvoicesReq__Output, _repository_ListInvoicesRes__Output>
   ListReservations: MethodDefinition<_repository_ListReservationsReq, _repository_ListReservationsRes, _repository_ListReservationsReq__Output, _repository_ListReservationsRes__Output>
