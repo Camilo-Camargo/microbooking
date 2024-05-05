@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { BookController } from './book.controller';
 import { BookService } from './book.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { BOOK_PACKAGE_NAME } from './book';
+import { BOOK_PACKAGE_NAME } from './proto/book';
 import { resolve } from 'path';
 
 @Module({

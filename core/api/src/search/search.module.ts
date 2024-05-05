@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { SearchController } from './search.controller';
 import { SearchService } from './search.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { SEARCH_PACKAGE_NAME } from './search';
+import { SEARCH_PACKAGE_NAME } from './proto/search';
 import { resolve } from 'path';
 
 @Module({

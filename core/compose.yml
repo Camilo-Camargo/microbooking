@@ -89,6 +89,8 @@ services:
   account:
     build: ./account
     env_file: ./.env
+    environment:
+        ENV: prod
     volumes:
       - ./account:/app
       - ./proto:/proto

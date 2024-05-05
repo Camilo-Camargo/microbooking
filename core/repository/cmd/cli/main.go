@@ -30,7 +30,7 @@ func main() {
 	switch os.Args[1] {
 	case "migrate":
 		if len(os.Args) < 3 {
-			log.Printf("You must specify the argument to migrate")
+			log.Printf("You must specify the argument to migrate command")
 			log.Fatal(help)
 		}
 		migrateCommand(os.Args[2])

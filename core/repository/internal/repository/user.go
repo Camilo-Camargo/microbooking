@@ -4,8 +4,8 @@ import (
 	"context"
 	"log"
 	pb "repository/internal/proto"
-	sq "repository/internal/sqlc"
 	"time"
+	sq "repository/internal/sqlc"
 )
 
 func (rs *RepositoryServer) GetUser(context.Context, *pb.GetUserReq) (*pb.GetUserRes, error) {
@@ -26,7 +26,9 @@ func (rs *RepositoryServer) CreateUser(ctx context.Context, req *pb.CreateUserRe
 	if err != nil {
 		return nil, err
 	}
-	return &pb.CreateUserRes{}, nil
+	return &pb.CreateUserRes{
+		Id: 1,
+	}, nil
 }
 func (rs *RepositoryServer) UpdateUserById(context.Context, *pb.UpdateUserByIdReq) (*pb.UpdateUserByIdRes, error) {
 	return &pb.UpdateUserByIdRes{}, nil

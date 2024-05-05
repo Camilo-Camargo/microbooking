@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { BOOK_PACKAGE_NAME, BOOK_SERVICE_NAME, BookClient } from './book';
+import { BOOK_PACKAGE_NAME, BOOK_SERVICE_NAME, BookClient } from './proto/book';
 import { ClientGrpc } from '@nestjs/microservices';
 
 @Injectable()

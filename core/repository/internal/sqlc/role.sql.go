@@ -17,7 +17,7 @@ VALUES (?, ?)
 `
 
 type CreateRoleParams struct {
-	Name      RoleName  `json:"name"`
+	Name      string    `json:"name"`
 	CreatedAt time.Time `json:"created_at"`
 }
 
@@ -94,7 +94,7 @@ WHERE role_id = ?
 `
 
 type UpdateRoleByIdParams struct {
-	Name      RoleName     `json:"name"`
+	Name      string       `json:"name"`
 	UpdatedAt sql.NullTime `json:"updated_at"`
 	RoleID    int64        `json:"role_id"`
 }

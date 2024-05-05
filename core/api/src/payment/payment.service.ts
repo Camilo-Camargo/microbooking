@@ -1,7 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { PAYMENT_PACKAGE_NAME, PAYMENT_SERVICE_NAME, PaymentClient } from './payment';
+import { PAYMENT_PACKAGE_NAME, PAYMENT_SERVICE_NAME, PaymentClient } from './proto/payment';
 import { ClientGrpc } from '@nestjs/microservices';
-import { AccountClient } from 'src/account/account';
 
 @Injectable()
 export class PaymentService {
@@ -9,7 +8,7 @@ export class PaymentService {
   constructor(@Inject(PAYMENT_PACKAGE_NAME) private readonly client: ClientGrpc) { }
 
   onModuleInit() {
-    this.paymentService = this.client.getService<AccountClient>(PAYMENT_SERVICE_NAME);
+    this.paymentService = this.client.getService<PaymentClient>(PAYMENT_SERVICE_NAME);
   }
 
   version(){

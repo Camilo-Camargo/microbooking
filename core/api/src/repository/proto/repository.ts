@@ -66,6 +66,12 @@ export interface CreateUserReq {
 }
 
 export interface CreateUserRes {
+  id: number;
+  roleId: number;
+  email: string;
+  password: string;
+  givenName: string;
+  surname: string;
 }
 
 export interface UpdateUserByIdReq {

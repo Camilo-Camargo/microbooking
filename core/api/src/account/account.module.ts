@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { ACCOUNT_PACKAGE_NAME } from './account';
+import { ACCOUNT_PACKAGE_NAME } from './proto/account';
 import { resolve } from 'path';
 import { AccountController } from './account.controller';
 import { AccountService } from './account.service';

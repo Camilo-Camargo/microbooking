@@ -1,3 +1,12 @@
+#!/bin/sh
+echo "Installing dependiencies"
 yarn install
-yarn tsc
-yarn start
+
+if [ $ENV = "prod" ]; then
+  echo "------------ PRODUCTION MODE ------------"
+  yarn build
+  yarn start
+else
+  echo "------------ DEVELOPMENT MODE ------------"
+  yarn dev
+fi

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { PaymentController } from './payment.controller';
 import { PaymentService } from './payment.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { PAYMENT_PACKAGE_NAME } from './payment';
+import { PAYMENT_PACKAGE_NAME } from './proto/payment';
 import { resolve } from 'path';
 
 @Module({

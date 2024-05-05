@@ -1,6 +1,6 @@
 import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
 import { ClientGrpc } from '@nestjs/microservices';
-import { REPOSITORY_PACKAGE_NAME, REPOSITORY_SERVICE_NAME, RepositoryClient } from './repository';
+import { REPOSITORY_PACKAGE_NAME, REPOSITORY_SERVICE_NAME, RepositoryClient } from './proto/repository';
 
 @Injectable()
 export class RepositoryService implements OnModuleInit {

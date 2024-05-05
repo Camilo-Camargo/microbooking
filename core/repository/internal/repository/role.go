@@ -5,7 +5,6 @@ import (
 	"log"
 	pb "repository/internal/proto"
 	"repository/internal/sqlc"
-	sq "repository/internal/sqlc"
 )
 
 func (rs *RepositoryServer) GetRole(context.Context, *pb.GetRoleReq) (*pb.GetRoleRes, error) {
@@ -15,18 +14,8 @@ func (rs *RepositoryServer) ListRoles(*pb.ListRolesReq, pb.Repository_ListRolesS
 	return nil
 }
 func (rs *RepositoryServer) CreateRole(ctx context.Context, req *pb.CreateRoleReq) (*pb.CreateRoleRes, error) {
-	var role string
-
-	switch role {
-	case string(sq.RoleNameAdmin):
-		role = string(sqlc.RoleNameAdmin)
-
-	default:
-		role = string(sqlc.RoleNameGuest)
-	}
-
 	r, err := Queries.CreateRole(ctx, sqlc.CreateRoleParams{
-		Name:      sq.RoleName(role),
+		Name:      req.Name,
 		CreatedAt: req.CreatedAt.AsTime(),
 	})
 

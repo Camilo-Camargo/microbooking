@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { RepositoryController } from './repository.controller';
 import { RepositoryService } from './repository.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { REPOSITORY_PACKAGE_NAME } from './repository';
+import { REPOSITORY_PACKAGE_NAME } from './proto/repository';
 import { resolve } from 'path';
 @Module({
   imports: [

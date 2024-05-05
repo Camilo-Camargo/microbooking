@@ -1,8 +1,9 @@
 import asyncio
 import logging
 import grpc
-from mailer_pb2_grpc import MailerServicer, add_MailerServicer_to_server
-from mailer_pb2 import VersionRes
+from mailer.proto.mailer_pb2_grpc import (
+    MailerServicer, add_MailerServicer_to_server)
+from mailer.proto.mailer_pb2 import VersionRes
 
 
 class Mailer(MailerServicer):

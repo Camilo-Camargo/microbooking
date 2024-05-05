@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { MAILER_PACKAGE_NAME, MAILER_SERVICE_NAME, MailerClient } from './mailer';
+import { MAILER_PACKAGE_NAME, MAILER_SERVICE_NAME, MailerClient } from './proto/mailer';
 import { ClientGrpc } from '@nestjs/microservices';
 
 @Injectable()

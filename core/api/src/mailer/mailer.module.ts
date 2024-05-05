@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MailerController } from './mailer.controller';
 import { MailerService } from './mailer.service';
-import { MAILER_PACKAGE_NAME } from './mailer';
+import { MAILER_PACKAGE_NAME } from './proto/mailer';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { resolve } from 'path';
 

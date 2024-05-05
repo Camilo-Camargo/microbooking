@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { SEARCH_PACKAGE_NAME, SEARCH_SERVICE_NAME, SearchClient } from './search';
+import { SEARCH_PACKAGE_NAME, SEARCH_SERVICE_NAME, SearchClient } from './proto/search';
 import { ClientGrpc } from '@nestjs/microservices';
 
 @Injectable()

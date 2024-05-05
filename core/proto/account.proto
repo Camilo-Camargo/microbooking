@@ -3,10 +3,20 @@ package account;
 
 service Account {
   rpc Version(VersionReq) returns (VersionRes) {}
+  rpc SignUp(SignUpReq) returns (SignUpRes) {}
+}
+
+message SignUpReq {
+  string givenName = 1;
+  string surname = 2;
+  string email = 3;
+  string password = 4;
+
+}
+message SignUpRes {
+  string token = 1;
 }
 
 message VersionReq {}
 
-message VersionRes {
-  string message = 1;
-}
+message VersionRes { string message = 1; }

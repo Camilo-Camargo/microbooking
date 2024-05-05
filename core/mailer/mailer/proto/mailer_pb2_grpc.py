@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import mailer_pb2 as mailer__pb2
+import mailer.proto.mailer_pb2 as mailer__pb2
 
 
 class MailerStub(object):

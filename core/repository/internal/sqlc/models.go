@@ -97,48 +97,6 @@ func (ns NullReservationStatus) Value() (driver.Value, error) {
 	return string(ns.ReservationStatus), nil
 }
 
-type RoleName string
-
-const (
-	RoleNameAdmin RoleName = "admin"
-	RoleNameGuest RoleName = "guest"
-)
-
-func (e *RoleName) Scan(src interface{}) error {
-	switch s := src.(type) {
-	case []byte:
-		*e = RoleName(s)
-	case string:
-		*e = RoleName(s)
-	default:
-		return fmt.Errorf("unsupported scan type for RoleName: %T", src)
-	}
-	return nil
-}
-
-type NullRoleName struct {
-	RoleName RoleName `json:"role_name"`
-	Valid    bool     `json:"valid"` // Valid is true if RoleName is not NULL
-}
-
-// Scan implements the Scanner interface.
-func (ns *NullRoleName) Scan(value interface{}) error {
-	if value == nil {
-		ns.RoleName, ns.Valid = "", false
-		return nil
-	}
-	ns.Valid = true
-	return ns.RoleName.Scan(value)
-}
-
-// Value implements the driver Valuer interface.
-func (ns NullRoleName) Value() (driver.Value, error) {
-	if !ns.Valid {
-		return nil, nil
-	}
-	return string(ns.RoleName), nil
-}
-
 type Invoice struct {
 	InvoiceID    int64         `json:"invoice_id"`
 	FromWalletID int64         `json:"from_wallet_id"`
@@ -165,7 +123,7 @@ type Reservation struct {
 
 type Role struct {
 	RoleID    int64        `json:"role_id"`
-	Name      RoleName     `json:"name"`
+	Name      string       `json:"name"`
 	CreatedAt time.Time    `json:"created_at"`
 	UpdatedAt sql.NullTime `json:"updated_at"`
 	DeletedAt sql.NullTime `json:"deleted_at"`

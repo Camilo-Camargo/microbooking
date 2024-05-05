@@ -1,4 +1,4 @@
-import 'package:book/src/generated/book.pbgrpc.dart';
+import 'package:book/src/proto/book/book.pbgrpc.dart';
 import 'package:grpc/grpc.dart';
 
 class BookService extends BookServiceBase {
