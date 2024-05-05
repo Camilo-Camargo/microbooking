@@ -165,19 +165,19 @@ final $typed_data.Uint8List listUsersResDescriptor = $convert.base64Decode(
 const CreateUserReq$json = {
   '1': 'CreateUserReq',
   '2': [
-    {'1': 'role_id', '3': 1, '4': 1, '5': 3, '10': 'roleId'},
+    {'1': 'roleId', '3': 1, '4': 1, '5': 3, '10': 'roleId'},
     {'1': 'email', '3': 2, '4': 1, '5': 9, '10': 'email'},
     {'1': 'password', '3': 3, '4': 1, '5': 9, '10': 'password'},
-    {'1': 'given_name', '3': 4, '4': 1, '5': 9, '10': 'givenName'},
+    {'1': 'givenName', '3': 4, '4': 1, '5': 9, '10': 'givenName'},
     {'1': 'surname', '3': 5, '4': 1, '5': 9, '10': 'surname'},
   ],
 };
 
 /// Descriptor for `CreateUserReq`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createUserReqDescriptor = $convert.base64Decode(
-    'Cg1DcmVhdGVVc2VyUmVxEhcKB3JvbGVfaWQYASABKANSBnJvbGVJZBIUCgVlbWFpbBgCIAEoCV'
-    'IFZW1haWwSGgoIcGFzc3dvcmQYAyABKAlSCHBhc3N3b3JkEh0KCmdpdmVuX25hbWUYBCABKAlS'
-    'CWdpdmVuTmFtZRIYCgdzdXJuYW1lGAUgASgJUgdzdXJuYW1l');
+    'Cg1DcmVhdGVVc2VyUmVxEhYKBnJvbGVJZBgBIAEoA1IGcm9sZUlkEhQKBWVtYWlsGAIgASgJUg'
+    'VlbWFpbBIaCghwYXNzd29yZBgDIAEoCVIIcGFzc3dvcmQSHAoJZ2l2ZW5OYW1lGAQgASgJUgln'
+    'aXZlbk5hbWUSGAoHc3VybmFtZRgFIAEoCVIHc3VybmFtZQ==');
 
 @$core.Deprecated('Use createUserResDescriptor instead')
 const CreateUserRes$json = {

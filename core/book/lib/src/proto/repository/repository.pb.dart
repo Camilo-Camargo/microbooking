@@ -635,10 +635,10 @@ class CreateUserReq extends $pb.GeneratedMessage {
   factory CreateUserReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateUserReq', package: const $pb.PackageName(_omitMessageNames ? '' : 'repository'), createEmptyInstance: create)
-    ..aInt64(1, _omitFieldNames ? '' : 'roleId')
+    ..aInt64(1, _omitFieldNames ? '' : 'roleId', protoName: 'roleId')
     ..aOS(2, _omitFieldNames ? '' : 'email')
     ..aOS(3, _omitFieldNames ? '' : 'password')
-    ..aOS(4, _omitFieldNames ? '' : 'givenName')
+    ..aOS(4, _omitFieldNames ? '' : 'givenName', protoName: 'givenName')
     ..aOS(5, _omitFieldNames ? '' : 'surname')
     ..hasRequiredFields = false
   ;

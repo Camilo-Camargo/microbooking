@@ -105,10 +105,10 @@ message ListUsersReq {}
 message ListUsersRes {}
 
 message CreateUserReq {
-  int64 role_id = 1;
+  int64 roleId = 1;
   string email = 2;
   string password = 3;
-  string given_name = 4;
+  string givenName = 4;
   string surname = 5;
 }
 

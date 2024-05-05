@@ -1,6 +1,6 @@
 var PROTO_PATH = __dirname + '/../../proto/account.proto';
 
-import { Server, loadPackageDefinition, ServerCredentials } from "@grpc/grpc-js"
+import { Server, loadPackageDefinition, ServerCredentials, status } from "@grpc/grpc-js"
 import { loadSync } from "@grpc/proto-loader"
 import { ProtoGrpcType } from "./types/account";
 import { AccountHandlers } from "./types/account/Account"
@@ -23,7 +23,22 @@ async function version(call, callback) {
 }
 
 async function signUpService(call, callback) {
-  return callback(null, await signUp(call.request))
+  try {
+    return callback(null, await signUp(call.request))
+  } catch (e) {
+    if (e instanceof Error) {
+      return callback({
+        code: status.INTERNAL,
+        message: e.message
+      })
+    }
+
+    return callback({
+      code: status.UNKNOWN,
+      message: "Unknow error"
+    })
+
+  }
 }
 
 let server: Server;
