@@ -7,10 +7,14 @@ import { MailerModule } from './mailer/mailer.module';
 import { PaymentModule } from './payment/payment.module';
 import { BookModule } from './book/book.module';
 import { SearchModule } from './search/search.module';
+import { DevtoolsModule } from '@nestjs/devtools-integration';
 
 @Module({
   imports: [
-   RepositoryModule, AccountModule, MailerModule, PaymentModule, BookModule, SearchModule],
+    DevtoolsModule.register({
+      http: process.env.ENV !== "prod",
+    }),
+    RepositoryModule, AccountModule, MailerModule, PaymentModule, BookModule, SearchModule],
   controllers: [AppController],
   providers: [AppService],
 })
