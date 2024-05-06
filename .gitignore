@@ -1,3 +1,4 @@
-# environment variables
+# docker volumes
+.docker-volume
+
 .env
-.DS_Store

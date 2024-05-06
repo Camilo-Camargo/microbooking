@@ -17,28 +17,32 @@ services:
     restart: always
     volumes:
       - database:/var/lib/mysql
+    ports:
+      - "${DATABASE_PORT}:${DATABASE_PORT}"
     networks:
       app:
         ipv4_address: 10.18.0.2
 
   repository:
-    build: ./repository
+    image: cosmtrek/air
+    working_dir: /app
+    command: ['-c', './scripts/.air.toml']
     env_file: ./.env
     volumes:
-      - ./repository:/app
+      - ./core/repository:/app
     ports:
-      - "${REPOSITORY_PORT}:${REPOSITORY_PORT}"
-    depends_on:
-      - mysql
+      - '${REPOSITORY_PORT}:${REPOSITORY_PORT}'
     networks:
       app:
         ipv4_address: 10.18.0.3
+    depends_on:
+      - mysql
 
   mailer:
-    build: ./mailer
+    build: ./core/mailer
     env_file: ./.env
     volumes:
-      - ./mailer:/app
+      - ./core/mailer:/app
     ports:
       - "${MAILER_PORT}:${MAILER_PORT}"
     depends_on:
@@ -48,11 +52,11 @@ services:
         ipv4_address: 10.18.0.4
 
   payment:
-    build: ./payment
+    build: ./core/payment
     env_file: ./.env
     volumes:
-      - ./payment:/app
-      - ./proto:/proto
+      - ./core/payment:/app
+      - ./core/proto:/proto
     ports:
       - "${PAYMENT_PORT}:${PAYMENT_PORT}"
     depends_on:
@@ -60,11 +64,12 @@ services:
     networks:
       app:
         ipv4_address: 10.18.0.5
+
   book:
-    build: ./book
+    build: ./core/book
     env_file: ./.env
     volumes:
-      - ./book:/app
+      - ./core/book:/app
     ports:
       - "${BOOK_PORT}:${BOOK_PORT}"
     depends_on:
@@ -74,11 +79,11 @@ services:
         ipv4_address: 10.18.0.6
 
   search:
-    build: ./search
+    build: ./core/search
     env_file: ./.env
     volumes:
-      - ./search:/app
-      - ./proto:/proto
+      - ./core/search:/app
+      - ./core/proto:/proto
     ports:
       - "${SEARCH_PORT}:${SEARCH_PORT}"
     depends_on:
@@ -87,13 +92,11 @@ services:
       app:
         ipv4_address: 10.18.0.7
   account:
-    build: ./account
+    build: ./core/account
     env_file: ./.env
-    environment:
-        ENV: prod
     volumes:
-      - ./account:/app
-      - ./proto:/proto
+      - ./core/account:/app
+      - ./core/proto:/proto
     ports:
       - "${ACCOUNT_PORT}:${ACCOUNT_PORT}"
     depends_on:
@@ -102,21 +105,32 @@ services:
       app:
         ipv4_address: 10.18.0.8
   api:
-    build: ./api
-    environment:
-        ENV: prod
+    build: ./core/api
     env_file: ./.env
     volumes:
-      - ./api:/app
-      - ./proto:/proto
+      - ./core/api:/app
+      - ./core/proto:/proto
     ports:
       - "${API_PORT}:${API_PORT}"
+      - 8000:8000
     depends_on:
       - mysql
     networks:
       app:
         ipv4_address: 10.18.0.9
-
+  web:
+    build: ./web
+    env_file: ./.env
+    volumes:
+      - ./web:/app
+    ports:
+      - "${WEB_PORT}:${WEB_PORT}"
+      - "5173:5173"
+    depends_on:
+      - mysql
+    networks:
+      app:
+        ipv4_address: 10.18.0.10
 
 volumes:
   database:
