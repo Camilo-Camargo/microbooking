@@ -1,8 +1,8 @@
 import { ActionFunctionArgs } from "@remix-run/node";
 import { Link, useFetcher, useNavigate } from "@remix-run/react";
 import { useRef } from "react";
-import { Button } from "~/components/core/Button";
-import { TextInput } from "~/components/core/TextInput";
+import { Button } from "./components/core/Button";
+import { TextInput } from "./components/core/TextInput";
 import { apiPost } from "~/services/api";
 import { MainLayout } from "./components/layouts/MainLayout";
 import { ImageSectionLayout } from "./components/layouts/ImageSectionLayout";

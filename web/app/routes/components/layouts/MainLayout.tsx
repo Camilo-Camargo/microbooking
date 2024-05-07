@@ -1,6 +1,6 @@
 import { useNavigate } from "@remix-run/react";
 import { ReactNode } from "react";
-import { Logo } from "~/components/assets/Logo";
+import { Logo } from "../assets/Logo";
 
 export type MainLayoutProps = {
   children?: ReactNode

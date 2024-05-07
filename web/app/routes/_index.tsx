@@ -1,7 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import { useNavigate } from "@remix-run/react";
-import { Logo } from "~/components/assets/Logo";
-import { Button } from "~/components/core/Button";
+import { Logo } from "./components/assets/Logo";
+import { Button } from "./components/core/Button";
 
 export const meta: MetaFunction = () => {
   return [
@@ -18,8 +18,8 @@ export default function Index() {
       <Logo onClick={() => navigate('/')} />
 
       <div className="flex gap-2">
-        <Button onClick={() => navigate('/register')} value="Register"/>
-        <Button onClick={() => navigate('/sign-in')} value="Sign In"/>
+        <Button onClick={() => navigate('/register')} value="Register" />
+        <Button onClick={() => navigate('/sign-in')} value="Sign In" />
       </div>
     </div>
   );
