@@ -1,4 +1,4 @@
-import { ActionFunctionArgs } from "@remix-run/node";
+import { ActionFunctionArgs, LoaderFunctionArgs, redirect } from "@remix-run/node";
 import { Link, useFetcher, useNavigate } from "@remix-run/react";
 import { useRef } from "react";
 import { Button } from "./components/core/Button";
@@ -6,6 +6,15 @@ import { TextInput } from "./components/core/TextInput";
 import { apiPost } from "~/services/api";
 import { MainLayout } from "./components/layouts/MainLayout";
 import { ImageSectionLayout } from "./components/layouts/ImageSectionLayout";
+import { getToken, setTokenRedirect } from "~/storage/session.server";
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  if (await getToken(request)) {
+    return redirect('/');
+  }
+
+  return {}
+}
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -16,8 +25,17 @@ export async function action({ request }: ActionFunctionArgs) {
     password: formData.get('password'),
   }
 
-  console.log(await apiPost('/api/account/register', req))
-  return {}
+  /*
+  const registerReq = await apiPost('/api/account/register', req);
+  const registerJson = await registerReq.json();
+  */
+
+  const registerJson = {
+    token: "user-token"
+  }
+
+
+  return await setTokenRedirect(request, '/', registerJson.token)
 }
 
 export default function Route() {

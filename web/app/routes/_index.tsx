@@ -1,7 +1,14 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { useNavigate } from "@remix-run/react";
 import { Logo } from "./components/assets/Logo";
 import { Button } from "./components/core/Button";
+import { getToken } from "~/storage/session.server";
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  console.log(request.headers.get('Cookie'));
+  console.log(await getToken(request));
+  return {};
+}
 
 export const meta: MetaFunction = () => {
   return [

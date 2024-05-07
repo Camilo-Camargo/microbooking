@@ -1,4 +1,4 @@
-import { ActionFunctionArgs } from "@remix-run/node";
+import { ActionFunctionArgs, LoaderFunctionArgs, redirect } from "@remix-run/node";
 import { MainLayout } from "./components/layouts/MainLayout";
 import { Link, useFetcher, useNavigate } from "@remix-run/react";
 import { useRef } from "react";
@@ -6,6 +6,17 @@ import { TextInput } from "./components/core/TextInput";
 import { Button } from "./components/core/Button";
 import { apiPost } from "~/services/api";
 import { ImageSectionLayout } from "./components/layouts/ImageSectionLayout";
+import { getToken } from "~/storage/session.server";
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  if (await getToken(request)) {
+    return redirect('/');
+  }
+
+  return {}
+}
+
+
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
