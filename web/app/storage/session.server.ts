@@ -32,3 +32,11 @@ export async function setTokenRedirect(request: Request, redirectTo: string, tok
     }
   })
 }
+
+export async function requireToken(request: Request) {
+  const token = await getToken(request);
+
+  if (!token) {
+    throw redirect('/')
+  }
+}

@@ -1,13 +1,12 @@
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
-import { useNavigate } from "@remix-run/react";
+import { useLoaderData, useNavigate } from "@remix-run/react";
 import { Logo } from "./components/assets/Logo";
 import { Button } from "./components/core/Button";
 import { getToken } from "~/storage/session.server";
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  console.log(request.headers.get('Cookie'));
-  console.log(await getToken(request));
-  return {};
+  const token = await getToken(request);
+  return { token };
 }
 
 export const meta: MetaFunction = () => {
@@ -18,7 +17,9 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const { token } = useLoaderData<typeof loader>();
   const navigate = useNavigate();
+
 
   return (
     <div className="flex flex-col w-screen h-screen justify-center items-center">
@@ -27,6 +28,9 @@ export default function Index() {
       <div className="flex gap-2">
         <Button onClick={() => navigate('/register')} value="Register" />
         <Button onClick={() => navigate('/sign-in')} value="Sign In" />
+        {token &&
+          <Button onClick={() => navigate('/profile')} value="Profile" />
+        }
       </div>
     </div>
   );

@@ -25,7 +25,7 @@ export async function action({ request }: ActionFunctionArgs) {
     password: formData.get('password'),
   }
 
-  console.log(await apiPost('/api/account/sign-in', req))
+  //console.log(await apiPost('/api/account/sign-in', req))
 
   return {
   }
