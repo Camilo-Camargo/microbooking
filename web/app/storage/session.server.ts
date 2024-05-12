@@ -59,18 +59,29 @@ export async function requireAdmin(request: Request): Promise<IUser> {
   return user!;
 }
 
+export async function redirectAdmin(request: Request): Promise<IUser | null> {
+  const user = await getUser(request);
+  if (user && user.role === "admin") {
+    throw redirect("/admin/dashboard");
+  }
+
+  return user;
+}
+
 export async function getUser(request: Request): Promise<IUser | null> {
   const token = await getToken(request);
   if (!token) {
     return null;
   }
 
-  return {
+  const user: IUser | null = {
     role: "guest",
     givenName: "Nicolas",
     surname: "Lizarazo",
     email: "nicolas@gmail.com",
     token: token
   };
+
+  return user;
 }
 

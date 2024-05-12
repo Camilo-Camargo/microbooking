@@ -1,10 +1,10 @@
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { getUser } from "~/storage/session.server";
+import { redirectAdmin } from "~/storage/session.server";
 import { MainLayout } from "./components/layouts/MainLayout";
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  const user = await getUser(request);
+  const user = await redirectAdmin(request);
   return { user };
 }
 
