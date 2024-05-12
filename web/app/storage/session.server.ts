@@ -33,10 +33,26 @@ export async function setTokenRedirect(request: Request, redirectTo: string, tok
   })
 }
 
-export async function requireToken(request: Request) {
-  const token = await getToken(request);
-
-  if (!token) {
-    throw redirect('/')
+export async function requireUser(request: Request): Promise<IUser> {
+  const user = await getUser(request);
+  if (!user) {
+    throw redirect('/sign-in');
   }
+
+  return user!;
 }
+
+export async function getUser(request: Request): Promise<IUser | null> {
+  const token = await getToken(request);
+  if (!token) {
+    return null;
+  }
+
+  return {
+    givenName: "Nicolas",
+    surname: "Lizarazo",
+    email: "nicolas@gmail.com",
+    token: token
+  };
+}
+

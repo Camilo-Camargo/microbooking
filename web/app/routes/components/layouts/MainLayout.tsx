@@ -7,7 +7,7 @@ import { FiBookmark, FiUser } from "react-icons/fi";
 
 export type MainLayoutProps = {
   children?: ReactNode;
-  user?: IUser;
+  user: IUser | null;
 };
 
 export function MainLayout(props: MainLayoutProps) {
