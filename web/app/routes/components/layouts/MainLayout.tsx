@@ -26,15 +26,15 @@ export function MainLayout(props: MainLayoutProps) {
               <>
                 <ButtonIcon
                   className=""
-                  primary={location.pathname == "/guest/reservations"}
+                  primary={location.pathname == "/reservations"}
                   Icon={<FiBookmark />}
-                  onClick={() => navigate('/guest/reservations')}
+                  onClick={() => navigate('/reservations')}
                   value="My reservations" />
 
                 <ButtonIcon
                   Icon={<FiUser />}
-                  primary={location.pathname == "/guest/profile"}
-                  onClick={() => navigate('/guest/profile')}
+                  primary={location.pathname == "/profile"}
+                  onClick={() => navigate('/profile')}
                   value={props.guest.givenName} />
               </>
               :

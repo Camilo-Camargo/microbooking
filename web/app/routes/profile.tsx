@@ -2,8 +2,8 @@ import { useRef } from "react";
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { requireGuest } from "~/storage/session.server";
 import { useLoaderData } from "@remix-run/react";
-import { MainLayout } from "../components/layouts/MainLayout";
-import { Button } from "../components/core/Button";
+import { MainLayout } from "./components/layouts/MainLayout";
+import { Button } from "./components/core/Button";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const guest = await requireGuest(request);
