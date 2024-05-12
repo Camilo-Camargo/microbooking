@@ -125,8 +125,6 @@ services:
       - ./web:/app
     ports:
       - "${WEB_PORT}:${WEB_PORT}"
-    depends_on:
-      - mysql
     networks:
       app:
         ipv4_address: 10.18.0.10
