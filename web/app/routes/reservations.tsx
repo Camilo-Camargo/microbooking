@@ -1,7 +1,7 @@
-import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-import { getToken } from "~/storage/session.server";
+import { LoaderFunctionArgs } from "@remix-run/node";
 import { MainLayout } from "./components/layouts/MainLayout";
+import { getToken } from "~/storage/session.server";
+import { useLoaderData } from "@remix-run/react";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const token = await getToken(request);
@@ -23,19 +23,11 @@ export async function loader({ request }: LoaderFunctionArgs) {
   return { user };
 }
 
-export const meta: MetaFunction = () => {
-  return [
-    { title: "MicroBooking" },
-    { name: "description", content: "A Hotel Book Management platform build with microservices architecture using gRPC and written in multiples programming languages" },
-  ];
-};
-
-export default function Index() {
+export default function Route() {
   const { user } = useLoaderData<typeof loader>();
-
   return (
     <MainLayout user={user}>
-
+      <h2>Reservations</h2>
     </MainLayout>
   );
 }
