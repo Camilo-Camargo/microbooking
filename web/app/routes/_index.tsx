@@ -19,8 +19,7 @@ export default function Index() {
   const { user } = useLoaderData<typeof loader>();
 
   return (
-    <MainLayout user={user}>
-
+    <MainLayout guest={user} admin={user}>
     </MainLayout>
   );
 }

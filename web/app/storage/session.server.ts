@@ -33,10 +33,27 @@ export async function setTokenRedirect(request: Request, redirectTo: string, tok
   })
 }
 
-export async function requireUser(request: Request): Promise<IUser> {
+export async function requireGuest(request: Request): Promise<IUser> {
   const user = await getUser(request);
   if (!user) {
     throw redirect('/sign-in');
+  }
+
+  if (user.role !== "guest") {
+    throw redirect('/');
+  }
+
+  return user!;
+}
+
+export async function requireAdmin(request: Request): Promise<IUser> {
+  const user = await getUser(request);
+  if (!user) {
+    throw redirect('/sign-in');
+  }
+
+  if (user.role !== "admin") {
+    throw redirect('/');
   }
 
   return user!;
@@ -49,6 +66,7 @@ export async function getUser(request: Request): Promise<IUser | null> {
   }
 
   return {
+    role: "guest",
     givenName: "Nicolas",
     surname: "Lizarazo",
     email: "nicolas@gmail.com",

@@ -7,7 +7,8 @@ import { FiBookmark, FiUser } from "react-icons/fi";
 
 export type MainLayoutProps = {
   children?: ReactNode;
-  user: IUser | null;
+  guest?: IUser | null;
+  admin?: IUser | null;
 };
 
 export function MainLayout(props: MainLayoutProps) {
@@ -21,20 +22,20 @@ export function MainLayout(props: MainLayoutProps) {
 
         <div className="flex gap-2">
           {
-            props.user ?
+            props.guest ?
               <>
                 <ButtonIcon
                   className=""
-                  primary={location.pathname == "/reservations"}
+                  primary={location.pathname == "/guest/reservations"}
                   Icon={<FiBookmark />}
-                  onClick={() => navigate('/reservations')}
+                  onClick={() => navigate('/guest/reservations')}
                   value="My reservations" />
 
                 <ButtonIcon
                   Icon={<FiUser />}
-                  primary={location.pathname == "/profile"}
-                  onClick={() => navigate('/profile')}
-                  value={props.user.givenName} />
+                  primary={location.pathname == "/guest/profile"}
+                  onClick={() => navigate('/guest/profile')}
+                  value={props.guest.givenName} />
               </>
               :
               <>
