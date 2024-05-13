@@ -26,7 +26,7 @@ export function PricePerNight(props: PricePerNightProps) {
 
     <div className="flex">
       <span className={props.className}>${priceFormat}.00</span>
-      <span className="font-light">night</span>
+      <span className="font-light text-sm">night</span>
     </div>
   );
 }

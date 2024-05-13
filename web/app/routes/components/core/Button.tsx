@@ -21,7 +21,7 @@ export function Button(props: ButtonProps) {
       className={`${props.primary ? primaryStyles : secondaryStyles} w-full text-center p-3 cursor-pointer rounded` + " " + props.className}
     >
       {props.left && props.children}
-      <span>{props.value}</span>
+      <span className="shrink-0">{props.value}</span>
       {!props.left && props.children}
     </div>
   );

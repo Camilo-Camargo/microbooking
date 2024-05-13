@@ -1,6 +1,6 @@
 import { Room } from "~/model/room";
 
-const rooms = [...Array(5).keys()].map((id) => {
+const rooms = [...Array(8).keys()].map((id) => {
   return {
     id: id,
     title: `Room ${id}`,

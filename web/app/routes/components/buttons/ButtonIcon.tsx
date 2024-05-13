@@ -4,6 +4,7 @@ import { Button, ButtonProps } from "../core/Button";
 export type ButtonIconProps = {
   Icon: ReactNode;
   left?: boolean;
+  className?: string;
 } & ButtonProps;
 
 export function ButtonIcon(props: ButtonIconProps) {
@@ -11,12 +12,12 @@ export function ButtonIcon(props: ButtonIconProps) {
     <div>
       <Button
         {...props}
-        className="flex justify-center items-center gap-2"
+        className={`flex justify-center items-center gap-2 ${props.className}`}
         value={props.value}
         onClick={props.onClick}
         left={props.left}
       >
-        {props.Icon}
+        <div>{props.Icon}</div>
       </Button>
     </div>
   );

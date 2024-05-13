@@ -1,11 +1,14 @@
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
-import { useLoaderData, useNavigate } from "@remix-run/react";
+import { useLoaderData, useNavigate, useSearchParams } from "@remix-run/react";
 import { redirectAdmin } from "~/storage/session.server";
 import { MainLayout } from "./components/layouts/MainLayout";
 import { getRooms } from "~/services/rooms";
 import { PricePerNight } from "./components/labels/PricePerNight";
+import { RoomSearch } from "./components/RoomSearch";
 
 export async function loader({ request }: LoaderFunctionArgs) {
+  const { searchParams } = new URL(request.url);
+  console.log(searchParams);
   const user = await redirectAdmin(request);
   const rooms = await getRooms();
   return { user, rooms };
@@ -31,16 +34,14 @@ export default function Index() {
           <span className="font-light">Search deals on hotels, homes, and much more...</span>
         </div>
 
-        <div>
-          Search
-        </div>
+        <RoomSearch />
 
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-2">
           {rooms.map((room, index) => {
             return (
               <div
                 key={index}
-                className="w-48 flex flex-col p-2 cursor-pointer"
+                className="flex flex-col p-2 cursor-pointer"
                 onClick={() => {
                   navigate(`/room/${room.id}`);
                 }}
