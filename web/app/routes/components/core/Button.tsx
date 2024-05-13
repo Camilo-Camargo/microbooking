@@ -8,6 +8,7 @@ export type ButtonProps = {
   submit?: boolean;
   className?: string;
   children?: ReactNode;
+  left?: boolean;
 };
 
 export function Button(props: ButtonProps) {
@@ -19,8 +20,9 @@ export function Button(props: ButtonProps) {
       onClick={props.onClick}
       className={`${props.primary ? primaryStyles : secondaryStyles} w-full text-center p-3 cursor-pointer rounded` + " " + props.className}
     >
+      {props.left && props.children}
       <span>{props.value}</span>
-      {props.children}
+      {!props.left && props.children}
     </div>
   );
 }
