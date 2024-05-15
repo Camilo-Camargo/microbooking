@@ -49,6 +49,11 @@ export interface GetUserReq {
 }
 
 export interface GetUserRes {
+  id: number;
+  roleId: number;
+  givenName: string;
+  surname: string;
+  email: string;
 }
 
 export interface GetUserByEmailReq {

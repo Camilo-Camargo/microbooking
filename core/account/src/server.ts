@@ -7,6 +7,7 @@ import { AccountHandlers } from "./types/account/Account"
 import { register } from "./services/register";
 import { version } from "./services/version";
 import { signIn } from "./services/sign_in";
+import { getInfo } from "./services/get_info";
 var packageDefinition = loadSync(
   PROTO_PATH,
   {
@@ -45,6 +46,7 @@ export function CreateServer() {
     Version: (call, callback) => genericService(call, callback, version),
     Register: (call, callback) => genericService(call, callback, register),
     SignIn: (call, callback) => genericService(call, callback, signIn),
+    GetInfo: (call, callback) => genericService(call, callback, getInfo)
   } as AccountHandlers);
   server.bindAsync('0.0.0.0:4015', ServerCredentials.createInsecure(), (err, port) => {
     if (err != null) {

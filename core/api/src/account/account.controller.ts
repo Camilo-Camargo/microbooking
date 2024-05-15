@@ -1,5 +1,5 @@
 import { Body, Controller, Get, HttpException, Inject, InternalServerErrorException, OnModuleInit, Post } from '@nestjs/common';
-import { IsEmail, IsNotEmpty, IsString, IsStrongPassword, MinLength } from 'class-validator';
+import { IsEmail, IsJWT, IsNotEmpty, IsString, IsStrongPassword, MinLength } from 'class-validator';
 import { ACCOUNT_PACKAGE_NAME, ACCOUNT_SERVICE_NAME, AccountClient } from './proto/account';
 import { ClientGrpc } from '@nestjs/microservices';
 
@@ -34,6 +34,24 @@ class SignInReqDTO {
   password: string;
 }
 
+class GetInfoReq {
+  @IsJWT()
+  token: string;
+}
+
+class GetInfoRes {
+  @IsString()
+  @IsNotEmpty()
+  givenName: string;
+
+  @IsString()
+  @IsNotEmpty()
+  surname: string;
+
+  @IsEmail()
+  email: string;
+}
+
 @Controller('api/account')
 export class AccountController implements OnModuleInit {
   private accountService: AccountClient;
@@ -44,9 +62,9 @@ export class AccountController implements OnModuleInit {
   }
 
 
-  @Get()
-  async version() {
-    return this.accountService.version({});
+  @Post('/')
+  async getInfo(@Body() getInfoReq: GetInfoReq) {
+    return this.accountService.getInfo(getInfoReq);
   }
 
   @Post('/register')
@@ -57,6 +75,11 @@ export class AccountController implements OnModuleInit {
   @Post('/sign-in')
   async sign(@Body() signInReqDTO: SignInReqDTO) {
     return this.accountService.signIn(signInReqDTO);
+  }
+
+  @Get('/version')
+  async version() {
+    return this.accountService.version({});
   }
 
 }

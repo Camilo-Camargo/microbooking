@@ -8,7 +8,6 @@ import { RoomSearch } from "./components/RoomSearch";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const { searchParams } = new URL(request.url);
-  console.log(searchParams);
   const user = await redirectAdmin(request);
   const rooms = await getRooms();
   return { user, rooms };

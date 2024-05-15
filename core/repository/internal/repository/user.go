@@ -8,6 +8,21 @@ import (
 	"time"
 )
 
+func (rs *RepositoryServer) GetUser(ctx context.Context, req *pb.GetUserReq) (*pb.GetUserRes, error) {
+	queryRes, err := Queries.GetUser(ctx, req.UserId)
+	if err != nil {
+		return nil, err
+	}
+
+	return &pb.GetUserRes{
+		Id:        queryRes.UserID,
+		RoleId:      queryRes.RoleID,
+		GivenName: queryRes.GivenName,
+		Surname:   queryRes.Surname,
+		Email:     queryRes.Email,
+	}, nil
+}
+
 func (rs *RepositoryServer) GetUserByEmail(ctx context.Context, req *pb.GetUserByEmailReq) (*pb.GetUserByEmailRes, error) {
 	queryRes, err := Queries.GetUserByEmail(ctx, req.Email)
 	if err != nil {

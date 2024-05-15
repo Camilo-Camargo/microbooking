@@ -1,4 +1,5 @@
 import { createCookieSessionStorage, redirect } from "@remix-run/node"
+import { apiPost } from "~/services/api";
 
 const SESSION_TOKEN_KEY = "token"
 
@@ -71,6 +72,18 @@ export async function redirectAdmin(request: Request): Promise<IUser | null> {
 export async function getUser(request: Request): Promise<IUser | null> {
   const token = await getToken(request);
   if (!token) {
+    return null;
+  }
+
+  const userRes = await apiPost('/api/account', {
+    token: token
+  }); 
+
+  console.log(userRes);
+
+  const userJson = await userRes.json();
+
+  if(userJson.statusCode){
     return null;
   }
 

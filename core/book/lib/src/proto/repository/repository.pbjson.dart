@@ -126,22 +126,31 @@ final $typed_data.Uint8List deleteRoleResDescriptor = $convert.base64Decode(
 const GetUserReq$json = {
   '1': 'GetUserReq',
   '2': [
-    {'1': 'user_id', '3': 1, '4': 1, '5': 3, '10': 'userId'},
+    {'1': 'userId', '3': 1, '4': 1, '5': 3, '10': 'userId'},
   ],
 };
 
 /// Descriptor for `GetUserReq`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getUserReqDescriptor = $convert.base64Decode(
-    'CgpHZXRVc2VyUmVxEhcKB3VzZXJfaWQYASABKANSBnVzZXJJZA==');
+    'CgpHZXRVc2VyUmVxEhYKBnVzZXJJZBgBIAEoA1IGdXNlcklk');
 
 @$core.Deprecated('Use getUserResDescriptor instead')
 const GetUserRes$json = {
   '1': 'GetUserRes',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 3, '10': 'id'},
+    {'1': 'roleId', '3': 2, '4': 1, '5': 3, '10': 'roleId'},
+    {'1': 'givenName', '3': 3, '4': 1, '5': 9, '10': 'givenName'},
+    {'1': 'surname', '3': 4, '4': 1, '5': 9, '10': 'surname'},
+    {'1': 'email', '3': 5, '4': 1, '5': 9, '10': 'email'},
+  ],
 };
 
 /// Descriptor for `GetUserRes`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getUserResDescriptor = $convert.base64Decode(
-    'CgpHZXRVc2VyUmVz');
+    'CgpHZXRVc2VyUmVzEg4KAmlkGAEgASgDUgJpZBIWCgZyb2xlSWQYAiABKANSBnJvbGVJZBIcCg'
+    'lnaXZlbk5hbWUYAyABKAlSCWdpdmVuTmFtZRIYCgdzdXJuYW1lGAQgASgJUgdzdXJuYW1lEhQK'
+    'BWVtYWlsGAUgASgJUgVlbWFpbA==');
 
 @$core.Deprecated('Use getUserByEmailReqDescriptor instead')
 const GetUserByEmailReq$json = {

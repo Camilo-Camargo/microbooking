@@ -1,3 +1,4 @@
+import { Long } from "@grpc/proto-loader";
 import { repositoryClient } from "../client"
 import { comparePassword, signJWTToken } from "../core/auth";
 import { SignInReq } from "../types/account/SignInReq"
@@ -35,7 +36,7 @@ export async function signIn(req: SignInReq): Promise<SignInRes> {
   }
 
   const token = await signJWTToken({
-    id: repoRes.id
+    id: repoRes.id as Long
   })
 
   return {

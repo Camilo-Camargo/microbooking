@@ -15,8 +15,7 @@ service Repository {
 
   // user
   rpc GetUser(GetUserReq) returns (GetUserRes) {}
-  rpc GetUserByEmail(GetUserByEmailReq)
-      returns (GetUserByEmailRes) {}
+  rpc GetUserByEmail(GetUserByEmailReq) returns (GetUserByEmailRes) {}
   rpc ListUsers(ListUsersReq) returns (stream ListUsersRes) {}
   rpc CreateUser(CreateUserReq) returns (CreateUserRes) {}
   rpc UpdateUserById(UpdateUserByIdReq) returns (UpdateUserByIdRes) {}
@@ -96,13 +95,17 @@ message DeleteRoleReq { int64 role_id = 1; }
 message DeleteRoleRes {}
 
 // user
-message GetUserReq { int64 user_id = 1; }
+message GetUserReq { int64 userId = 1; }
 
-message GetUserRes {}
-
-message GetUserByEmailReq {
-  string email = 1;
+message GetUserRes {
+  int64 id = 1;
+  int64 roleId = 2;
+  string givenName = 3;
+  string surname = 4;
+  string email = 5;
 }
+
+message GetUserByEmailReq { string email = 1; }
 message GetUserByEmailRes {
   int64 id = 1;
   int64 roleId = 2;

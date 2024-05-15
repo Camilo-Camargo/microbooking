@@ -24,6 +24,16 @@ export interface SignInRes {
   token: string;
 }
 
+export interface GetInfoReq {
+  token: string;
+}
+
+export interface GetInfoRes {
+  givenName: string;
+  surname: string;
+  email: string;
+}
+
 export interface VersionReq {
 }
 
@@ -39,6 +49,8 @@ export interface AccountClient {
   register(request: RegisterReq): Observable<RegisterRes>;
 
   signIn(request: SignInReq): Observable<SignInRes>;
+
+  getInfo(request: GetInfoReq): Observable<GetInfoRes>;
 }
 
 export interface AccountController {
@@ -47,11 +59,13 @@ export interface AccountController {
   register(request: RegisterReq): Promise<RegisterRes> | Observable<RegisterRes> | RegisterRes;
 
   signIn(request: SignInReq): Promise<SignInRes> | Observable<SignInRes> | SignInRes;
+
+  getInfo(request: GetInfoReq): Promise<GetInfoRes> | Observable<GetInfoRes> | GetInfoRes;
 }
 
 export function AccountControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ["version", "register", "signIn"];
+    const grpcMethods: string[] = ["version", "register", "signIn", "getInfo"];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
       GrpcMethod("Account", method)(constructor.prototype[method], method, descriptor);

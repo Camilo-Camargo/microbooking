@@ -473,7 +473,7 @@ class GetUserReq extends $pb.GeneratedMessage {
   factory GetUserReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetUserReq', package: const $pb.PackageName(_omitMessageNames ? '' : 'repository'), createEmptyInstance: create)
-    ..aInt64(1, _omitFieldNames ? '' : 'userId')
+    ..aInt64(1, _omitFieldNames ? '' : 'userId', protoName: 'userId')
     ..hasRequiredFields = false
   ;
 
@@ -509,12 +509,41 @@ class GetUserReq extends $pb.GeneratedMessage {
 }
 
 class GetUserRes extends $pb.GeneratedMessage {
-  factory GetUserRes() => create();
+  factory GetUserRes({
+    $fixnum.Int64? id,
+    $fixnum.Int64? roleId,
+    $core.String? givenName,
+    $core.String? surname,
+    $core.String? email,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (roleId != null) {
+      $result.roleId = roleId;
+    }
+    if (givenName != null) {
+      $result.givenName = givenName;
+    }
+    if (surname != null) {
+      $result.surname = surname;
+    }
+    if (email != null) {
+      $result.email = email;
+    }
+    return $result;
+  }
   GetUserRes._() : super();
   factory GetUserRes.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GetUserRes.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetUserRes', package: const $pb.PackageName(_omitMessageNames ? '' : 'repository'), createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'id')
+    ..aInt64(2, _omitFieldNames ? '' : 'roleId', protoName: 'roleId')
+    ..aOS(3, _omitFieldNames ? '' : 'givenName', protoName: 'givenName')
+    ..aOS(4, _omitFieldNames ? '' : 'surname')
+    ..aOS(5, _omitFieldNames ? '' : 'email')
     ..hasRequiredFields = false
   ;
 
@@ -538,6 +567,51 @@ class GetUserRes extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static GetUserRes getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetUserRes>(create);
   static GetUserRes? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get id => $_getI64(0);
+  @$pb.TagNumber(1)
+  set id($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get roleId => $_getI64(1);
+  @$pb.TagNumber(2)
+  set roleId($fixnum.Int64 v) { $_setInt64(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasRoleId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearRoleId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get givenName => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set givenName($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasGivenName() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearGivenName() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get surname => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set surname($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasSurname() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearSurname() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get email => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set email($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasEmail() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearEmail() => clearField(5);
 }
 
 class GetUserByEmailReq extends $pb.GeneratedMessage {

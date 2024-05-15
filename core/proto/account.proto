@@ -5,6 +5,7 @@ service Account {
   rpc Version(VersionReq) returns (VersionRes) {}
   rpc Register(RegisterReq) returns (RegisterRes) {}
   rpc SignIn(SignInReq) returns (SignInRes) {}
+  rpc GetInfo(GetInfoReq) returns (GetInfoRes){}
 }
 
 message RegisterReq {
@@ -25,6 +26,16 @@ message SignInReq{
 }
 message SignInRes{
   string token = 1;
+}
+
+message GetInfoReq {
+  string token = 1;
+}
+
+message GetInfoRes {
+  string givenName = 1;
+  string surname = 2;
+  string email = 3;
 }
 
 message VersionReq {}

@@ -10,6 +10,8 @@ type SubtypeConstructor<Constructor extends new (...args: any) => any, Subtype> 
 export interface ProtoGrpcType {
   account: {
     Account: SubtypeConstructor<typeof grpc.Client, _account_AccountClient> & { service: _account_AccountDefinition }
+    GetInfoReq: MessageTypeDefinition
+    GetInfoRes: MessageTypeDefinition
     RegisterReq: MessageTypeDefinition
     RegisterRes: MessageTypeDefinition
     SignInReq: MessageTypeDefinition

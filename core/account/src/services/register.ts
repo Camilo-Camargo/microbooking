@@ -33,7 +33,7 @@ export async function register(req: RegisterReq): Promise<RegisterRes | Error> {
   }
 
   const token = await signJWTToken({
-    id: repoRes.id,
+    id: repoRes.id!,
   })
 
   return {

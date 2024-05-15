@@ -16,7 +16,7 @@ func DBUrl() string {
 	dbName := os.Getenv("DATABASE_NAME")
 	dbPort := os.Getenv("DATABASE_PORT")
 
-	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPass, dbHost, dbPort, dbName)
+	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true", dbUser, dbPass, dbHost, dbPort, dbName)
 }
 
 func Connect() (*sql.DB, error) {
