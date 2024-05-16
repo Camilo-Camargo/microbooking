@@ -7,6 +7,7 @@ import { apiPost } from "~/services/api";
 import { MainLayout } from "./components/layouts/MainLayout";
 import { ImageSectionLayout } from "./components/layouts/ImageSectionLayout";
 import { getToken, setTokenRedirect } from "~/storage/session.server";
+import { register } from "~/services/account";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   if (await getToken(request)) {
@@ -25,17 +26,18 @@ export async function action({ request }: ActionFunctionArgs) {
     password: formData.get('password'),
   }
 
-  /*
-  const registerReq = await apiPost('/api/account/register', req);
-  const registerJson = await registerReq.json();
-  */
-
-  const registerJson = {
-    token: "user-token"
+  if (!req.givenName && !req.surname && !req.email && !req.password) {
+    throw new Error("You must provide type all the fields");
   }
 
+  const registerReq = await register({
+    givenName: req.givenName as string,
+    surname: req.surname as string,
+    email: req.email as string,
+    password: req.password as string
+  });
 
-  return await setTokenRedirect(request, '/', registerJson.token)
+  return await setTokenRedirect(request, '/', registerReq.token)
 }
 
 export default function Route() {

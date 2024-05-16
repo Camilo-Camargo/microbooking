@@ -36,6 +36,9 @@ export async function register(req: RegisterReq): Promise<RegisterRes | Error> {
     id: repoRes.id!,
   })
 
+
+  console.log(token);
+
   return {
     token
   }

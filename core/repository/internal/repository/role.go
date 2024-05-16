@@ -7,8 +7,17 @@ import (
 	"repository/internal/sqlc"
 )
 
-func (rs *RepositoryServer) GetRole(context.Context, *pb.GetRoleReq) (*pb.GetRoleRes, error) {
-	return &pb.GetRoleRes{}, nil
+func (rs *RepositoryServer) GetRole(ctx context.Context, req *pb.GetRoleReq) (*pb.GetRoleRes, error) {
+	log.Print(req.RoleId)
+	r, err := Queries.GetRole(ctx, req.RoleId)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return &pb.GetRoleRes{
+		Name: r.Name,
+	}, nil
 }
 func (rs *RepositoryServer) ListRoles(*pb.ListRolesReq, pb.Repository_ListRolesServer) error {
 	return nil

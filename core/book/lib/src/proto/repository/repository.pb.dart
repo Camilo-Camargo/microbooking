@@ -32,7 +32,7 @@ class GetRoleReq extends $pb.GeneratedMessage {
   factory GetRoleReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetRoleReq', package: const $pb.PackageName(_omitMessageNames ? '' : 'repository'), createEmptyInstance: create)
-    ..aInt64(1, _omitFieldNames ? '' : 'roleId')
+    ..aInt64(1, _omitFieldNames ? '' : 'roleId', protoName: 'roleId')
     ..hasRequiredFields = false
   ;
 
@@ -68,12 +68,21 @@ class GetRoleReq extends $pb.GeneratedMessage {
 }
 
 class GetRoleRes extends $pb.GeneratedMessage {
-  factory GetRoleRes() => create();
+  factory GetRoleRes({
+    $core.String? name,
+  }) {
+    final $result = create();
+    if (name != null) {
+      $result.name = name;
+    }
+    return $result;
+  }
   GetRoleRes._() : super();
   factory GetRoleRes.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GetRoleRes.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetRoleRes', package: const $pb.PackageName(_omitMessageNames ? '' : 'repository'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'name')
     ..hasRequiredFields = false
   ;
 
@@ -97,6 +106,15 @@ class GetRoleRes extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static GetRoleRes getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetRoleRes>(create);
   static GetRoleRes? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get name => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set name($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearName() => clearField(1);
 }
 
 class ListRolesReq extends $pb.GeneratedMessage {

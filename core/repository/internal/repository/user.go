@@ -16,7 +16,7 @@ func (rs *RepositoryServer) GetUser(ctx context.Context, req *pb.GetUserReq) (*p
 
 	return &pb.GetUserRes{
 		Id:        queryRes.UserID,
-		RoleId:      queryRes.RoleID,
+		RoleId:    queryRes.RoleID,
 		GivenName: queryRes.GivenName,
 		Surname:   queryRes.Surname,
 		Email:     queryRes.Email,
@@ -31,7 +31,7 @@ func (rs *RepositoryServer) GetUserByEmail(ctx context.Context, req *pb.GetUserB
 
 	return &pb.GetUserByEmailRes{
 		RoleId:    queryRes.RoleID,
-		Id:        queryRes.RoleID,
+		Id:        queryRes.UserID,
 		Email:     queryRes.Email,
 		Password:  queryRes.Password,
 		GivenName: queryRes.GivenName,
@@ -49,12 +49,18 @@ func (rs *RepositoryServer) CreateUser(ctx context.Context, req *pb.CreateUserRe
 		Surname:   req.Surname,
 		CreatedAt: currentTime,
 	}
-	_, err := Queries.CreateUser(ctx, *params)
+	r, err := Queries.CreateUser(ctx, *params)
 	if err != nil {
 		return nil, err
 	}
+
+	rId, err := r.LastInsertId()
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	return &pb.CreateUserRes{
-		Id: 1,
+		Id: rId,
 	}, nil
 }
 

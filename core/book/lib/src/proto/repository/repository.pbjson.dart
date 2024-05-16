@@ -17,22 +17,25 @@ import 'dart:typed_data' as $typed_data;
 const GetRoleReq$json = {
   '1': 'GetRoleReq',
   '2': [
-    {'1': 'role_id', '3': 1, '4': 1, '5': 3, '10': 'roleId'},
+    {'1': 'roleId', '3': 1, '4': 1, '5': 3, '10': 'roleId'},
   ],
 };
 
 /// Descriptor for `GetRoleReq`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getRoleReqDescriptor = $convert.base64Decode(
-    'CgpHZXRSb2xlUmVxEhcKB3JvbGVfaWQYASABKANSBnJvbGVJZA==');
+    'CgpHZXRSb2xlUmVxEhYKBnJvbGVJZBgBIAEoA1IGcm9sZUlk');
 
 @$core.Deprecated('Use getRoleResDescriptor instead')
 const GetRoleRes$json = {
   '1': 'GetRoleRes',
+  '2': [
+    {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+  ],
 };
 
 /// Descriptor for `GetRoleRes`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getRoleResDescriptor = $convert.base64Decode(
-    'CgpHZXRSb2xlUmVz');
+    'CgpHZXRSb2xlUmVzEhIKBG5hbWUYASABKAlSBG5hbWU=');
 
 @$core.Deprecated('Use listRolesReqDescriptor instead')
 const ListRolesReq$json = {

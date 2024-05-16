@@ -39,18 +39,6 @@ class GetInfoReq {
   token: string;
 }
 
-class GetInfoRes {
-  @IsString()
-  @IsNotEmpty()
-  givenName: string;
-
-  @IsString()
-  @IsNotEmpty()
-  surname: string;
-
-  @IsEmail()
-  email: string;
-}
 
 @Controller('api/account')
 export class AccountController implements OnModuleInit {

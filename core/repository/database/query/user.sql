@@ -7,7 +7,7 @@ SELECT * FROM user
 ORDER BY given_name;
 
 -- name: GetUserByEmail :one
-SELECT role_id, email, password, given_name, surname
+SELECT user_id,role_id, email, password, given_name, surname
 FROM user
 WHERE email = ?;
 

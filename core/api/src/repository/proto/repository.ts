@@ -11,6 +11,7 @@ export interface GetRoleReq {
 }
 
 export interface GetRoleRes {
+  name: string;
 }
 
 export interface ListRolesReq {

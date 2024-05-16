@@ -29,9 +29,11 @@ export interface GetInfoReq {
 }
 
 export interface GetInfoRes {
+  role: string;
   givenName: string;
   surname: string;
   email: string;
+  token: string;
 }
 
 export interface VersionReq {

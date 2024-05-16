@@ -1,4 +1,5 @@
 import { createCookieSessionStorage, redirect } from "@remix-run/node"
+import { getInfo } from "~/services/account";
 import { apiPost } from "~/services/api";
 
 const SESSION_TOKEN_KEY = "token"
@@ -75,26 +76,6 @@ export async function getUser(request: Request): Promise<IUser | null> {
     return null;
   }
 
-  const userRes = await apiPost('/api/account', {
-    token: token
-  }); 
-
-  console.log(userRes);
-
-  const userJson = await userRes.json();
-
-  if(userJson.statusCode){
-    return null;
-  }
-
-  const user: IUser | null = {
-    role: "guest",
-    givenName: "Nicolas",
-    surname: "Lizarazo",
-    email: "nicolas@gmail.com",
-    token: token
-  };
-
-  return user;
+  return await getInfo(token);
 }
 

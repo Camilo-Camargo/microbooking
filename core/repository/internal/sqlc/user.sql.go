@@ -69,12 +69,13 @@ func (q *Queries) GetUser(ctx context.Context, userID int64) (User, error) {
 }
 
 const getUserByEmail = `-- name: GetUserByEmail :one
-SELECT role_id, email, password, given_name, surname
+SELECT user_id,role_id, email, password, given_name, surname
 FROM user
 WHERE email = ?
 `
 
 type GetUserByEmailRow struct {
+	UserID    int64  `json:"user_id"`
 	RoleID    int64  `json:"role_id"`
 	Email     string `json:"email"`
 	Password  string `json:"password"`
@@ -86,6 +87,7 @@ func (q *Queries) GetUserByEmail(ctx context.Context, email string) (GetUserByEm
 	row := q.db.QueryRowContext(ctx, getUserByEmail, email)
 	var i GetUserByEmailRow
 	err := row.Scan(
+		&i.UserID,
 		&i.RoleID,
 		&i.Email,
 		&i.Password,

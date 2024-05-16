@@ -4,9 +4,9 @@ import { Link, useFetcher, useNavigate } from "@remix-run/react";
 import { useRef } from "react";
 import { TextInput } from "./components/core/TextInput";
 import { Button } from "./components/core/Button";
-import { apiPost } from "~/services/api";
 import { ImageSectionLayout } from "./components/layouts/ImageSectionLayout";
-import { getToken } from "~/storage/session.server";
+import { getToken, setTokenRedirect } from "~/storage/session.server";
+import { signIn } from "~/services/account";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   if (await getToken(request)) {
@@ -21,14 +21,12 @@ export async function loader({ request }: LoaderFunctionArgs) {
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const req = {
-    email: formData.get('email'),
-    password: formData.get('password'),
+    email: formData.get('email') as string,
+    password: formData.get('password') as string,
   }
 
-  //console.log(await apiPost('/api/account/sign-in', req))
-
-  return {
-  }
+  const signInRes = await signIn(req);
+  return await setTokenRedirect(request, '/', signInRes.token)
 }
 
 export default function Route() {
