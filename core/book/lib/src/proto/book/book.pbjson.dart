@@ -31,3 +31,26 @@ const VersionRes$json = {
 final $typed_data.Uint8List versionResDescriptor = $convert.base64Decode(
     'CgpWZXJzaW9uUmVz');
 
+@$core.Deprecated('Use reserveReqDescriptor instead')
+const ReserveReq$json = {
+  '1': 'ReserveReq',
+  '2': [
+    {'1': 'roomId', '3': 1, '4': 1, '5': 9, '10': 'roomId'},
+    {'1': 'userId', '3': 2, '4': 1, '5': 3, '10': 'userId'},
+  ],
+};
+
+/// Descriptor for `ReserveReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List reserveReqDescriptor = $convert.base64Decode(
+    'CgpSZXNlcnZlUmVxEhYKBnJvb21JZBgBIAEoCVIGcm9vbUlkEhYKBnVzZXJJZBgCIAEoA1IGdX'
+    'Nlcklk');
+
+@$core.Deprecated('Use reserveResDescriptor instead')
+const ReserveRes$json = {
+  '1': 'ReserveRes',
+};
+
+/// Descriptor for `ReserveRes`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List reserveResDescriptor = $convert.base64Decode(
+    'CgpSZXNlcnZlUmVz');
+

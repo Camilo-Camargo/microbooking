@@ -12,24 +12,32 @@ import (
 )
 
 const createRoom = `-- name: CreateRoom :execresult
-INSERT INTO room (signage, guests, price_per_night, is_available, created_at)
-VALUES (?, ?, ?, ?, ?)
+INSERT INTO room (signage, country, city, providedBy, price_per_night, guests, is_available, images, created_at)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
 `
 
 type CreateRoomParams struct {
 	Signage       string    `json:"signage"`
+	Country       string    `json:"country"`
+	City          string    `json:"city"`
+	Providedby    string    `json:"providedby"`
+	PricePerNight float64   `json:"price_per_night"`
 	Guests        int32     `json:"guests"`
-	PricePerNight string    `json:"price_per_night"`
 	IsAvailable   bool      `json:"is_available"`
+	Images        string    `json:"images"`
 	CreatedAt     time.Time `json:"created_at"`
 }
 
 func (q *Queries) CreateRoom(ctx context.Context, arg CreateRoomParams) (sql.Result, error) {
 	return q.db.ExecContext(ctx, createRoom,
 		arg.Signage,
-		arg.Guests,
+		arg.Country,
+		arg.City,
+		arg.Providedby,
 		arg.PricePerNight,
+		arg.Guests,
 		arg.IsAvailable,
+		arg.Images,
 		arg.CreatedAt,
 	)
 }
@@ -45,7 +53,7 @@ func (q *Queries) DeleteRoom(ctx context.Context, roomID int64) error {
 }
 
 const getRoom = `-- name: GetRoom :one
-SELECT room_id, signage, guests, price_per_night, is_available, created_at, upated_at, deleted_at FROM room
+SELECT room_id, signage, country, city, images, providedby, price_per_night, guests, is_available, created_at, upated_at, deleted_at FROM room
 WHERE room_id = ? LIMIT 1
 `
 
@@ -55,8 +63,12 @@ func (q *Queries) GetRoom(ctx context.Context, roomID int64) (Room, error) {
 	err := row.Scan(
 		&i.RoomID,
 		&i.Signage,
-		&i.Guests,
+		&i.Country,
+		&i.City,
+		&i.Images,
+		&i.Providedby,
 		&i.PricePerNight,
+		&i.Guests,
 		&i.IsAvailable,
 		&i.CreatedAt,
 		&i.UpatedAt,
@@ -66,7 +78,7 @@ func (q *Queries) GetRoom(ctx context.Context, roomID int64) (Room, error) {
 }
 
 const listRooms = `-- name: ListRooms :many
-SELECT room_id, signage, guests, price_per_night, is_available, created_at, upated_at, deleted_at FROM room
+SELECT room_id, signage, country, city, images, providedby, price_per_night, guests, is_available, created_at, upated_at, deleted_at FROM room
 `
 
 func (q *Queries) ListRooms(ctx context.Context) ([]Room, error) {
@@ -81,8 +93,12 @@ func (q *Queries) ListRooms(ctx context.Context) ([]Room, error) {
 		if err := rows.Scan(
 			&i.RoomID,
 			&i.Signage,
-			&i.Guests,
+			&i.Country,
+			&i.City,
+			&i.Images,
+			&i.Providedby,
 			&i.PricePerNight,
+			&i.Guests,
 			&i.IsAvailable,
 			&i.CreatedAt,
 			&i.UpatedAt,
@@ -110,7 +126,7 @@ WHERE room_id = ?
 type UpdateRoomByIdParams struct {
 	Signage       string    `json:"signage"`
 	Guests        int32     `json:"guests"`
-	PricePerNight string    `json:"price_per_night"`
+	PricePerNight float64   `json:"price_per_night"`
 	IsAvailable   bool      `json:"is_available"`
 	CreatedAt     time.Time `json:"created_at"`
 	RoomID        int64     `json:"room_id"`

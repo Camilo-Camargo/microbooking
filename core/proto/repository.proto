@@ -71,9 +71,7 @@ service Repository {
 // role
 message GetRoleReq { int64 roleId = 1; }
 
-message GetRoleRes {
-  string name = 1;
-}
+message GetRoleRes { string name = 1; }
 message ListRolesReq {}
 
 message ListRolesRes {}
@@ -258,17 +256,29 @@ message GetRoomRes {}
 
 message ListRoomsReq {}
 
-message ListRoomsRes {}
+message ListRoomsRes {
+  string signage = 1;
+  int32 guests = 2;
+  double pricePerNight = 3;
+  bool isAvailable = 4;
+  string images = 5;
+  string country = 6;
+  string city = 7;
+  int32 id = 8;
+
+}
 
 message CreateRoomReq {
   string signage = 1;
-  int32 guests = 2;
-  double price_per_night = 3;
-  bool is_available = 4;
-  google.protobuf.Timestamp created_at = 5;
+  string country = 2;
+  string city = 3;
+  string providedBy = 4;
+  double pricePerNight = 5;
+  int32 guests = 6;
+  string images = 7; 
 }
 
-message CreateRoomRes {}
+message CreateRoomRes { int64 roomId = 1; }
 
 message UpdateRoomByIdReq {
   int64 room_id = 1;

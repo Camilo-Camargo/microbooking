@@ -22,30 +22,45 @@ export function MainLayout(props: MainLayoutProps) {
 
         <div className="flex gap-2">
           {
-            props.guest ?
-              <>
-                <ButtonIcon
-                  className=""
-                  primary={location.pathname == "/reservations"}
-                  Icon={<FiBookmark />}
-                  onClick={() => navigate('/reservations')}
-                  value="My reservations" />
+            props.guest && !props.admin &&
+            <>
+              <ButtonIcon
+                className=""
+                primary={location.pathname == "/reservations"}
+                Icon={<FiBookmark />}
+                onClick={() => navigate('/reservations')}
+                value="My reservations" />
 
-                <ButtonIcon
-                  Icon={<FiUser />}
-                  primary={location.pathname == "/profile"}
-                  onClick={() => navigate('/profile')}
-                  value={props.guest.givenName} />
-              </>
-              :
-              <>
-                <Button
-                  onClick={() => navigate('/register')}
-                  value="Register" />
-                <Button
-                  onClick={() => navigate('/sign-in')}
-                  value="Sign In" />
-              </>
+              <ButtonIcon
+                Icon={<FiUser />}
+                primary={location.pathname == "/profile"}
+                onClick={() => navigate('/profile')}
+                value={props.guest.givenName} />
+            </>
+          }
+
+          {
+            props.admin &&
+            <>
+              <ButtonIcon
+                Icon={<FiUser />}
+                primary={location.pathname == "/profile"}
+                onClick={() => navigate('/profile')}
+                value={props.admin.givenName} />
+            </>
+          }
+
+
+          {
+            !props.admin && !props.guest &&
+            <>
+              <Button
+                onClick={() => navigate('/register')}
+                value="Register" />
+              <Button
+                onClick={() => navigate('/sign-in')}
+                value="Sign In" />
+            </>
           }
         </div>
       </nav>

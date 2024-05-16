@@ -25,6 +25,10 @@ class BookClient extends $grpc.Client {
       '/book.Book/Version',
       ($0.VersionReq value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.VersionRes.fromBuffer(value));
+  static final _$reserve = $grpc.ClientMethod<$0.ReserveReq, $0.ReserveRes>(
+      '/book.Book/Reserve',
+      ($0.ReserveReq value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.ReserveRes.fromBuffer(value));
 
   BookClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -34,6 +38,10 @@ class BookClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$0.VersionRes> version($0.VersionReq request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$version, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.ReserveRes> reserve($0.ReserveReq request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$reserve, request, options: options);
   }
 }
 
@@ -49,11 +57,23 @@ abstract class BookServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.VersionReq.fromBuffer(value),
         ($0.VersionRes value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.ReserveReq, $0.ReserveRes>(
+        'Reserve',
+        reserve_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.ReserveReq.fromBuffer(value),
+        ($0.ReserveRes value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.VersionRes> version_Pre($grpc.ServiceCall call, $async.Future<$0.VersionReq> request) async {
     return version(call, await request);
   }
 
+  $async.Future<$0.ReserveRes> reserve_Pre($grpc.ServiceCall call, $async.Future<$0.ReserveReq> request) async {
+    return reserve(call, await request);
+  }
+
   $async.Future<$0.VersionRes> version($grpc.ServiceCall call, $0.VersionReq request);
+  $async.Future<$0.ReserveRes> reserve($grpc.ServiceCall call, $0.ReserveReq request);
 }

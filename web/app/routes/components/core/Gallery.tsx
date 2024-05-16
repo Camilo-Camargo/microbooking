@@ -14,7 +14,7 @@ export function Gallery(props: GalleryProps) {
   };
   const images: Array<Image> = [];
 
-  props.images.forEach((image) => {
+  props.images?.forEach((image) => {
     if (image.position === currentPosition) {
       currentImage = image;
     }

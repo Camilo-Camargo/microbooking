@@ -40,7 +40,7 @@ export default function Route() {
           <div className="flex w-2/6 flex-col gap-10">
             <div className="flex flex-col">
               <PricePerNight className="text-4xl font-bold" price={room?.pricePerNight ?? 0} />
-              <h1 className="text-4xl">{room?.title}</h1>
+              <h1 className="text-4xl">{room?.signage}</h1>
               <span className="text-xl font-thin">{room?.providedBy}</span>
               <span className="text-xl font-thin">{room?.city}, {room?.country}</span>
             </div>

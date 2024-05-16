@@ -1,19 +1,22 @@
 // Original file: ../proto/repository.proto
 
-import type { Timestamp as _google_protobuf_Timestamp, Timestamp__Output as _google_protobuf_Timestamp__Output } from '../google/protobuf/Timestamp';
 
 export interface CreateRoomReq {
   'signage'?: (string);
-  'guests'?: (number);
+  'country'?: (string);
+  'city'?: (string);
+  'providedBy'?: (string);
   'pricePerNight'?: (number | string);
-  'isAvailable'?: (boolean);
-  'createdAt'?: (_google_protobuf_Timestamp | null);
+  'guests'?: (number);
+  'images'?: (string);
 }
 
 export interface CreateRoomReq__Output {
   'signage'?: (string);
-  'guests'?: (number);
+  'country'?: (string);
+  'city'?: (string);
+  'providedBy'?: (string);
   'pricePerNight'?: (number);
-  'isAvailable'?: (boolean);
-  'createdAt'?: (_google_protobuf_Timestamp__Output);
+  'guests'?: (number);
+  'images'?: (string);
 }

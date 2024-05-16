@@ -6,8 +6,8 @@ WHERE room_id = ? LIMIT 1;
 SELECT * FROM room;
 
 -- name: CreateRoom :execresult
-INSERT INTO room (signage, guests, price_per_night, is_available, created_at)
-VALUES (?, ?, ?, ?, ?);
+INSERT INTO room (signage, country, city, providedBy, price_per_night, guests, is_available, images, created_at)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 -- name: UpdateRoomById :exec
 UPDATE room

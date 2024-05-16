@@ -1,15 +1,28 @@
 import { useRef } from "react";
 import { Button } from "./core/Button";
-import { DateInput } from "./core/DateInput";
+//import { DateInput } from "./core/DateInput";
 import { TextInput } from "./core/TextInput";
 import { useFetcher } from "@remix-run/react";
 
 export type RoomSearchProps = {
+  onSearch: (search: string) => void
 }
 
 export function RoomSearch(props: RoomSearchProps) {
-  const checkIn = useRef<Date>(new Date());
-  const checkOut = useRef<Date>(new Date());
+  return (
+    <TextInput
+      name="search"
+      onChange={(text) => {
+        props.onSearch(text)
+      }}
+      placeholder="Search by county or city"
+    />
+  );
+}
+
+export function RoomSearch2(props: RoomSearchProps) {
+  /*const checkIn = useRef<Date>(new Date());
+  const checkOut = useRef<Date>(new Date());*/
   const search = useRef<string>("");
   const fetcher = useFetcher();
   const formRef = useRef<HTMLFormElement>(null);
@@ -19,10 +32,13 @@ export function RoomSearch(props: RoomSearchProps) {
       <TextInput
         name="search"
         onChange={(text) => {
-          search.current = text;
+          //search.current = text;
+          props.onSearch(text)
         }}
         placeholder="Search by county or city"
       />
+      {
+        /**
       <div className="flex gap-4">
         <DateInput
           label="Check in"
@@ -38,13 +54,16 @@ export function RoomSearch(props: RoomSearchProps) {
           }}
         />
       </div>
+      **/
+      }
       <div>
         <Button
           primary
           value="Search"
           submit
           onClick={() => {
-            formRef.current?.submit();
+            /*formRef.current?.submit();*/
+            props.onSearch(search.current);
           }} />
       </div>
     </fetcher.Form>

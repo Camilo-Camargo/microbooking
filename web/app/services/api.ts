@@ -10,3 +10,6 @@ export async function apiPost(path: string, data?: {}) {
   });
 }
 
+export async function apiGet(path: string) {
+  return await fetch(`${API_URL}${path}`);
+}

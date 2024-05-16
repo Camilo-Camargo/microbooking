@@ -2991,12 +2991,56 @@ class ListRoomsReq extends $pb.GeneratedMessage {
 }
 
 class ListRoomsRes extends $pb.GeneratedMessage {
-  factory ListRoomsRes() => create();
+  factory ListRoomsRes({
+    $core.String? signage,
+    $core.int? guests,
+    $core.double? pricePerNight,
+    $core.bool? isAvailable,
+    $core.String? images,
+    $core.String? country,
+    $core.String? city,
+    $core.int? id,
+  }) {
+    final $result = create();
+    if (signage != null) {
+      $result.signage = signage;
+    }
+    if (guests != null) {
+      $result.guests = guests;
+    }
+    if (pricePerNight != null) {
+      $result.pricePerNight = pricePerNight;
+    }
+    if (isAvailable != null) {
+      $result.isAvailable = isAvailable;
+    }
+    if (images != null) {
+      $result.images = images;
+    }
+    if (country != null) {
+      $result.country = country;
+    }
+    if (city != null) {
+      $result.city = city;
+    }
+    if (id != null) {
+      $result.id = id;
+    }
+    return $result;
+  }
   ListRoomsRes._() : super();
   factory ListRoomsRes.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ListRoomsRes.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListRoomsRes', package: const $pb.PackageName(_omitMessageNames ? '' : 'repository'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'signage')
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'guests', $pb.PbFieldType.O3)
+    ..a<$core.double>(3, _omitFieldNames ? '' : 'pricePerNight', $pb.PbFieldType.OD, protoName: 'pricePerNight')
+    ..aOB(4, _omitFieldNames ? '' : 'isAvailable', protoName: 'isAvailable')
+    ..aOS(5, _omitFieldNames ? '' : 'images')
+    ..aOS(6, _omitFieldNames ? '' : 'country')
+    ..aOS(7, _omitFieldNames ? '' : 'city')
+    ..a<$core.int>(8, _omitFieldNames ? '' : 'id', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -3020,67 +3064,6 @@ class ListRoomsRes extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static ListRoomsRes getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ListRoomsRes>(create);
   static ListRoomsRes? _defaultInstance;
-}
-
-class CreateRoomReq extends $pb.GeneratedMessage {
-  factory CreateRoomReq({
-    $core.String? signage,
-    $core.int? guests,
-    $core.double? pricePerNight,
-    $core.bool? isAvailable,
-    $1.Timestamp? createdAt,
-  }) {
-    final $result = create();
-    if (signage != null) {
-      $result.signage = signage;
-    }
-    if (guests != null) {
-      $result.guests = guests;
-    }
-    if (pricePerNight != null) {
-      $result.pricePerNight = pricePerNight;
-    }
-    if (isAvailable != null) {
-      $result.isAvailable = isAvailable;
-    }
-    if (createdAt != null) {
-      $result.createdAt = createdAt;
-    }
-    return $result;
-  }
-  CreateRoomReq._() : super();
-  factory CreateRoomReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory CreateRoomReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateRoomReq', package: const $pb.PackageName(_omitMessageNames ? '' : 'repository'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'signage')
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'guests', $pb.PbFieldType.O3)
-    ..a<$core.double>(3, _omitFieldNames ? '' : 'pricePerNight', $pb.PbFieldType.OD)
-    ..aOB(4, _omitFieldNames ? '' : 'isAvailable')
-    ..aOM<$1.Timestamp>(5, _omitFieldNames ? '' : 'createdAt', subBuilder: $1.Timestamp.create)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  CreateRoomReq clone() => CreateRoomReq()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  CreateRoomReq copyWith(void Function(CreateRoomReq) updates) => super.copyWith((message) => updates(message as CreateRoomReq)) as CreateRoomReq;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static CreateRoomReq create() => CreateRoomReq._();
-  CreateRoomReq createEmptyInstance() => create();
-  static $pb.PbList<CreateRoomReq> createRepeated() => $pb.PbList<CreateRoomReq>();
-  @$core.pragma('dart2js:noInline')
-  static CreateRoomReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CreateRoomReq>(create);
-  static CreateRoomReq? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get signage => $_getSZ(0);
@@ -3119,24 +3102,192 @@ class CreateRoomReq extends $pb.GeneratedMessage {
   void clearIsAvailable() => clearField(4);
 
   @$pb.TagNumber(5)
-  $1.Timestamp get createdAt => $_getN(4);
+  $core.String get images => $_getSZ(4);
   @$pb.TagNumber(5)
-  set createdAt($1.Timestamp v) { setField(5, v); }
+  set images($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasCreatedAt() => $_has(4);
+  $core.bool hasImages() => $_has(4);
   @$pb.TagNumber(5)
-  void clearCreatedAt() => clearField(5);
+  void clearImages() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.String get country => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set country($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasCountry() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearCountry() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get city => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set city($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasCity() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearCity() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.int get id => $_getIZ(7);
+  @$pb.TagNumber(8)
+  set id($core.int v) { $_setSignedInt32(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasId() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearId() => clearField(8);
+}
+
+class CreateRoomReq extends $pb.GeneratedMessage {
+  factory CreateRoomReq({
+    $core.String? signage,
+    $core.String? country,
+    $core.String? city,
+    $core.String? providedBy,
+    $core.double? pricePerNight,
+    $core.int? guests,
+    $core.String? images,
+  }) {
+    final $result = create();
+    if (signage != null) {
+      $result.signage = signage;
+    }
+    if (country != null) {
+      $result.country = country;
+    }
+    if (city != null) {
+      $result.city = city;
+    }
+    if (providedBy != null) {
+      $result.providedBy = providedBy;
+    }
+    if (pricePerNight != null) {
+      $result.pricePerNight = pricePerNight;
+    }
+    if (guests != null) {
+      $result.guests = guests;
+    }
+    if (images != null) {
+      $result.images = images;
+    }
+    return $result;
+  }
+  CreateRoomReq._() : super();
+  factory CreateRoomReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CreateRoomReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateRoomReq', package: const $pb.PackageName(_omitMessageNames ? '' : 'repository'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'signage')
+    ..aOS(2, _omitFieldNames ? '' : 'country')
+    ..aOS(3, _omitFieldNames ? '' : 'city')
+    ..aOS(4, _omitFieldNames ? '' : 'providedBy', protoName: 'providedBy')
+    ..a<$core.double>(5, _omitFieldNames ? '' : 'pricePerNight', $pb.PbFieldType.OD, protoName: 'pricePerNight')
+    ..a<$core.int>(6, _omitFieldNames ? '' : 'guests', $pb.PbFieldType.O3)
+    ..aOS(7, _omitFieldNames ? '' : 'images')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CreateRoomReq clone() => CreateRoomReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CreateRoomReq copyWith(void Function(CreateRoomReq) updates) => super.copyWith((message) => updates(message as CreateRoomReq)) as CreateRoomReq;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CreateRoomReq create() => CreateRoomReq._();
+  CreateRoomReq createEmptyInstance() => create();
+  static $pb.PbList<CreateRoomReq> createRepeated() => $pb.PbList<CreateRoomReq>();
+  @$core.pragma('dart2js:noInline')
+  static CreateRoomReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CreateRoomReq>(create);
+  static CreateRoomReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get signage => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set signage($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasSignage() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSignage() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get country => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set country($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasCountry() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCountry() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get city => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set city($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasCity() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearCity() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get providedBy => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set providedBy($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasProvidedBy() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearProvidedBy() => clearField(4);
+
   @$pb.TagNumber(5)
-  $1.Timestamp ensureCreatedAt() => $_ensure(4);
+  $core.double get pricePerNight => $_getN(4);
+  @$pb.TagNumber(5)
+  set pricePerNight($core.double v) { $_setDouble(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasPricePerNight() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearPricePerNight() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.int get guests => $_getIZ(5);
+  @$pb.TagNumber(6)
+  set guests($core.int v) { $_setSignedInt32(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasGuests() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearGuests() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get images => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set images($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasImages() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearImages() => clearField(7);
 }
 
 class CreateRoomRes extends $pb.GeneratedMessage {
-  factory CreateRoomRes() => create();
+  factory CreateRoomRes({
+    $fixnum.Int64? roomId,
+  }) {
+    final $result = create();
+    if (roomId != null) {
+      $result.roomId = roomId;
+    }
+    return $result;
+  }
   CreateRoomRes._() : super();
   factory CreateRoomRes.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CreateRoomRes.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateRoomRes', package: const $pb.PackageName(_omitMessageNames ? '' : 'repository'), createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'roomId', protoName: 'roomId')
     ..hasRequiredFields = false
   ;
 
@@ -3160,6 +3311,15 @@ class CreateRoomRes extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static CreateRoomRes getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CreateRoomRes>(create);
   static CreateRoomRes? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get roomId => $_getI64(0);
+  @$pb.TagNumber(1)
+  set roomId($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasRoomId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearRoomId() => clearField(1);
 }
 
 class UpdateRoomByIdReq extends $pb.GeneratedMessage {

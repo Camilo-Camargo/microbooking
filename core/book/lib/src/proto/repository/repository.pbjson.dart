@@ -678,39 +678,57 @@ final $typed_data.Uint8List listRoomsReqDescriptor = $convert.base64Decode(
 @$core.Deprecated('Use listRoomsResDescriptor instead')
 const ListRoomsRes$json = {
   '1': 'ListRoomsRes',
+  '2': [
+    {'1': 'signage', '3': 1, '4': 1, '5': 9, '10': 'signage'},
+    {'1': 'guests', '3': 2, '4': 1, '5': 5, '10': 'guests'},
+    {'1': 'pricePerNight', '3': 3, '4': 1, '5': 1, '10': 'pricePerNight'},
+    {'1': 'isAvailable', '3': 4, '4': 1, '5': 8, '10': 'isAvailable'},
+    {'1': 'images', '3': 5, '4': 1, '5': 9, '10': 'images'},
+    {'1': 'country', '3': 6, '4': 1, '5': 9, '10': 'country'},
+    {'1': 'city', '3': 7, '4': 1, '5': 9, '10': 'city'},
+    {'1': 'id', '3': 8, '4': 1, '5': 5, '10': 'id'},
+  ],
 };
 
 /// Descriptor for `ListRoomsRes`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List listRoomsResDescriptor = $convert.base64Decode(
-    'CgxMaXN0Um9vbXNSZXM=');
+    'CgxMaXN0Um9vbXNSZXMSGAoHc2lnbmFnZRgBIAEoCVIHc2lnbmFnZRIWCgZndWVzdHMYAiABKA'
+    'VSBmd1ZXN0cxIkCg1wcmljZVBlck5pZ2h0GAMgASgBUg1wcmljZVBlck5pZ2h0EiAKC2lzQXZh'
+    'aWxhYmxlGAQgASgIUgtpc0F2YWlsYWJsZRIWCgZpbWFnZXMYBSABKAlSBmltYWdlcxIYCgdjb3'
+    'VudHJ5GAYgASgJUgdjb3VudHJ5EhIKBGNpdHkYByABKAlSBGNpdHkSDgoCaWQYCCABKAVSAmlk');
 
 @$core.Deprecated('Use createRoomReqDescriptor instead')
 const CreateRoomReq$json = {
   '1': 'CreateRoomReq',
   '2': [
     {'1': 'signage', '3': 1, '4': 1, '5': 9, '10': 'signage'},
-    {'1': 'guests', '3': 2, '4': 1, '5': 5, '10': 'guests'},
-    {'1': 'price_per_night', '3': 3, '4': 1, '5': 1, '10': 'pricePerNight'},
-    {'1': 'is_available', '3': 4, '4': 1, '5': 8, '10': 'isAvailable'},
-    {'1': 'created_at', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    {'1': 'country', '3': 2, '4': 1, '5': 9, '10': 'country'},
+    {'1': 'city', '3': 3, '4': 1, '5': 9, '10': 'city'},
+    {'1': 'providedBy', '3': 4, '4': 1, '5': 9, '10': 'providedBy'},
+    {'1': 'pricePerNight', '3': 5, '4': 1, '5': 1, '10': 'pricePerNight'},
+    {'1': 'guests', '3': 6, '4': 1, '5': 5, '10': 'guests'},
+    {'1': 'images', '3': 7, '4': 1, '5': 9, '10': 'images'},
   ],
 };
 
 /// Descriptor for `CreateRoomReq`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createRoomReqDescriptor = $convert.base64Decode(
-    'Cg1DcmVhdGVSb29tUmVxEhgKB3NpZ25hZ2UYASABKAlSB3NpZ25hZ2USFgoGZ3Vlc3RzGAIgAS'
-    'gFUgZndWVzdHMSJgoPcHJpY2VfcGVyX25pZ2h0GAMgASgBUg1wcmljZVBlck5pZ2h0EiEKDGlz'
-    'X2F2YWlsYWJsZRgEIAEoCFILaXNBdmFpbGFibGUSOQoKY3JlYXRlZF9hdBgFIAEoCzIaLmdvb2'
-    'dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCWNyZWF0ZWRBdA==');
+    'Cg1DcmVhdGVSb29tUmVxEhgKB3NpZ25hZ2UYASABKAlSB3NpZ25hZ2USGAoHY291bnRyeRgCIA'
+    'EoCVIHY291bnRyeRISCgRjaXR5GAMgASgJUgRjaXR5Eh4KCnByb3ZpZGVkQnkYBCABKAlSCnBy'
+    'b3ZpZGVkQnkSJAoNcHJpY2VQZXJOaWdodBgFIAEoAVINcHJpY2VQZXJOaWdodBIWCgZndWVzdH'
+    'MYBiABKAVSBmd1ZXN0cxIWCgZpbWFnZXMYByABKAlSBmltYWdlcw==');
 
 @$core.Deprecated('Use createRoomResDescriptor instead')
 const CreateRoomRes$json = {
   '1': 'CreateRoomRes',
+  '2': [
+    {'1': 'roomId', '3': 1, '4': 1, '5': 3, '10': 'roomId'},
+  ],
 };
 
 /// Descriptor for `CreateRoomRes`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createRoomResDescriptor = $convert.base64Decode(
-    'Cg1DcmVhdGVSb29tUmVz');
+    'Cg1DcmVhdGVSb29tUmVzEhYKBnJvb21JZBgBIAEoA1IGcm9vbUlk');
 
 @$core.Deprecated('Use updateRoomByIdReqDescriptor instead')
 const UpdateRoomByIdReq$json = {

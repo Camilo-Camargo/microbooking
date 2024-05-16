@@ -2,7 +2,7 @@ import { Image } from "./Image";
 
 export interface Room {
   id: number;
-  title: string;
+  signage: string;
   country: string;
   city: string;
   providedBy: string;

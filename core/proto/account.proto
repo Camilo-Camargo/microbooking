@@ -6,6 +6,18 @@ service Account {
   rpc Register(RegisterReq) returns (RegisterRes) {}
   rpc SignIn(SignInReq) returns (SignInRes) {}
   rpc GetInfo(GetInfoReq) returns (GetInfoRes){}
+  rpc Reserve(ReserveReq) returns (ReserveRes) {}
+}
+
+message ReserveReq {
+  int64 userId = 1;
+}
+
+message ReserveRes {
+  int64 reservationId = 1;
+  int64 userId = 2;
+  int64 roomId = 3;
+  string status = 4;
 }
 
 message RegisterReq {

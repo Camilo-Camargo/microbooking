@@ -254,17 +254,28 @@ export interface ListRoomsReq {
 }
 
 export interface ListRoomsRes {
-}
-
-export interface CreateRoomReq {
   signage: string;
   guests: number;
   pricePerNight: number;
   isAvailable: boolean;
-  createdAt: Timestamp | undefined;
+  images: string;
+  country: string;
+  city: string;
+  id: number;
+}
+
+export interface CreateRoomReq {
+  signage: string;
+  country: string;
+  city: string;
+  providedBy: string;
+  pricePerNight: number;
+  guests: number;
+  images: string;
 }
 
 export interface CreateRoomRes {
+  roomId: number;
 }
 
 export interface UpdateRoomByIdReq {

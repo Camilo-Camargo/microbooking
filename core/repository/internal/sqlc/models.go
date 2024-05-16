@@ -132,8 +132,12 @@ type Role struct {
 type Room struct {
 	RoomID        int64        `json:"room_id"`
 	Signage       string       `json:"signage"`
+	Country       string       `json:"country"`
+	City          string       `json:"city"`
+	Images        string       `json:"images"`
+	Providedby    string       `json:"providedby"`
+	PricePerNight float64      `json:"price_per_night"`
 	Guests        int32        `json:"guests"`
-	PricePerNight string       `json:"price_per_night"`
 	IsAvailable   bool         `json:"is_available"`
 	CreatedAt     time.Time    `json:"created_at"`
 	UpatedAt      sql.NullTime `json:"upated_at"`
