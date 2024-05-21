@@ -11,6 +11,6 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 for proto in ${protos[*]}; do
   out_dir=$PROTO_OUT_DIR/proto/$proto
   mkdir -p $out_dir
-  protoc --dart_out=grpc:$out_dir  -I$PROTO_DIR $PROTO_DIR/$proto.proto
+  protoc --dart_out=grpc:$out_dir  -I$PROTO_DIR $PROTO_DIR/$proto.proto google/protobuf/timestamp.proto 
 done
 dart pub global deactivate protoc_plugin

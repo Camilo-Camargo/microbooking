@@ -78,18 +78,46 @@ func (q *Queries) GetRoom(ctx context.Context, roomID int64) (Room, error) {
 }
 
 const listRooms = `-- name: ListRooms :many
-SELECT room_id, signage, country, city, images, providedby, price_per_night, guests, is_available, created_at, upated_at, deleted_at FROM room
+SELECT r.room_id, signage, country, city, images, providedby, price_per_night, r.guests, is_available, r.created_at, upated_at, r.deleted_at, reservation_id, res.room_id, user_id, check_in, check_out, status, res.guests, res.created_at, updated_at, res.deleted_at
+FROM room r
+LEFT JOIN reservation res ON r.room_id = res.room_id
+WHERE res.room_id IS NULL
 `
 
-func (q *Queries) ListRooms(ctx context.Context) ([]Room, error) {
+type ListRoomsRow struct {
+	RoomID        int64                 `json:"room_id"`
+	Signage       string                `json:"signage"`
+	Country       string                `json:"country"`
+	City          string                `json:"city"`
+	Images        string                `json:"images"`
+	Providedby    string                `json:"providedby"`
+	PricePerNight float64               `json:"price_per_night"`
+	Guests        int32                 `json:"guests"`
+	IsAvailable   bool                  `json:"is_available"`
+	CreatedAt     time.Time             `json:"created_at"`
+	UpatedAt      sql.NullTime          `json:"upated_at"`
+	DeletedAt     sql.NullTime          `json:"deleted_at"`
+	ReservationID sql.NullInt64         `json:"reservation_id"`
+	RoomID_2      sql.NullInt64         `json:"room_id_2"`
+	UserID        sql.NullInt64         `json:"user_id"`
+	CheckIn       sql.NullTime          `json:"check_in"`
+	CheckOut      sql.NullTime          `json:"check_out"`
+	Status        NullReservationStatus `json:"status"`
+	Guests_2      sql.NullInt32         `json:"guests_2"`
+	CreatedAt_2   sql.NullTime          `json:"created_at_2"`
+	UpdatedAt     sql.NullTime          `json:"updated_at"`
+	DeletedAt_2   sql.NullTime          `json:"deleted_at_2"`
+}
+
+func (q *Queries) ListRooms(ctx context.Context) ([]ListRoomsRow, error) {
 	rows, err := q.db.QueryContext(ctx, listRooms)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
-	var items []Room
+	var items []ListRoomsRow
 	for rows.Next() {
-		var i Room
+		var i ListRoomsRow
 		if err := rows.Scan(
 			&i.RoomID,
 			&i.Signage,
@@ -103,6 +131,16 @@ func (q *Queries) ListRooms(ctx context.Context) ([]Room, error) {
 			&i.CreatedAt,
 			&i.UpatedAt,
 			&i.DeletedAt,
+			&i.ReservationID,
+			&i.RoomID_2,
+			&i.UserID,
+			&i.CheckIn,
+			&i.CheckOut,
+			&i.Status,
+			&i.Guests_2,
+			&i.CreatedAt_2,
+			&i.UpdatedAt,
+			&i.DeletedAt_2,
 		); err != nil {
 			return nil, err
 		}

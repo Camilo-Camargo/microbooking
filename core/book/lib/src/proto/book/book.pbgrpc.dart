@@ -29,6 +29,10 @@ class BookClient extends $grpc.Client {
       '/book.Book/Reserve',
       ($0.ReserveReq value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.ReserveRes.fromBuffer(value));
+  static final _$getReservations = $grpc.ClientMethod<$0.GetReservationsReq, $0.GetReservationsRes>(
+      '/book.Book/GetReservations',
+      ($0.GetReservationsReq value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.GetReservationsRes.fromBuffer(value));
 
   BookClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -42,6 +46,10 @@ class BookClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$0.ReserveRes> reserve($0.ReserveReq request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$reserve, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.GetReservationsRes> getReservations($0.GetReservationsReq request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getReservations, request, options: options);
   }
 }
 
@@ -64,6 +72,13 @@ abstract class BookServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.ReserveReq.fromBuffer(value),
         ($0.ReserveRes value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.GetReservationsReq, $0.GetReservationsRes>(
+        'GetReservations',
+        getReservations_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.GetReservationsReq.fromBuffer(value),
+        ($0.GetReservationsRes value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.VersionRes> version_Pre($grpc.ServiceCall call, $async.Future<$0.VersionReq> request) async {
@@ -74,6 +89,11 @@ abstract class BookServiceBase extends $grpc.Service {
     return reserve(call, await request);
   }
 
+  $async.Future<$0.GetReservationsRes> getReservations_Pre($grpc.ServiceCall call, $async.Future<$0.GetReservationsReq> request) async {
+    return getReservations(call, await request);
+  }
+
   $async.Future<$0.VersionRes> version($grpc.ServiceCall call, $0.VersionReq request);
   $async.Future<$0.ReserveRes> reserve($grpc.ServiceCall call, $0.ReserveReq request);
+  $async.Future<$0.GetReservationsRes> getReservations($grpc.ServiceCall call, $0.GetReservationsReq request);
 }

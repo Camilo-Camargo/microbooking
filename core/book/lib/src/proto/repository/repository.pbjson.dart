@@ -519,14 +519,14 @@ final $typed_data.Uint8List deleteInvoiceResDescriptor = $convert.base64Decode(
 const GetReservationReq$json = {
   '1': 'GetReservationReq',
   '2': [
-    {'1': 'reservation_id', '3': 1, '4': 1, '5': 3, '10': 'reservationId'},
+    {'1': 'reservationId', '3': 1, '4': 1, '5': 3, '10': 'reservationId'},
   ],
 };
 
 /// Descriptor for `GetReservationReq`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getReservationReqDescriptor = $convert.base64Decode(
-    'ChFHZXRSZXNlcnZhdGlvblJlcRIlCg5yZXNlcnZhdGlvbl9pZBgBIAEoA1INcmVzZXJ2YXRpb2'
-    '5JZA==');
+    'ChFHZXRSZXNlcnZhdGlvblJlcRIkCg1yZXNlcnZhdGlvbklkGAEgASgDUg1yZXNlcnZhdGlvbk'
+    'lk');
 
 @$core.Deprecated('Use getReservationResDescriptor instead')
 const GetReservationRes$json = {
@@ -559,33 +559,36 @@ final $typed_data.Uint8List listReservationsResDescriptor = $convert.base64Decod
 const CreateReservationReq$json = {
   '1': 'CreateReservationReq',
   '2': [
-    {'1': 'room_id', '3': 1, '4': 1, '5': 3, '10': 'roomId'},
-    {'1': 'user_id', '3': 2, '4': 1, '5': 3, '10': 'userId'},
-    {'1': 'check_in', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'checkIn'},
-    {'1': 'check_out', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'checkOut'},
+    {'1': 'roomId', '3': 1, '4': 1, '5': 3, '10': 'roomId'},
+    {'1': 'userId', '3': 2, '4': 1, '5': 3, '10': 'userId'},
+    {'1': 'checkIn', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'checkIn'},
+    {'1': 'checkOut', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'checkOut'},
     {'1': 'status', '3': 5, '4': 1, '5': 9, '10': 'status'},
     {'1': 'guests', '3': 6, '4': 1, '5': 5, '10': 'guests'},
-    {'1': 'created_at', '3': 7, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    {'1': 'createdAt', '3': 7, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
   ],
 };
 
 /// Descriptor for `CreateReservationReq`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createReservationReqDescriptor = $convert.base64Decode(
-    'ChRDcmVhdGVSZXNlcnZhdGlvblJlcRIXCgdyb29tX2lkGAEgASgDUgZyb29tSWQSFwoHdXNlcl'
-    '9pZBgCIAEoA1IGdXNlcklkEjUKCGNoZWNrX2luGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRp'
-    'bWVzdGFtcFIHY2hlY2tJbhI3CgljaGVja19vdXQYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVG'
-    'ltZXN0YW1wUghjaGVja091dBIWCgZzdGF0dXMYBSABKAlSBnN0YXR1cxIWCgZndWVzdHMYBiAB'
-    'KAVSBmd1ZXN0cxI5CgpjcmVhdGVkX2F0GAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdG'
-    'FtcFIJY3JlYXRlZEF0');
+    'ChRDcmVhdGVSZXNlcnZhdGlvblJlcRIWCgZyb29tSWQYASABKANSBnJvb21JZBIWCgZ1c2VySW'
+    'QYAiABKANSBnVzZXJJZBI0CgdjaGVja0luGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVz'
+    'dGFtcFIHY2hlY2tJbhI2CghjaGVja091dBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3'
+    'RhbXBSCGNoZWNrT3V0EhYKBnN0YXR1cxgFIAEoCVIGc3RhdHVzEhYKBmd1ZXN0cxgGIAEoBVIG'
+    'Z3Vlc3RzEjgKCWNyZWF0ZWRBdBgHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCW'
+    'NyZWF0ZWRBdA==');
 
 @$core.Deprecated('Use createReservationResDescriptor instead')
 const CreateReservationRes$json = {
   '1': 'CreateReservationRes',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 3, '10': 'id'},
+  ],
 };
 
 /// Descriptor for `CreateReservationRes`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createReservationResDescriptor = $convert.base64Decode(
-    'ChRDcmVhdGVSZXNlcnZhdGlvblJlcw==');
+    'ChRDcmVhdGVSZXNlcnZhdGlvblJlcxIOCgJpZBgBIAEoA1ICaWQ=');
 
 @$core.Deprecated('Use updateReservationByIdReqDescriptor instead')
 const UpdateReservationByIdReq$json = {

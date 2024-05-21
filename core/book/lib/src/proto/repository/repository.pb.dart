@@ -2288,7 +2288,7 @@ class GetReservationReq extends $pb.GeneratedMessage {
   factory GetReservationReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetReservationReq', package: const $pb.PackageName(_omitMessageNames ? '' : 'repository'), createEmptyInstance: create)
-    ..aInt64(1, _omitFieldNames ? '' : 'reservationId')
+    ..aInt64(1, _omitFieldNames ? '' : 'reservationId', protoName: 'reservationId')
     ..hasRequiredFields = false
   ;
 
@@ -2458,13 +2458,13 @@ class CreateReservationReq extends $pb.GeneratedMessage {
   factory CreateReservationReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateReservationReq', package: const $pb.PackageName(_omitMessageNames ? '' : 'repository'), createEmptyInstance: create)
-    ..aInt64(1, _omitFieldNames ? '' : 'roomId')
-    ..aInt64(2, _omitFieldNames ? '' : 'userId')
-    ..aOM<$1.Timestamp>(3, _omitFieldNames ? '' : 'checkIn', subBuilder: $1.Timestamp.create)
-    ..aOM<$1.Timestamp>(4, _omitFieldNames ? '' : 'checkOut', subBuilder: $1.Timestamp.create)
+    ..aInt64(1, _omitFieldNames ? '' : 'roomId', protoName: 'roomId')
+    ..aInt64(2, _omitFieldNames ? '' : 'userId', protoName: 'userId')
+    ..aOM<$1.Timestamp>(3, _omitFieldNames ? '' : 'checkIn', protoName: 'checkIn', subBuilder: $1.Timestamp.create)
+    ..aOM<$1.Timestamp>(4, _omitFieldNames ? '' : 'checkOut', protoName: 'checkOut', subBuilder: $1.Timestamp.create)
     ..aOS(5, _omitFieldNames ? '' : 'status')
     ..a<$core.int>(6, _omitFieldNames ? '' : 'guests', $pb.PbFieldType.O3)
-    ..aOM<$1.Timestamp>(7, _omitFieldNames ? '' : 'createdAt', subBuilder: $1.Timestamp.create)
+    ..aOM<$1.Timestamp>(7, _omitFieldNames ? '' : 'createdAt', protoName: 'createdAt', subBuilder: $1.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -2560,12 +2560,21 @@ class CreateReservationReq extends $pb.GeneratedMessage {
 }
 
 class CreateReservationRes extends $pb.GeneratedMessage {
-  factory CreateReservationRes() => create();
+  factory CreateReservationRes({
+    $fixnum.Int64? id,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    return $result;
+  }
   CreateReservationRes._() : super();
   factory CreateReservationRes.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CreateReservationRes.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateReservationRes', package: const $pb.PackageName(_omitMessageNames ? '' : 'repository'), createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'id')
     ..hasRequiredFields = false
   ;
 
@@ -2589,6 +2598,15 @@ class CreateReservationRes extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static CreateReservationRes getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CreateReservationRes>(create);
   static CreateReservationRes? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get id => $_getI64(0);
+  @$pb.TagNumber(1)
+  set id($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
 }
 
 class UpdateReservationByIdReq extends $pb.GeneratedMessage {

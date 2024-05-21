@@ -14,8 +14,6 @@ export interface ProtoGrpcType {
     GetInfoRes: MessageTypeDefinition
     RegisterReq: MessageTypeDefinition
     RegisterRes: MessageTypeDefinition
-    ReserveReq: MessageTypeDefinition
-    ReserveRes: MessageTypeDefinition
     SignInReq: MessageTypeDefinition
     SignInRes: MessageTypeDefinition
     VersionReq: MessageTypeDefinition

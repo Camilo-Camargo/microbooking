@@ -1,13 +1,15 @@
-import { LoaderFunctionArgs } from "@remix-run/node";
+import { ActionFunctionArgs, LoaderFunctionArgs, redirect } from "@remix-run/node";
 import { MainLayout } from "./components/layouts/MainLayout";
-import { redirectAdmin } from "~/storage/session.server";
-import { useLoaderData, useNavigate } from "@remix-run/react";
+import { getToken, redirectAdmin } from "~/storage/session.server";
+import { useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
 import { getRoomById } from "~/services/rooms";
 import { ButtonIcon } from "./components/buttons/ButtonIcon";
 import { FiArrowLeft } from "react-icons/fi";
 import { Button } from "./components/core/Button";
 import { PricePerNight } from "./components/labels/PricePerNight";
 import { Gallery } from "./components/core/Gallery";
+import { useRef } from "react";
+import { apiPost } from "~/services/api";
 
 export async function loader({ request, params }: LoaderFunctionArgs) {
   const user = await redirectAdmin(request);
@@ -15,8 +17,32 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
   return { user, room };
 }
 
+export async function action({ request }: ActionFunctionArgs) {
+  const formData = await request.formData();
+  const roomId = formData.get("roomId");
+  const token = formData.get("token");
+
+  if (!token) return redirect("/sign-in");
+
+  if (roomId) {
+    const res = await apiPost("/api/book/reserve", {
+      token,
+      roomId: parseInt(roomId as string)
+    });
+
+    if (res.status === 201) {
+      return redirect('/');
+    }
+  }
+
+  return null
+
+}
+
 export default function Route() {
   const { user, room } = useLoaderData<typeof loader>();
+  const fetcher = useFetcher();
+  const formRef = useRef<HTMLFormElement>(null);
   const navigate = useNavigate();
 
   return (
@@ -24,12 +50,12 @@ export default function Route() {
       <div className="flex flex-col px-32 py-8 gap-4">
 
         <div className="flex justify-start">
-          <ButtonIcon 
+          <ButtonIcon
             onClick={() => {
               navigate(-1);
             }}
-            Icon={<FiArrowLeft />} 
-            value="Back" 
+            Icon={<FiArrowLeft />}
+            value="Back"
             left />
         </div>
 
@@ -44,7 +70,19 @@ export default function Route() {
               <span className="text-xl font-thin">{room?.providedBy}</span>
               <span className="text-xl font-thin">{room?.city}, {room?.country}</span>
             </div>
-            <Button className="w-full" primary value="Reserve" />
+
+            <fetcher.Form ref={formRef} method="POST">
+              <input className="hidden" name="token" value={user?.token} />
+              <input className="hidden" name="roomId" value={room?.id} />
+              <Button
+                onClick={
+                  () => {
+                    formRef.current?.submit();
+                  }
+                }
+                className="w-full"
+                primary value="Reserve" />
+            </fetcher.Form>
           </div>
 
         </div>

@@ -8,14 +8,26 @@ option java_outer_classname = "BookProto";
 service Book {
   rpc Version(VersionReq) returns (VersionRes) {}
   rpc Reserve(ReserveReq) returns (ReserveRes) {}
+  rpc GetReservations(GetReservationsReq) returns (GetReservationsRes) {}
 }
 
 message VersionReq {}
 message VersionRes {}
 
-message ReserveReq {
-  string roomId = 1;
+message GetReservationsReq { string token = 1; }
+
+message GetReservationsRes {
+  int64 reservationId = 1;
   int64 userId = 2;
+  int64 roomId = 3;
+  string status = 4;
 }
 
-message ReserveRes {}
+message ReserveReq {
+  string token = 1;
+  int64 roomId = 2;
+}
+
+message ReserveRes {
+  int64 reservationId = 1;
+}

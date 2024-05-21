@@ -4,17 +4,6 @@ import { Observable } from "rxjs";
 
 export const protobufPackage = "account";
 
-export interface ReserveReq {
-  userId: number;
-}
-
-export interface ReserveRes {
-  reservationId: number;
-  userId: number;
-  roomId: number;
-  status: string;
-}
-
 export interface RegisterReq {
   givenName: string;
   surname: string;
@@ -64,8 +53,6 @@ export interface AccountClient {
   signIn(request: SignInReq): Observable<SignInRes>;
 
   getInfo(request: GetInfoReq): Observable<GetInfoRes>;
-
-  reserve(request: ReserveReq): Observable<ReserveRes>;
 }
 
 export interface AccountController {
@@ -76,13 +63,11 @@ export interface AccountController {
   signIn(request: SignInReq): Promise<SignInRes> | Observable<SignInRes> | SignInRes;
 
   getInfo(request: GetInfoReq): Promise<GetInfoRes> | Observable<GetInfoRes> | GetInfoRes;
-
-  reserve(request: ReserveReq): Promise<ReserveRes> | Observable<ReserveRes> | ReserveRes;
 }
 
 export function AccountControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ["version", "register", "signIn", "getInfo", "reserve"];
+    const grpcMethods: string[] = ["version", "register", "signIn", "getInfo"];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
       GrpcMethod("Account", method)(constructor.prototype[method], method, descriptor);

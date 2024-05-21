@@ -3,7 +3,10 @@ SELECT * FROM room
 WHERE room_id = ? LIMIT 1;
 
 -- name: ListRooms :many
-SELECT * FROM room;
+SELECT *
+FROM room r
+LEFT JOIN reservation res ON r.room_id = res.room_id
+WHERE res.room_id IS NULL;
 
 -- name: CreateRoom :execresult
 INSERT INTO room (signage, country, city, providedBy, price_per_night, guests, is_available, images, created_at)

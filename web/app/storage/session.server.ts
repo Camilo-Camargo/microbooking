@@ -76,6 +76,11 @@ export async function getUser(request: Request): Promise<IUser | null> {
     return null;
   }
 
-  return await getInfo(token);
+  console.log(token);
+
+  return await {
+    ...getInfo(token),
+    token: token
+  };
 }
 

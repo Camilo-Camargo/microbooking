@@ -218,6 +218,7 @@ export interface CreateReservationReq {
 }
 
 export interface CreateReservationRes {
+  id: number;
 }
 
 export interface UpdateReservationByIdReq {

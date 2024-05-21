@@ -8,7 +8,6 @@ import { register } from "./services/register";
 import { version } from "./services/version";
 import { signIn } from "./services/sign_in";
 import { getInfo } from "./services/get_info";
-import { reserve } from "./services/reservation";
 var packageDefinition = loadSync(
   PROTO_PATH,
   {
@@ -39,6 +38,24 @@ async function genericService(call: any, callback: any , service: any) {
   }
 }
 
+async function genericStreamService(call: any, callback: any , service: any) {
+  try {
+    return callback(null, await service(call))
+  } catch (e) {
+    if (e instanceof Error) {
+      return callback({
+        code: status.INTERNAL,
+        message: e.message
+      })
+    }
+
+    return callback({
+      code: status.UNKNOWN,
+      message: "Unknow error"
+    })
+  }
+}
+
 let server: Server;
 
 export function CreateServer() {
@@ -48,7 +65,8 @@ export function CreateServer() {
     Register: (call, callback) => genericService(call, callback, register),
     SignIn: (call, callback) => genericService(call, callback, signIn),
     GetInfo: (call, callback) => genericService(call, callback, getInfo),
-    Reserve: (call, callback) => genericService(call, callback, reserve)
+    //Reserve: (call, callback) => genericService(call, callback, reserve),
+    //GetReservations: (call, callback) => genericService(call, callback, getReservations)
   } as AccountHandlers);
   server.bindAsync('0.0.0.0:4015', ServerCredentials.createInsecure(), (err, port) => {
     if (err != null) {

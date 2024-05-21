@@ -5,19 +5,7 @@ service Account {
   rpc Version(VersionReq) returns (VersionRes) {}
   rpc Register(RegisterReq) returns (RegisterRes) {}
   rpc SignIn(SignInReq) returns (SignInRes) {}
-  rpc GetInfo(GetInfoReq) returns (GetInfoRes){}
-  rpc Reserve(ReserveReq) returns (ReserveRes) {}
-}
-
-message ReserveReq {
-  int64 userId = 1;
-}
-
-message ReserveRes {
-  int64 reservationId = 1;
-  int64 userId = 2;
-  int64 roomId = 3;
-  string status = 4;
+  rpc GetInfo(GetInfoReq) returns (GetInfoRes) {}
 }
 
 message RegisterReq {
@@ -25,24 +13,17 @@ message RegisterReq {
   string surname = 2;
   string email = 3;
   string password = 4;
-
-} 
-
-message RegisterRes {
-  string token = 1;
 }
 
-message SignInReq{
+message RegisterRes { string token = 1; }
+
+message SignInReq {
   string email = 1;
   string password = 2;
 }
-message SignInRes{
-  string token = 1;
-}
+message SignInRes { string token = 1; }
 
-message GetInfoReq {
-  string token = 1;
-}
+message GetInfoReq { string token = 1; }
 
 message GetInfoRes {
   string role = 1;

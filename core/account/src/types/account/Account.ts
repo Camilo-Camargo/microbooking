@@ -6,8 +6,6 @@ import type { GetInfoReq as _account_GetInfoReq, GetInfoReq__Output as _account_
 import type { GetInfoRes as _account_GetInfoRes, GetInfoRes__Output as _account_GetInfoRes__Output } from '../account/GetInfoRes';
 import type { RegisterReq as _account_RegisterReq, RegisterReq__Output as _account_RegisterReq__Output } from '../account/RegisterReq';
 import type { RegisterRes as _account_RegisterRes, RegisterRes__Output as _account_RegisterRes__Output } from '../account/RegisterRes';
-import type { ReserveReq as _account_ReserveReq, ReserveReq__Output as _account_ReserveReq__Output } from '../account/ReserveReq';
-import type { ReserveRes as _account_ReserveRes, ReserveRes__Output as _account_ReserveRes__Output } from '../account/ReserveRes';
 import type { SignInReq as _account_SignInReq, SignInReq__Output as _account_SignInReq__Output } from '../account/SignInReq';
 import type { SignInRes as _account_SignInRes, SignInRes__Output as _account_SignInRes__Output } from '../account/SignInRes';
 import type { VersionReq as _account_VersionReq, VersionReq__Output as _account_VersionReq__Output } from '../account/VersionReq';
@@ -31,15 +29,6 @@ export interface AccountClient extends grpc.Client {
   register(argument: _account_RegisterReq, metadata: grpc.Metadata, callback: grpc.requestCallback<_account_RegisterRes__Output>): grpc.ClientUnaryCall;
   register(argument: _account_RegisterReq, options: grpc.CallOptions, callback: grpc.requestCallback<_account_RegisterRes__Output>): grpc.ClientUnaryCall;
   register(argument: _account_RegisterReq, callback: grpc.requestCallback<_account_RegisterRes__Output>): grpc.ClientUnaryCall;
-  
-  Reserve(argument: _account_ReserveReq, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_account_ReserveRes__Output>): grpc.ClientUnaryCall;
-  Reserve(argument: _account_ReserveReq, metadata: grpc.Metadata, callback: grpc.requestCallback<_account_ReserveRes__Output>): grpc.ClientUnaryCall;
-  Reserve(argument: _account_ReserveReq, options: grpc.CallOptions, callback: grpc.requestCallback<_account_ReserveRes__Output>): grpc.ClientUnaryCall;
-  Reserve(argument: _account_ReserveReq, callback: grpc.requestCallback<_account_ReserveRes__Output>): grpc.ClientUnaryCall;
-  reserve(argument: _account_ReserveReq, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_account_ReserveRes__Output>): grpc.ClientUnaryCall;
-  reserve(argument: _account_ReserveReq, metadata: grpc.Metadata, callback: grpc.requestCallback<_account_ReserveRes__Output>): grpc.ClientUnaryCall;
-  reserve(argument: _account_ReserveReq, options: grpc.CallOptions, callback: grpc.requestCallback<_account_ReserveRes__Output>): grpc.ClientUnaryCall;
-  reserve(argument: _account_ReserveReq, callback: grpc.requestCallback<_account_ReserveRes__Output>): grpc.ClientUnaryCall;
   
   SignIn(argument: _account_SignInReq, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_account_SignInRes__Output>): grpc.ClientUnaryCall;
   SignIn(argument: _account_SignInReq, metadata: grpc.Metadata, callback: grpc.requestCallback<_account_SignInRes__Output>): grpc.ClientUnaryCall;
@@ -66,8 +55,6 @@ export interface AccountHandlers extends grpc.UntypedServiceImplementation {
   
   Register: grpc.handleUnaryCall<_account_RegisterReq__Output, _account_RegisterRes>;
   
-  Reserve: grpc.handleUnaryCall<_account_ReserveReq__Output, _account_ReserveRes>;
-  
   SignIn: grpc.handleUnaryCall<_account_SignInReq__Output, _account_SignInRes>;
   
   Version: grpc.handleUnaryCall<_account_VersionReq__Output, _account_VersionRes>;
@@ -77,7 +64,6 @@ export interface AccountHandlers extends grpc.UntypedServiceImplementation {
 export interface AccountDefinition extends grpc.ServiceDefinition {
   GetInfo: MethodDefinition<_account_GetInfoReq, _account_GetInfoRes, _account_GetInfoReq__Output, _account_GetInfoRes__Output>
   Register: MethodDefinition<_account_RegisterReq, _account_RegisterRes, _account_RegisterReq__Output, _account_RegisterRes__Output>
-  Reserve: MethodDefinition<_account_ReserveReq, _account_ReserveRes, _account_ReserveReq__Output, _account_ReserveRes__Output>
   SignIn: MethodDefinition<_account_SignInReq, _account_SignInRes, _account_SignInReq__Output, _account_SignInRes__Output>
   Version: MethodDefinition<_account_VersionReq, _account_VersionRes, _account_VersionReq__Output, _account_VersionRes__Output>
 }

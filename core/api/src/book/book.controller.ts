@@ -1,13 +1,21 @@
-import { Controller, Get, Inject, Post } from '@nestjs/common';
-import { BookService } from './book.service';
+import { Body, Controller, Get, Inject, Post } from '@nestjs/common';
 import { BOOK_PACKAGE_NAME, BOOK_SERVICE_NAME, BookClient } from './proto/book';
 import { ClientGrpc } from '@nestjs/microservices';
+import { IsJWT, IsNumber } from 'class-validator';
 
-class GetAllBooksReq {}
-class GetAllBooksRes {}
+class GetAllBooksReq {
+  @IsJWT()
+  token: string;
+}
 
-class ReserveBookReq {}
-class ReserveBookRes {}
+
+class ReserveBookReq {
+  @IsJWT()
+  token: string;
+
+  @IsNumber()
+  roomId: number;
+}
 
 @Controller('api/book')
 export class BookController {
@@ -18,14 +26,13 @@ export class BookController {
     this.bookService = this.client.getService<BookClient>(BOOK_SERVICE_NAME);
   }
 
-  @Get('/')
-  async getAll(){
-    
+  @Post('/')
+  async getAll(@Body() getAllBooksReq: GetAllBooksReq) {
   }
 
   @Post('/reserve')
-  async reserve(){
-
+  async reserve(@Body() reserveBookReq: ReserveBookReq) {
+    return this.bookService.reserve(reserveBookReq);
   }
 
   @Get('/version')

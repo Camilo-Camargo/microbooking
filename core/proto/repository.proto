@@ -210,7 +210,7 @@ message DeleteInvoiceReq { int64 invoice_id = 1; }
 
 message DeleteInvoiceRes {}
 // reservation
-message GetReservationReq { int64 reservation_id = 1; }
+message GetReservationReq { int64 reservationId = 1; }
 
 message GetReservationRes {}
 
@@ -219,16 +219,16 @@ message ListReservationsReq {}
 message ListReservationsRes {}
 
 message CreateReservationReq {
-  int64 room_id = 1;
-  int64 user_id = 2;
-  google.protobuf.Timestamp check_in = 3;
-  google.protobuf.Timestamp check_out = 4;
+  int64 roomId = 1;
+  int64 userId = 2;
+  google.protobuf.Timestamp checkIn = 3;
+  google.protobuf.Timestamp checkOut = 4;
   string status = 5;
   int32 guests = 6;
-  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp createdAt = 7;
 }
 
-message CreateReservationRes {}
+message CreateReservationRes { int64 id = 1; }
 
 message UpdateReservationByIdReq {
   int64 reservation_id = 1;
@@ -265,7 +265,6 @@ message ListRoomsRes {
   string country = 6;
   string city = 7;
   int32 id = 8;
-
 }
 
 message CreateRoomReq {
@@ -275,7 +274,7 @@ message CreateRoomReq {
   string providedBy = 4;
   double pricePerNight = 5;
   int32 guests = 6;
-  string images = 7; 
+  string images = 7;
 }
 
 message CreateRoomRes { int64 roomId = 1; }
